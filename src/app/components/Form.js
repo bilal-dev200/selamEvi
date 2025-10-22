@@ -15,12 +15,7 @@ const DonationFormModal = ({ open, onCancel }) => {
       width={650}
       centered
       className="donation-modal"
-      bodyStyle={{
-        paddingTop: "10px",
-        paddingRight: "20px",
-        paddingBottom: "15px",
-        paddingLeft: "20px",
-      }}
+    
     >
       <div className="bg-white rounded-2xl">
         {/* Header */}

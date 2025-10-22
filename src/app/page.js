@@ -1,6 +1,6 @@
 
 import React from "react";
-import Home from "../page/HomePage";
+import Home from "./HomePage";
 import ImpactSection from "./components/ImpactSection";
 function App() {
   return (

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import DonationFormModal from "../components/Form"; // ✅ import your form modal component
+import Link from "next/link";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,8 +23,8 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8">
-          <li className="cursor-pointer">Home</li>
-          <li className="cursor-pointer">About Us</li>
+         <Link href="/">Home</Link>
+         <Link href="/about">About</Link>
           <li className="cursor-pointer">Our Work</li>
           <li className="cursor-pointer">Events & Campaigns</li>
           <li className="cursor-pointer">Contact Us</li>
