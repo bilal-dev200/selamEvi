@@ -26,7 +26,7 @@ export default function Navbar() {
          <Link href="/">Home</Link>
          <Link href="/about">About</Link>
           <li className="cursor-pointer">Our Work</li>
-          <li className="cursor-pointer">Events & Campaigns</li>
+           <Link href="/campaigns">Events & Campaigns</Link>
           <li className="cursor-pointer">Contact Us</li>
           <li className="cursor-pointer">Blog</li>
           <button
