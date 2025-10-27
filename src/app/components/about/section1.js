@@ -33,6 +33,10 @@ const Section1 = () => {
             vulnerable families. Our work extends across Syria, Gaza, Turkey,
             and beyond — bringing hope and dignity where it’s needed most.
           </p>
+          <br/>
+            <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+      With the help of dedicated volunteers, partners, and donors, Selam-Evi continues to build sustainable solutions that create lasting impact.
+  </p>
         </div>
 
         {/* Right Column (Images) */}

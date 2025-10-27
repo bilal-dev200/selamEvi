@@ -10,7 +10,7 @@ const Hero = () => {
 
 <div className="relative w-full h-screen flex flex-col items-center justify-center px-4 pt-[100px]">
   <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white text-center">
-    Events & Campaigns That Drive Change
+    <span className='text-red-600'>Events & Campaigns </span> That Drive Change
   </h1>
   <p className="mt-4 text-lg md:text-xl font-light text-gray-200 tracking-wide  text-center">
     Explore how Selam-Evi’s initiatives reach those who need help the most — one project at a time.

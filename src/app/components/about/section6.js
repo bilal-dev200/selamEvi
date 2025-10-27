@@ -50,20 +50,9 @@ export default function Section6() {
 
         {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto mt-10 sm:mt-20">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-            Together, We Make a Difference
-          </h2>
-          <p className="text-sm sm:text-base text-red-100 mb-6">
-            Your support brings healthcare, education, and hope to thousands.
-          </p>
+          
 
-          <button
-            className="bg-[#E7000B] text-white border border-white/40 
-              px-8 py-3 font-semibold rounded-lg 
-              shadow-md hover:bg-[#b80009] transition"
-          >
-            Join Us
-          </button>
+
         </div>
       </div>
 

@@ -40,7 +40,7 @@ export default function Faq() {
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-snug">
             Got Questions?
             <br />
-            <span className="text-[#E7000B]">We’ve Got Answers!</span>
+        We’ve Got Answers!
           </h2>
           <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-md">
             Find answers to the most common questions about donating, supporting,

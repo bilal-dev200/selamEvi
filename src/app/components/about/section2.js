@@ -20,7 +20,7 @@ const Section2 = () => {
                    w-[65%] rounded-tl-[5%] rounded-tr-[40%] rounded-br-[0%] rounded-bl-[0%]
                    shadow-2xl z-10"
         style={{
-          backgroundColor: "rgba(193, 41, 32, 0.6)", // same red but 60% opacity
+          backgroundColor: "#E7000B", // same red but 60% opacity
           backdropFilter: "blur(1px)",
         }}
       >

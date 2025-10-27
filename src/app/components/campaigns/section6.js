@@ -25,7 +25,7 @@
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg text-red-100 mb-6 px-4">
-              Your support brings healthcare, education, and hope to thousands.
+              Join Selam-Evi in bringing hope, care, and change to those who need it most.
             </p>
 
             <button

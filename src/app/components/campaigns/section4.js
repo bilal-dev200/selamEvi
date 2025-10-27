@@ -54,7 +54,7 @@ const Section4 = () => {
               alt={`Impact ${index + 1}`}
               className="w-full h-64 object-cover"
             />
-            <p className="text-gray-700 text-sm sm:text-base px-4 py-3">
+            <p className="text-black text-sm sm:text-base px-4 py-3 font-bold">
               {item.text}
             </p>
           </div>
@@ -66,7 +66,7 @@ const Section4 = () => {
         <button className="bg-white text-[#E7000B] w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold hover:bg-gray-100 transition">
           ‹
         </button>
-        <button className="bg-white text-[#E7000B] w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold hover:bg-gray-100 transition">
+        <button className="bg-[#E7000B] border-2 border-amber-50 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold hover:bg-gray-100 transition">
           ›
         </button>
       </div>

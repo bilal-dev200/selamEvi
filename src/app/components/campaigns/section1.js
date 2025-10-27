@@ -16,22 +16,15 @@ const Section1 = () => {
       {/* Right Text Section */}
       <div className="w-full md:w-1/2 md:pl-10 text-center md:text-left">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 leading-snug">
-          Improving Lives with <br /> Care and{" "}
-          <span className="text-red-600">Compassion</span>
+          Why our
+          <span className="text-red-600"> Events & <br /> Campaigns </span>
+          Matter
         </h2>
         <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4">
-          Sukan Ev’in is dedicated to aiding vulnerable communities by focusing
-          on health, education, and humanitarian support. We believe that every
-          individual deserves access to quality medical care, the opportunity to
-          learn, and the security of basic human needs.
+          Our events are more than gatherings — they unite people, raise vital awareness, and inspire generosity for meaningful causes. Each campaign transforms that support into direct impact, providing essential healthcare, quality education, and urgent relief for vulnerable communities. Together, they bridge hope and action, ensuring lasting change where it’s needed most.
         </p>
         <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-          Beyond immediate relief, Sukan Ev’in is committed to creating
-          long-term, sustainable solutions that empower families and
-          communities. Through our programs, we foster child education, nurture
-          hope, and open doors to brighter futures. Our mission is guided by
-          compassion, dignity, and the vision of building a world where no one
-          is left behind.
+          Our campaigns take that inspiration a step further by delivering direct aid where it matters most. From providing healthcare and education to emergency relief and rebuilding lives, each campaign translates awareness into action. Together, they ensure that every contribution makes a real difference, turning hope into lasting impact.
         </p>
       </div>
     </div>

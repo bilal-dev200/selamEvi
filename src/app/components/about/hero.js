@@ -10,11 +10,12 @@ const Hero = () => {
 
 <div className="relative w-full h-screen flex flex-col items-center justify-center px-4 pt-[100px]">
   <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white text-center">
-    Together, We’re Building a Better Tomorrow
+    Together, <span className='text-red-600'>We’re Building a Better </span>Tomorrow
   </h1>
   <p className="mt-4 text-lg md:text-xl font-light text-gray-200 tracking-wide  text-center">
     Learn about our journey, our mission, and the people we serve with compassion and care.
   </p>
+  
 </div>
       </div>
   )
