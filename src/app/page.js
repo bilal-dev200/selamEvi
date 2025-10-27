@@ -12,17 +12,17 @@ import FAQSection from "./components/home/components/FAQSection";
 function App() {
   return (
     <div >
-     
-    <Home/>
-    <ImpactSection/>
-    <ServicesGrid/>
-    <ImpactPage/>
-    <HumanitarianEfforts/>
-    <ShapingBetterTomorrow/>
-    <StoriesSlider/>
-    <LatestStories/>
-    <FAQSection/>
-      </div>
+
+      <Home />
+      <ImpactSection />
+      <ServicesGrid />
+      <ImpactPage />
+      <HumanitarianEfforts />
+      <ShapingBetterTomorrow />
+      <StoriesSlider />
+      <LatestStories />
+      <FAQSection />
+    </div>
   );
 }
 
