@@ -23,11 +23,12 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8">
-         <Link href="/">Home</Link>
-         <Link href="/about">About</Link>
+          <Link href="/">Home</Link>
+          <Link href="/about">About</Link>
           <li className="cursor-pointer">Our Work</li>
-           <Link href="/campaigns">Events & Campaigns</Link>
-          <li className="cursor-pointer">Contact Us</li>
+          <Link href="/campaigns">Events & Campaigns</Link>
+          <Link href="/contact">Contact us</Link>
+
           <li className="cursor-pointer">Blog</li>
           <button
             onClick={() => setIsModalVisible(true)}

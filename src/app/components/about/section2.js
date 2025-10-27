@@ -7,7 +7,7 @@ const Section2 = () => {
     {/* Image Box */}
     <div className="relative">
       <img
-        src="/section2.png"
+        src="/help.png"
         alt="Selam-Evi"
         className="w-[70%] h-[400px] object-cover rounded-xl shadow-lg z-0"
       />
