@@ -11,15 +11,15 @@ export default function Banner() {
       >
      
         {/* Content */}
-        <div className="relative z-10 max-w-3xl mx-auto sm:ml-0 md:ml-32 lg:ml-40 text-center sm:text-left mt-10 sm:mt-0 px-2 sm:px-0">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-red-500">
+       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-0 text-center md:text-left">
+  <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight text-red-500">
             Education{" "}
             <span className="text-white">for Brighter Futures</span>
           </h1>
 
 
-          <p className=" mt-3  text-[12px]   font-light text-gray-200 tracking-wide   sm:mx-30">
-           We believe every child deserves access to learning, no matter their circumstances.
+<p className="mt-3 sm:mt-4 text-[10px] sm:text-[12px] md:text-[13px] font-light text-gray-200 tracking-wide max-w-sm sm:max-w-md md:max-w-lg mx-auto md:mx-25">       
+    We believe every child deserves access to learning, no matter their circumstances.
           </p>
         </div>
       </div>
