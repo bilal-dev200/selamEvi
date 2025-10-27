@@ -1,7 +1,7 @@
 // src/components/Navbar.js
 "use client";
 import React, { useState } from "react";
-import { Link, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import DonationFormModal from "../components/Form"; // ✅ import your form modal component
 import Link from "next/link";
 
@@ -25,7 +25,7 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-8">
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
-          <li className="cursor-pointer">Our Work</li>
+          <Link href="#" className="cursor-pointer">Our Work</Link>
           <Link href="/campaigns"> Campaigns</Link>
           <Link href="/contact">Contact us</Link>
 
