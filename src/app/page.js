@@ -1,11 +1,14 @@
 
 import React from "react";
 import Home from "../pages/HomePage";
-import ImpactSection from "./components/ImpactSection";
-import ServicesGrid from "./components/ServicesGrid";
-import ImpactPage from "./components/ImpactPage";
-import HumanitarianEfforts from "./components/HumanitarianEfforts";
-import ShapingBetterTomorrow from "./components/ShapingBetterTomorrow";
+import ImpactSection from "./components/home/components/ImpactSection";
+import ServicesGrid from "./components/home/components/ServicesGrid";
+import ImpactPage from "./components/home/components/ImpactPage";
+import HumanitarianEfforts from "./components/home/components/HumanitarianEfforts";
+import ShapingBetterTomorrow from "./components/home/components/ShapingBetterTomorrow";
+import StoriesSlider from "./components/home/components/StoriesSlider";
+import LatestStories from "./components/home/components/LatestStories";
+import FAQSection from "./components/home/components/FAQSection";
 function App() {
   return (
     <div >
@@ -16,6 +19,9 @@ function App() {
     <ImpactPage/>
     <HumanitarianEfforts/>
     <ShapingBetterTomorrow/>
+    <StoriesSlider/>
+    <LatestStories/>
+    <FAQSection/>
       </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import DonationFormModal from "../components/Form"; // ✅ Modal Component
+import DonationFormModal from "../components/Form"; 
 
 const services = [
   {
@@ -61,13 +61,11 @@ export default function ServicesGrid() {
               className="w-full h-full object-cover"
             />
 
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black/50 transition duration-300"></div>
 
             {/* Text Content */}
             <div className="absolute inset-0 flex flex-col justify-start items-start p-5 z-10 text-left">
-              <h3 className="text-xl font-bold mb-2 text-white">{service.title}</h3>
-              <p className="text-sm mb-4 max-w-[80%] text-white/80">{service.desc}</p>
+              <h3 className="text-xl font-bold mb-2 text-black">{service.title}</h3>
+              <p className="text-sm mb-4 max-w-[80%] text-black/80">{service.desc}</p>
               <button
                 onClick={() => setIsModalVisible(true)}
                 className="text-black bg-white px-5 py-2 rounded-[60px] text-sm border border-black cursor-pointer hover:bg-gray-100 transition"

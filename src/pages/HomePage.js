@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import DonationFormModal from "../app/components/Form";
+import DonationFormModal from "../app/components/home/components/Form";
 
 export default function HomePage() {
   const [isModalVisible, setIsModalVisible] = useState(false);

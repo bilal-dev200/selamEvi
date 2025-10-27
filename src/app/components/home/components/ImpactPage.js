@@ -1,34 +1,34 @@
 import React from "react";
-import { Heart, Building2, Users, GraduationCap } from "lucide-react";
 
 export default function ImpactPage() {
   const stats = [
-    {
-      icon: <Building2 className="w-10 h-10 text-red-600 mx-auto" />,
+ {
+      img: "/Mask1.png",
       number: "20+",
       title: "Hospitals Equipped",
       description:
         "Providing vital medical equipment and mobile health units.",
     },
     {
-      icon: <Heart className="w-10 h-10 text-red-600 mx-auto" />,
+      img: "/Mask2.png",
       number: "10,000+",
       title: "Orphans Supported",
       description: "Ensuring care, education, and brighter futures.",
     },
     {
-      icon: <GraduationCap className="w-10 h-10 text-red-600 mx-auto" />,
+      img: "/Mask3.png",
       number: "50+",
       title: "Schools Assisted",
       description: "Strengthening education with resources and support.",
     },
-    {
-      icon: <Users className="w-10 h-10 text-red-600 mx-auto" />,
+
+     {
+      img: "/Mask4.png",
       number: "100,000+",
       title: "Beneficiaries Reached",
-      description:
-        "Changing lives through healthcare, education, and relief.",
+      description: "Changing lives through healthcare, education, and relief.",
     },
+  
   ];
 
   return (
@@ -42,7 +42,6 @@ export default function ImpactPage() {
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute "></div>
         <div className="relative z-10 max-w-5xl mt-20 mx-auto">
           <h1 className="text-4xl font-bold mb-4">
             Together, We Make a Difference
@@ -54,20 +53,25 @@ export default function ImpactPage() {
       </div>
 
       {/* Cards Section */}
-      <div className="max-w-6xl mx-auto px-6 -mt-54 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-20">
+      <div className="max-w-6xl mx-auto px-6 -mt-45 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-20">
         {stats.map((stat, index) => (
-          <div
+     <div
             key={index}
             className="bg-white shadow-lg rounded-tr-3xl p-6 text-center transition-all duration-300 hover:-translate-y-2"
           >
-            <div className="mb-4">{stat.icon}</div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-1">
-              {stat.number}
-            </h2>
-            <h3 className="text-md font-semibold text-gray-800 mb-2">
-              {stat.title}
-            </h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <img
+              src={stat.img}
+              alt={stat.title}
+              className="w-12 h-12 mx-auto mb-4"
+            />
+            {/* number + title ek line me */}
+            <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
+              <h2 className="text-[14px] font-bold text-gray-900">{stat.number}</h2>
+              <h3 className="text-[12px] font-semibold text-gray-800">
+                {stat.title}
+              </h3>
+            </div>
+            <p className="text-[12px] text-gray-600 leading-relaxed">
               {stat.description}
             </p>
           </div>
