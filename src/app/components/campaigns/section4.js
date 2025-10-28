@@ -7,22 +7,22 @@ const Section4 = () => {
     {
       img: "/lives1.png",
       text: "Over 5,000 meals served during Ramadan 2024, bringing comfort to struggling families.",
-      size: "large",
+      side: "left",
     },
     {
       img: "/lives2.png",
       text: "Rebuilt 15 classrooms after the Turkey–Syria earthquake, providing safe spaces for children.",
-      size: "small",
+      side: "right",
     },
     {
       img: "/lives3.png",
       text: "Healthcare camp treated 1,200 patients in Syria, offering vital medical care and support.",
-      size: "large",
+      side: "left",
     },
     {
       img: "/lives4.png",
       text: "Winter Relief distributed 5,000 blankets in Gaza to protect families from cold.",
-      size: "small",
+      side: "right",
     },
   ];
 
@@ -31,42 +31,78 @@ const Section4 = () => {
       {/* Heading */}
       <div className="text-center py-16 px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
-          Looking Back at{" "}
-          <span className="text-red-600">Lives</span> We’ve{" "}
+          Looking Back at <span className="text-red-600">Lives</span> We’ve{" "}
           <span className="text-red-600">Touched</span>
         </h2>
         <p className="text-gray-600 mt-3 text-sm sm:text-base max-w-2xl mx-auto">
-          Each moment reflects a story of hope, compassion, and lasting change — reminding us of the lives
-          touched and the communities transformed.
+          Each moment reflects a story of hope, compassion, and lasting change —
+          reminding us of the lives touched and the communities transformed.
         </p>
       </div>
 
-      {/* Image Grid (Custom Widths) */}
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-wrap justify-center gap-6 px-6 pb-28">
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className={`rounded-xl overflow-hidden bg-white shadow-md transition-all duration-300 
-              ${item.size === "large" ? "w-full sm:w-[70%]" : "w-full sm:w-[28%]"}`}
-          >
+      {/* Custom Rows Layout */}
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-10 px-12 pb-28">
+        {/* ✅ Row 1 — Left big, Right small */}
+        <div className="flex flex-col sm:flex-row gap-6">
+          {/* Left (big) */}
+          <div className="w-full sm:w-[68%] rounded-xl overflow-hidden bg-white shadow-md flex flex-col">
             <img
-              src={item.img}
-              alt={`Impact ${index + 1}`}
-              className="w-full h-64 object-cover"
+              src={items[0].img}
+              alt="Impact 1"
+              className="w-full h-[450px] object-cover"
             />
             <p className="text-black text-sm sm:text-base px-4 py-3 font-bold">
-              {item.text}
+              {items[0].text}
             </p>
           </div>
-        ))}
+
+          {/* Right (small) */}
+          <div className="w-full sm:w-[30%] rounded-xl overflow-hidden bg-white shadow-md flex flex-col">
+            <img
+              src={items[1].img}
+              alt="Impact 2"
+              className="w-full h-[450px] object-cover"
+            />
+            <p className="text-black text-sm sm:text-base px-4 py-3 font-bold">
+              {items[1].text}
+            </p>
+          </div>
+        </div>
+
+        {/* ✅ Row 2 — Left small, Right big */}
+        <div className="flex flex-col sm:flex-row-reverse gap-6">
+          {/* Left (small) */}
+          <div className="w-full sm:w-[30%] rounded-xl overflow-hidden bg-white shadow-md flex flex-col">
+            <img
+              src={items[2].img}
+              alt="Impact 3"
+              className="w-full h-[450px] object-cover"
+            />
+            <p className="text-black text-sm sm:text-base px-4 py-3 font-bold">
+              {items[2].text}
+            </p>
+          </div>
+
+          {/* Right (big) */}
+          <div className="w-full sm:w-[68%] rounded-xl overflow-hidden bg-white shadow-md flex flex-col">
+            <img
+              src={items[3].img}
+              alt="Impact 4"
+              className="w-full h-[450px] object-cover"
+            />
+            <p className="text-black text-sm sm:text-base px-4 py-3 font-bold">
+              {items[3].text}
+            </p>
+          </div>
+        </div>
       </div>
 
-      {/* Red Footer with Arrows (Behind Images Slightly) */}
-      <div className="absolute  mb-4 bottom-0 left-0 w-full bg-[#E7000B] py-10 flex justify-center items-center space-x-4 rounded-t-[60px] z-0 mt-10">
+      {/* Red Footer with Arrows */}
+      <div className="absolute bottom-0 left-0 w-full bg-[#E7000B] py-10 flex justify-center items-center space-x-4 rounded-t-[60px] z-0">
         <button className="bg-white text-[#E7000B] w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold hover:bg-gray-100 transition">
           ‹
         </button>
-        <button className="bg-[#E7000B] border-2 border-amber-50 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold hover:bg-gray-100 transition">
+        <button className="bg-[#E7000B] border-2 border-white text-white w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold hover:bg-white hover:text-[#E7000B] transition">
           ›
         </button>
       </div>

@@ -78,7 +78,7 @@ export default function HumanitarianEfforts() {
             {/* Heading */}
             <div className="text-center mb-14">
                 <h2 className="text-4xl font-bold text-gray-900">
-                    Our Ongoing <span className="text-red-600">Humanitarian</span> Efforts
+                    Ongoing Campaigns You Can Support
                 </h2>
                 <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
                     Support our active initiatives making a difference today.
@@ -149,7 +149,7 @@ export default function HumanitarianEfforts() {
                 <button
                     className=" bg-red-600 hover:bg-red-700 text-white font-semibold py-2 p-6 mt-20 rounded-bl-[15px]  cursor-pointer"
                 >
-                    Export More
+                    Load More
                 </button>
             </div>
 

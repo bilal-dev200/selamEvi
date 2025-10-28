@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={'antialiased'}
+        className="bg-white px-1.5 md:px-0"
       > 
       <Navbar/>
 

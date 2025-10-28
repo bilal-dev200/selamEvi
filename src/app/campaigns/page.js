@@ -13,7 +13,7 @@ import Faq from '../components/campaigns/faq'
 
 const Campaigns = () => {
   return (
-    <div className='bg-white mb-4'>
+    <div className='bg-white mb-4  :px-1.5'>
       <Hero />
       <Section1 />
       <Section2 />

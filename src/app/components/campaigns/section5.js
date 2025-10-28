@@ -146,13 +146,6 @@ export default function Section5() {
                 open={isModalVisible}
                 onCancel={() => setIsModalVisible(false)}
             />
-            <div className="flex justify-center">
-                <button
-                    className=" bg-red-600 hover:bg-red-700 text-white font-semibold py-2 p-6 mt-20 rounded-bl-[15px]  cursor-pointer"
-                >
-                    Export More
-                </button>
-            </div>
 
         </div>
     );
