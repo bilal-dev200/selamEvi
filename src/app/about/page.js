@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Hero from "../components/about/hero"
 import Section1 from "../components/about/section1"
 import Section2 from "../components/about/section2"
-import Section3 from "../components/about/section3"
+import Services from "../components/Services"
 import Section4 from "../components/about/section4"
 import Section5 from "../components/about/section5"
 import Section6 from "../components/about/section6"
@@ -21,7 +21,6 @@ const About = () => {
       {/* section2 */}
       <Section2 />
       {/* section3 */}
-      <Section3 />
       {/* section4 */}
       <Section4 />
       {/* section5 */}
@@ -29,9 +28,9 @@ const About = () => {
       {/* section6 */}
       <Section6 />
       {/* section7 */}
-      <Section7/>
+      <Section7 />
       {/* FAq */}
-      <Faq/>
+      <Faq />
 
 
 
