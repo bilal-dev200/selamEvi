@@ -1,14 +1,28 @@
 
 import React from "react";
-import Home from "./HomePage";
-import ImpactSection from "./components/ImpactSection";
+import Home from "../pages/HomePage";
+import ImpactSection from "./components/home/components/ImpactSection";
+import ServicesGrid from "./components/home/components/ServicesGrid";
+import ImpactPage from "./components/home/components/ImpactPage";
+import HumanitarianEfforts from "./components/home/components/HumanitarianEfforts";
+import ShapingBetterTomorrow from "./components/home/components/ShapingBetterTomorrow";
+import StoriesSlider from "./components/home/components/StoriesSlider";
+import LatestStories from "./components/home/components/LatestStories";
+import FAQSection from "./components/home/components/FAQSection";
 function App() {
   return (
     <div >
-     
-    <Home/>
-    <ImpactSection/>
-      </div>
+
+      <Home />
+      <ImpactSection />
+      <ServicesGrid />
+      <ImpactPage />
+      <HumanitarianEfforts />
+      <ShapingBetterTomorrow />
+      <StoriesSlider />
+      <LatestStories />
+      <FAQSection />
+    </div>
   );
 }
 

@@ -22,7 +22,7 @@ export default function ImpactSection() {
             to build sustainable solutions that create lasting impact.
           </p>
           <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-bl-2xl font-semibold transition">
-            Learn More
+            Lear More
           </button>
         </div>
 

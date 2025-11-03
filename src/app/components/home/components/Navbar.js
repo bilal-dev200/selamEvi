@@ -25,11 +25,11 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-8">
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
-          <li className="cursor-pointer">Our Work</li>
+          <Link href="/our-work" className="cursor-pointer">Our Work</Link>
           <Link href="/campaigns"> Campaigns</Link>
           <Link href="/contact">Contact us</Link>
 
-          <li className="cursor-pointer">Blog</li>
+          <Link href="/blog" className="cursor-pointer">Blog</Link>
           <button
             onClick={() => setIsModalVisible(true)}
             className="bg-red-600 hover:bg-red-700 px-4 py-2 ml-20 rounded-md font-semibold cursor-pointer"
