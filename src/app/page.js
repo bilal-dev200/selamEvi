@@ -11,7 +11,7 @@ import LatestStories from "./components/home/components/LatestStories";
 import FAQSection from "./components/home/components/FAQSection";
 function App() {
   return (
-    <div >
+    <div className='bg-white'>
 
       <Home />
       <ImpactSection />

@@ -1,6 +1,6 @@
 export default function HealthcareCampSection() {
   return (
-    <section className="bg-background flex items-center justify-center px-4 lg:px-12 py-16">
+    <section className="bg-white flex items-center justify-center px-4 lg:px-12 py-16">
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 items-center relative">
         
         {/* Left Background Image Section */}

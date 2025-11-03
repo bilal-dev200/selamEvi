@@ -23,11 +23,11 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/our-work" className="cursor-pointer">Our Work</Link>
-          <Link href="/campaigns"> Campaigns</Link>
-          <Link href="/contact">Contact us</Link>
+          <Link href="/" className="cursor-pointer">Home</Link>
+          <Link href="/about" className="cursor-pointer">About</Link>
+          <Link href="/services" className="cursor-pointer">Services</Link>
+          <Link href="/campaigns" className="cursor-pointer"> Campaigns</Link>
+          <Link href="/contact" className="cursor-pointer">Contact us</Link>
 
           <Link href="/blog" className="cursor-pointer">Blog</Link>
           <button

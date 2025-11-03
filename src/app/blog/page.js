@@ -5,7 +5,7 @@ import Education from "../components/blog/components/Education";
 
 const page = () => {
   return (
-    <div>
+    <div className='bg-white'>
      <Banner />
     <Bringing/>
     <Education/>

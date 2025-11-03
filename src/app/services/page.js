@@ -10,15 +10,15 @@ import FAQSection from "../components/home/components/FAQSection";
 
 const page = () => {
   return (
-    <div>
-     <Banner />
-<StatsSection/>
-<HealthcareCampSection/>
-<ServicesGrid/>
-<ImpactSection/>
-<Together/>
-<LatestStories/>
-<FAQSection/>
+    <div className='bg-white'>
+      <Banner />
+      <StatsSection />
+      <HealthcareCampSection />
+      <ServicesGrid />
+      <ImpactSection />
+      <Together />
+      <LatestStories />
+      <FAQSection />
 
     </div>
   )
