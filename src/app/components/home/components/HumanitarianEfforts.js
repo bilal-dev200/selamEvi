@@ -1,45 +1,33 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import DonationFormModal from "../components/Form";
+import { useProgramStore } from "../../../store/programStore";
 
-export default function HumanitarianEfforts() {
+export default function HumanitarianEfforts({
+  initialCount = 8, // 🔹 how many cards to show initially
+  showLoadMore = true, // 🔹 whether to show "Load More" button
+}) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const { programs, fetchPrograms, loading } = useProgramStore();
+  const [visibleCount, setVisibleCount] = useState(initialCount);
+  const router = useRouter();
 
-  const projects = [
-    {
-      img: "/Ijteema1.png",
-      title: "Ijteema-e-Qurbani 2025",
-      description:
-        "Your sacrifice brings nourishment and joy to families in need.",
-      raised: 4500,
-      goal: 10000,
-    },
-    {
-      img: "/Ijteema2.png",
-      title: "Earthquake Relief",
-      description:
-        "Together we can rebuild. Bring shelter, education, and life back.",
-      raised: 4500,
-      goal: 10000,
-    },
-    {
-      img: "/Ijteema3.png",
-      title: "Mobile Hospital Project",
-      description:
-        "Delivering essential medical care to underserved communities.",
-      raised: 4600,
-      goal: 10000,
-    },
-    {
-      img: "/Ijteema4.png",
-      title: "Winter Relief Drive",
-      description:
-        "Provide warmth and relief to families in crisis with winter aid.",
-      raised: 4500,
-      goal: 10000,
-    },
-  ];
+  useEffect(() => {
+    fetchPrograms();
+  }, [fetchPrograms]);
+
+  // ✅ Automatically fill (repeat) if API has fewer than visibleCount
+  const displayedPrograms = useMemo(() => {
+    if (programs.length === 0) return [];
+    const fullList = [];
+    while (fullList.length < visibleCount) {
+      fullList.push(
+        ...programs.slice(0, Math.min(programs.length, visibleCount - fullList.length))
+      );
+    }
+    return fullList;
+  }, [programs, visibleCount]);
 
   return (
     <div className="bg-white py-20 px-6">
@@ -54,60 +42,80 @@ export default function HumanitarianEfforts() {
         </p>
       </div>
 
-      {/* Cards */}
+      {/* Cards Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {projects.map((item, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-2xl shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
-          >
-            {/* Image */}
-            <img
-              src={item.img}
-              alt={item.title}
-              className="h-48 w-full object-cover"
-            />
+        {loading ? (
+          <p className="text-center text-gray-600">Loading programs...</p>
+        ) : (
+          displayedPrograms.map((item, index) => (
+            <div
+              key={`${item.id}-${index}`}
+              className="bg-white rounded-2xl shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+              onClick={() => router.push("/campaigns")}
+            >
+              <img
+                src={item.img}
+                alt={item.title}
+                className="h-48 w-full object-cover"
+              />
 
-            {/* Content */}
-            <div className="p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                {item.title}
-              </h3>
-              <p className="text-gray-600 text-[12px] mb-4">{item.description}</p>
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-[12px] mb-4">
+                  {item.description}
+                </p>
 
-              {/* Progress Info */}
-              <div className="flex justify-between text-sm font-medium text-gray-700 mb-2">
-                <span>
-                  Raised: <span className="text-gray-900">${item.raised}</span>
-                </span>
-                <span>
-                  Goal: <span className="text-gray-900">${item.goal}</span>
-                </span>
-              </div>
+                {/* Progress Info */}
+                <div className="flex justify-between text-sm font-medium text-gray-700 mb-2">
+                  <span>
+                    Raised: <span className="text-gray-900">${item.raised}</span>
+                  </span>
+                  <span>
+                    Goal: <span className="text-gray-900">${item.goal}</span>
+                  </span>
+                </div>
 
-              {/* Progress Bar */}
-              <div className="w-full bg-gray-200 h-2 rounded-full mb-4">
-                <div
-                  className="bg-red-600 h-2 rounded-full"
-                  style={{
-                    width: `${(item.raised / item.goal) * 100}%`,
+                {/* Progress Bar */}
+                <div className="w-full bg-gray-200 h-2 rounded-full mb-4">
+                  <div
+                    className="bg-red-600 h-2 rounded-full"
+                    style={{
+                      width: `${(item.raised / item.goal) * 100}%`,
+                    }}
+                  ></div>
+                </div>
+
+                {/* Donate Button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsModalVisible(true);
                   }}
-                ></div>
+                  className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-bl-[70px]"
+                >
+                  Donate Now
+                </button>
               </div>
-
-              {/* Donate Button */}
-              <button
-                onClick={() => setIsModalVisible(true)}
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-bl-[70px]"
-              >
-                Donate Now
-              </button>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
 
-      {/* ✅ Single Modal (used for all cards) */}
+      {/* ✅ Optional Load More */}
+      {showLoadMore && displayedPrograms.length < 40 && (
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={() => setVisibleCount((prev) => prev + 8)}
+            className="px-6 py-2 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition"
+          >
+            Load More
+          </button>
+        </div>
+      )}
+
+      {/* Modal */}
       <DonationFormModal
         open={isModalVisible}
         onCancel={() => setIsModalVisible(false)}

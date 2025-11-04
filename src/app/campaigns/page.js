@@ -1,13 +1,12 @@
 import React from 'react'
 import Hero from '../components/campaigns/hero'
 import Section1 from '../components/campaigns/section1'
-import Section2 from '../components/campaigns/section2'
 import Section3 from '../components/campaigns/section3'
-import Section5 from '../components/campaigns/section5'
 import Section6 from '../components/campaigns/section6'
 import Section7 from '../components/campaigns/section7'
 import Section4 from '../components/campaigns/section4'
 import Faq from '../components/campaigns/faq'
+import HumanitarianEfforts from '../components/home/components/HumanitarianEfforts'
 
 
 
@@ -16,14 +15,14 @@ const Campaigns = () => {
     <div className='bg-white mb-4  :px-1.5'>
       <Hero />
       <Section1 />
-      <Section2 />
+      <HumanitarianEfforts initialCount={8} showLoadMore={true} />
       <Section3 />
-      <Section4/>
-      <Section5 />
+      <Section4 />
+      <HumanitarianEfforts initialCount={8} showLoadMore={false} />
       <Section6 />
       <Section7 />
       <Faq />
-    </div> 
+    </div>
   )
 }
 

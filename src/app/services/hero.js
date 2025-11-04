@@ -6,7 +6,7 @@ export default function Hero() {
     <div className="relative">
       {/* Hero Section */}
       <div
-        className="relative min-h-[80vh] sm:min-h-[90vh] md:min-h-[100vh] flex flex-col justify-center text-white px-4 sm:px-8 md:px-16 bg-center bg-cover"
+        className="relative min-h-[80vh] sm:min-h-[90vh] md:min-h-screen flex flex-col justify-center text-white px-4 sm:px-8 md:px-16 bg-center bg-cover"
         style={{ backgroundImage: "url('/educationbanner.png')" }}
       >
         {/* Soft Dark Overlay */}
