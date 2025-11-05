@@ -35,7 +35,7 @@ export default function HomePage() {
       </div>
 
       {/* Quick Donate Box */}
-    <div className="relative -mt-16 md:-mt-15 z-20 flex justify-center px-3 sm:px-6">
+    <div className="relative -mt-16 md:-mt-15 z-20 flex justify-center px-3 sm:px-6 text-black">
   <div className="w-full sm:w-[90%] md:w-[80%] overflow-hidden rounded-lg border border-red-200 p-3 bg-white">
     <div className="bg-[#f3f6f9] p-3 flex flex-col md:flex-row gap-4 items-center justify-between">
       <select className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto">

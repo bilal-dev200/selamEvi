@@ -18,7 +18,6 @@ export default function ServiceDetailPage() {
   useEffect(() => {
     const fetchService = async () => {
       try {
-        // ✅ Only fetch if details are missing
         if (!service?.details) {
           const res = await fetch(
             `http://salam-evi-nestjs.vapedepablo.com/services/${slug}`
@@ -49,93 +48,96 @@ export default function ServiceDetailPage() {
       </div>
     );
 
-  const dummyBullets = [
-    { title: "20+ Hospitals Equipped", text: "Supporting healthcare facilities" },
-    { title: "10,000+ Orphans Helped", text: "Providing education & essentials" },
-    { title: "50+ Shelters Assisted", text: "Restoring hope for families" },
-    { title: "15,000+ Meals Served", text: "Feeding communities in crisis" },
-  ];
-
   return (
-    <div className="bg-[#FFFFFF] font-[Rubik,sans-serif]">
+    <div className="bg-white font-[Rubik,sans-serif]">
       <Hero />
 
-      {/* ✅ Dynamic Service Details */}
+      {/* ✅ Dynamic Sections */}
       {Array.isArray(service.details) && service.details.length > 0 ? (
         service.details.map((detail, index) => {
-          const imageUrl = detail?.images?.[0]?.image_path
-            ? `${baseUrl}${detail.images[0].image_path}`
-            : "/efforts.jpg";
+          const imageUrl =
+            detail?.images?.[0]?.image_path &&
+            `${baseUrl}${detail.images[0].image_path}`;
 
-          const isRedBg = index === 1 || index === 2;
-          const hasCards = index === 1 || index === 2;
-          const showImage = index !== 2;
+          const isRedSection =
+            detail.title?.toLowerCase().includes("together") ||
+            detail.title?.toLowerCase().includes("difference");
 
-          const isReverse =
-            detail.title === "A Child’s Journey to Learning"
-              ? false
-              : index === 1 || index === 3;
-
-          const bullets = detail.bullets?.length ? detail.bullets : dummyBullets;
+          const isReverse = index % 3 !== 0;
 
           return (
             <React.Fragment key={detail.id || index}>
               <section
                 className={`py-20 px-6 md:px-16 transition-all duration-500 ${
-                  isRedBg ? "bg-red-600 text-white" : "bg-white text-gray-900"
+                  isRedSection
+                    ? "bg-red-600 text-white"
+                    : "bg-white text-gray-900"
                 }`}
               >
                 <div
                   className={`flex flex-col ${
-                    showImage ? "md:flex-row" : ""
+                    imageUrl ? "md:flex-row" : ""
                   } ${isReverse ? "md:flex-row-reverse" : ""} items-center gap-10`}
                 >
+                  {/* ✅ Text Section */}
                   <div
                     className={`w-full ${
-                      showImage ? "md:w-1/2 text-left" : "text-center"
+                      imageUrl ? "md:w-1/2 text-left" : "text-center"
                     }`}
                   >
                     <h2
-                      className={`text-2xl md:text-3xl font-bold mb-4 ${
-                        isRedBg ? "text-white" : "text-gray-900"
+                      className={`text-3xl font-bold mb-4 ${
+                        isRedSection ? "text-white" : "text-gray-900"
                       }`}
                     >
                       {detail.title}
                     </h2>
 
-                    <div
-                      className={`text-base leading-relaxed mb-6 ${
-                        isRedBg ? "text-white/90" : "text-gray-700"
-                      }`}
-                      dangerouslySetInnerHTML={{
-                        __html: detail.description || "",
-                      }}
-                    />
-
-                    {hasCards && (
+                    {detail.description && (
                       <div
-                        className={`${
-                          index === 2
-                            ? "flex flex-wrap justify-center gap-4 mt-10"
-                            : "grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6"
+                        className={`text-base leading-relaxed mb-6 ${
+                          isRedSection ? "text-white/90" : "text-gray-700"
                         }`}
-                      >
-                        {bullets.map((b, i) => (
-                          <div
-                            key={i}
-                            className="rounded-lg shadow-md p-4 border border-gray-200 bg-white text-gray-800"
-                          >
-                            <h4 className="font-semibold text-lg mb-1">
-                              {b.title}
-                            </h4>
-                            <p className="text-sm text-gray-600">{b.text}</p>
-                          </div>
-                        ))}
-                      </div>
+                        dangerouslySetInnerHTML={{
+                          __html: detail.description,
+                        }}
+                      />
                     )}
+
+                    {/* ✅ Bullets */}
+                    {Array.isArray(detail.bullets) &&
+                      detail.bullets.length > 0 && (
+                        <ul
+                          className={`space-y-3 mt-4 ${
+                            isRedSection ? "text-white" : "text-gray-800"
+                          }`}
+                        >
+                          {detail.bullets.map((b) => (
+                            <li
+                              key={b.id}
+                              className="flex items-start gap-3 text-base"
+                            >
+                              {/* Icon (if available) */}
+                              {b.icon ? (
+                                <img
+                                  src={`${baseUrl}${b.icon}`}
+                                  alt="icon"
+                                  className="w-6 h-6 object-contain"
+                                />
+                              ) : (
+                                <span className="text-red-500 font-bold text-lg mt-1">
+                                  •
+                                </span>
+                              )}
+                              <span>{b.text}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                   </div>
 
-                  {showImage && (
+                  {/* ✅ Image Section */}
+                  {imageUrl && (
                     <div className="w-full md:w-1/2 flex justify-center">
                       <img
                         src={imageUrl}
@@ -145,6 +147,31 @@ export default function ServiceDetailPage() {
                     </div>
                   )}
                 </div>
+
+                {/* ✅ Special red section cards (for stats etc.) */}
+                {isRedSection && (
+                  <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    {Array.isArray(detail.bullets) &&
+                      detail.bullets.map((b) => (
+                        <div
+                          key={b.id}
+                          className="bg-white text-gray-900 rounded-xl p-6 shadow-md text-center"
+                        >
+                          {b.icon && (
+                            <img
+                              src={`${baseUrl}${b.icon}`}
+                              alt="icon"
+                              className="mx-auto mb-3 w-10 h-10 object-contain"
+                            />
+                          )}
+                          <h4 className="font-semibold text-lg mb-2">
+                            {b.title || "—"}
+                          </h4>
+                          <p className="text-sm text-gray-600">{b.text}</p>
+                        </div>
+                      ))}
+                  </div>
+                )}
               </section>
 
               {index === 1 && <div className="bg-white h-20 w-full"></div>}
@@ -157,6 +184,7 @@ export default function ServiceDetailPage() {
         </div>
       )}
 
+      {/* ✅ Footer Sections */}
       <div className="bg-gray-50">
         <Together />
       </div>

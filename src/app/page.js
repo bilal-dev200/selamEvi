@@ -18,7 +18,7 @@ function App() {
       <ServicesGrid />
       <ImpactPage />
       {/* <HumanitarianEfforts initialCount={} /> */}
-      <HumanitarianEfforts initialCount={4} showLoadMore={false}  showSeeAll={true}  />
+      <HumanitarianEfforts initialCount={4} showLoadMore={false} />
       <ShapingBetterTomorrow />
       <StoriesSlider />
       <LatestStories />
