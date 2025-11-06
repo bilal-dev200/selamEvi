@@ -4,13 +4,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useServiceStore } from "@/app/store/Servicestore";
 import { useProgramStore } from "@/app/store/programStore";
 
-export default function DonationModal({ open, onCancel, selectedService, selectedProgram }) {
+export default function DonationFormModal({
+  open,
+  onCancel,
+  selectedService,
+  selectedProgram,
+  donationType,
+  amount,
+}) {
   const [donationFrequency, setDonationFrequency] = useState("One-Time");
-  const [donationType, setDonationType] = useState("Zakat");
+  const [donationTypeState, setDonationTypeState] = useState("Zakat");
   const [paymentOption, setPaymentOption] = useState("Credit/Debit Card");
   const [selectedServiceOption, setSelectedServiceOption] = useState("");
   const [selectedProgramOption, setSelectedProgramOption] = useState("");
-  const [amount, setAmount] = useState("");
+  const [amountState, setAmountState] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [userDetails, setUserDetails] = useState({
@@ -34,8 +41,20 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
     if (open) {
       fetchServices?.();
       fetchPrograms?.();
+      if (selectedService) setSelectedServiceOption(selectedService);
+      if (selectedProgram) setSelectedProgramOption(selectedProgram);
+      if (donationType) setDonationTypeState(donationType);
+      if (amount) setAmountState(amount);
     }
-  }, [open, fetchServices, fetchPrograms]);
+  }, [
+    open,
+    selectedService,
+    selectedProgram,
+    donationType,
+    amount,
+    fetchServices,
+    fetchPrograms,
+  ]);
 
   // ✅ Close modal on outside click
   useEffect(() => {
@@ -48,38 +67,22 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open, onCancel]);
 
-  // ✅ Auto select
-  useEffect(() => {
-    if (open && selectedService) {
-      setSelectedServiceOption(selectedService);
-      setSelectedProgramOption("");
-    }
-    if (open && selectedProgram) {
-      setSelectedProgramOption(selectedProgram);
-      setSelectedServiceOption("");
-    }
-    if (!open) {
-      setSelectedServiceOption("");
-      setSelectedProgramOption("");
-    }
-  }, [open, selectedService, selectedProgram]);
-
-  // ✅ Handlers
+  // ✅ Handle change
   const handleServiceChange = (e) => {
-    const value = e.target.value;
-    setSelectedServiceOption(value);
-    if (value) setSelectedProgramOption("");
+    const id = e.target.value;
+    setSelectedServiceOption(id);
+    if (id) setSelectedProgramOption("");
   };
 
   const handleProgramChange = (e) => {
-    const value = e.target.value;
-    setSelectedProgramOption(value);
-    if (value) setSelectedServiceOption("");
+    const id = e.target.value;
+    setSelectedProgramOption(id);
+    if (id) setSelectedServiceOption("");
   };
 
-  // ✅ API Integration
+  // ✅ Handle Donate
   const handleDonate = async () => {
-    if (!amount || !userDetails.name || !userDetails.email) {
+    if (!amountState || !userDetails.name || !userDetails.email) {
       alert("Please fill all required fields.");
       return;
     }
@@ -88,7 +91,7 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
     const payload = {
       transaction_id: transactionId,
       status: "pending",
-      amount: parseFloat(amount),
+      amount: parseFloat(amountState),
       currency_code: "USD",
       payment_through:
         paymentOption === "Credit/Debit Card"
@@ -97,8 +100,12 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
           ? "paypal"
           : "bank_transfer",
       category_id: 1,
-      support_program: selectedProgramOption ? 1 : null,
-      support_service: selectedServiceOption ? 1 : null,
+      support_program: selectedProgramOption
+        ? Number(selectedProgramOption)
+        : null,
+      support_service: selectedServiceOption
+        ? Number(selectedServiceOption)
+        : null,
       name: userDetails.name,
       email: userDetails.email,
       address: userDetails.address,
@@ -107,27 +114,34 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
 
     try {
       setLoading(true);
-      const res = await fetch("http://192.168.11.125:3000/transactions/create", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        "http://salam-evi-nestjs.vapedepablo.com/transactions/create",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.message || "Something went wrong");
 
-      console.log("✅ Donation success:", data);
-      alert("Donation submitted successfully!");
-      onCancel();
+      // ✅ Show message from backend (success or error)
+      if (res.ok) {
+        alert(data.message || "Donation submitted successfully!");
+        console.log("✅ Donation success:", data);
+        onCancel();
+      } else {
+        alert(data.message || "Something went wrong. Please try again.");
+        console.error("❌ Donation failed:", data);
+      }
     } catch (error) {
       console.error("❌ Error:", error);
-      alert("Failed to submit donation. Please try again.");
+      alert("Server error. Please try again later.");
     } finally {
       setLoading(false);
     }
   };
 
-  // ✅ UI
   return (
     <AnimatePresence>
       {open && (
@@ -146,12 +160,12 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
             className="bg-white w-full max-w-3xl rounded-2xl shadow-xl relative overflow-hidden"
           >
             {/* ❌ Close Button */}
-          <button
-  onClick={onCancel}
-  className="absolute top-2 right-3 text-3xl text-gray-600 hover:text-black transition"
->
-  &times;
-</button>
+            <button
+              onClick={onCancel}
+              className="absolute top-2 right-3 text-3xl text-gray-600 hover:text-black transition"
+            >
+              &times;
+            </button>
 
             {/* Header */}
             <div className="bg-[#22305B] text-white py-4 px-6 text-xl font-semibold mt-5">
@@ -162,7 +176,9 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
             <div className="p-8 space-y-6 overflow-y-auto max-h-[80vh] relative text-black">
               {/* Frequency */}
               <div>
-                <h3 className="font-semibold text-gray-800 mb-3">Select Donation Frequency</h3>
+                <h3 className="font-semibold text-gray-800 mb-3">
+                  Select Donation Frequency
+                </h3>
                 <div className="flex flex-wrap gap-3">
                   {["One-Time", "Monthly", "Yearly"].map((freq) => (
                     <button
@@ -180,8 +196,8 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
                   <input
                     type="number"
                     placeholder="Enter Your Own Amount"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
+                    value={amountState}
+                    onChange={(e) => setAmountState(e.target.value)}
                     className="border border-gray-300 px-4 py-2 rounded w-full sm:w-auto"
                   />
                 </div>
@@ -189,14 +205,16 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
 
               {/* Donation Type */}
               <div>
-                <h3 className="font-semibold text-gray-800 mb-3">Donation Type</h3>
+                <h3 className="font-semibold text-gray-800 mb-3">
+                  Donation Type
+                </h3>
                 <div className="flex gap-3 flex-wrap">
                   {["Zakat", "Sadqah", "General Donation"].map((type) => (
                     <button
                       key={type}
-                      onClick={() => setDonationType(type)}
+                      onClick={() => setDonationTypeState(type)}
                       className={`px-4 py-2 rounded font-medium ${
-                        donationType === type
+                        donationTypeState === type
                           ? "bg-[#BC153F] text-white"
                           : "border border-gray-300 hover:bg-gray-100"
                       }`}
@@ -210,7 +228,9 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
               {/* Support Options */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-3">Support a Service</h3>
+                  <h3 className="font-semibold text-gray-800 mb-3">
+                    Support a Service
+                  </h3>
                   <select
                     className={`border border-gray-300 rounded px-4 py-2 w-full ${
                       selectedProgramOption ? "opacity-50 cursor-not-allowed" : ""
@@ -219,9 +239,9 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
                     onChange={handleServiceChange}
                     disabled={!!selectedProgramOption}
                   >
-                    <option value="">Services</option>
+                    <option value="">Select Service</option>
                     {services.map((service) => (
-                      <option key={service.id} value={service.title}>
+                      <option key={service.id} value={service.id}>
                         {service.title}
                       </option>
                     ))}
@@ -229,7 +249,9 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-3">Support a Program</h3>
+                  <h3 className="font-semibold text-gray-800 mb-3">
+                    Support a Program
+                  </h3>
                   <select
                     className={`border border-gray-300 rounded px-4 py-2 w-full ${
                       selectedServiceOption ? "opacity-50 cursor-not-allowed" : ""
@@ -238,9 +260,9 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
                     onChange={handleProgramChange}
                     disabled={!!selectedServiceOption}
                   >
-                    <option value="">Program</option>
+                    <option value="">Select Program</option>
                     {programs.map((program) => (
-                      <option key={program.id} value={program.title}>
+                      <option key={program.id} value={program.id}>
                         {program.title}
                       </option>
                     ))}
@@ -250,16 +272,23 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
 
               {/* User Details */}
               <div>
-                <h3 className="font-semibold text-gray-800 mb-3">Your Details</h3>
+                <h3 className="font-semibold text-gray-800 mb-3">
+                  Your Details
+                </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {["name", "email", "address"].map((field) => (
                     <input
                       key={field}
                       type={field === "email" ? "email" : "text"}
-                      placeholder={`Your ${field.charAt(0).toUpperCase() + field.slice(1)}`}
+                      placeholder={`Your ${
+                        field.charAt(0).toUpperCase() + field.slice(1)
+                      }`}
                       value={userDetails[field]}
                       onChange={(e) =>
-                        setUserDetails({ ...userDetails, [field]: e.target.value })
+                        setUserDetails({
+                          ...userDetails,
+                          [field]: e.target.value,
+                        })
                       }
                       className="border border-gray-300 rounded px-4 py-2"
                     />
@@ -280,19 +309,26 @@ export default function DonationModal({ open, onCancel, selectedService, selecte
 
               {/* Payment Options */}
               <div>
-                <h3 className="font-semibold text-gray-800 mb-3">Payment Options</h3>
+                <h3 className="font-semibold text-gray-800 mb-3">
+                  Payment Options
+                </h3>
                 <div className="flex flex-wrap items-center gap-6">
-                  {["Credit/Debit Card", "PayPal", "Bank Transfer"].map((option) => (
-                    <label key={option} className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="payment"
-                        checked={paymentOption === option}
-                        onChange={() => setPaymentOption(option)}
-                      />
-                      <span>{option}</span>
-                    </label>
-                  ))}
+                  {["Credit/Debit Card", "PayPal", "Bank Transfer"].map(
+                    (option) => (
+                      <label
+                        key={option}
+                        className="flex items-center gap-2 cursor-pointer"
+                      >
+                        <input
+                          type="radio"
+                          name="payment"
+                          checked={paymentOption === option}
+                          onChange={() => setPaymentOption(option)}
+                        />
+                        <span>{option}</span>
+                      </label>
+                    )
+                  )}
                 </div>
               </div>
 

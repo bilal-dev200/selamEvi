@@ -1,9 +1,45 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DonationFormModal from "../app/components/home/components/Form";
 
 export default function HomePage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  // ✅ Selected values
+  const [selectedService, setSelectedService] = useState("");
+  const [selectedProgram, setSelectedProgram] = useState("");
+  const [donationType, setDonationType] = useState("");
+  const [paymentType, setPaymentType] = useState("");
+  const [amount, setAmount] = useState("");
+
+  // ✅ Data states for API
+  const [services, setServices] = useState([]);
+  const [programs, setPrograms] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // ✅ Fetch services & programs on mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [serviceRes, programRes] = await Promise.all([
+          fetch("http://salam-evi-nestjs.vapedepablo.com/services/list"),
+          fetch("http://salam-evi-nestjs.vapedepablo.com/programs/list"),
+        ]);
+
+        const serviceData = await serviceRes.json();
+        const programData = await programRes.json();
+
+        setServices(serviceData.data || []);
+        setPrograms(programData.data || []);
+      } catch (error) {
+        console.error("❌ Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="relative">
@@ -35,38 +71,73 @@ export default function HomePage() {
       </div>
 
       {/* Quick Donate Box */}
-    <div className="relative -mt-16 md:-mt-15 z-20 flex justify-center px-3 sm:px-6 text-black">
-  <div className="w-full sm:w-[90%] md:w-[80%] overflow-hidden rounded-lg border border-red-200 p-3 bg-white">
-    <div className="bg-[#f3f6f9] p-3 flex flex-col md:flex-row gap-4 items-center justify-between">
-      <select className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto">
-              <option>Services</option>
-              <option>Health</option>
-              <option>Education</option>
-              <option>Food Support</option>
+      <div className="relative -mt-16 md:-mt-15 z-20 flex justify-center px-3 sm:px-6 text-black">
+        <div className="w-full sm:w-[90%] md:w-[80%] overflow-hidden rounded-lg border border-red-200 p-3 bg-white">
+          <div className="bg-[#f3f6f9] p-3 flex flex-col md:flex-row gap-4 items-center justify-between">
+            {/* ✅ Services Select (API-based) */}
+            <select
+              value={selectedService}
+              onChange={(e) => {
+                setSelectedService(e.target.value);
+                setSelectedProgram(""); // reset program if service selected
+              }}
+              disabled={loading || programs.length === 0}
+              className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+            >
+              <option value="">Services</option>
+              {services.map((service) => (
+                <option key={service.id} value={service.title}>
+                  {service.title}
+                </option>
+              ))}
             </select>
 
-            <select className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto">
-              <option>Program</option>
-              <option>Ramadan</option>
-              <option>Winter Relief</option>
-              <option>Qurbani</option>
+            {/* ✅ Programs Select (API-based) */}
+            <select
+              value={selectedProgram}
+              onChange={(e) => {
+                setSelectedProgram(e.target.value);
+                setSelectedService(""); // reset service if program selected
+              }}
+              disabled={loading || services.length === 0}
+              className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+            >
+              <option value="">Program</option>
+              {programs.map((program) => (
+                <option key={program.id} value={program.title}>
+                  {program.title}
+                </option>
+              ))}
             </select>
 
-            <select className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto">
-              <option>Single Payment</option>
-              <option>Monthly</option>
+            {/* Payment Type */}
+            <select
+              value={paymentType}
+              onChange={(e) => setPaymentType(e.target.value)}
+              className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+            >
+              <option value="">Single Payment</option>
+              <option value="Monthly">Monthly</option>
             </select>
 
+            {/* Amount Input */}
             <input
               type="number"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
               placeholder="Enter your own amount"
               className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
             />
 
-            <select className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto ">
-              <option>Sadaqah</option>
-              <option>Zakat</option>
-              <option>Donation</option>
+            {/* Donation Type */}
+            <select
+              value={donationType}
+              onChange={(e) => setDonationType(e.target.value)}
+              className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+            >
+              <option value="">Sadaqah</option>
+              <option value="Zakat">Zakat</option>
+              <option value="Donation">Donation</option>
             </select>
           </div>
 
@@ -83,6 +154,10 @@ export default function HomePage() {
       <DonationFormModal
         open={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
+        selectedService={selectedService}
+        selectedProgram={selectedProgram}
+        donationType={donationType}
+        amount={amount}
       />
     </div>
   );

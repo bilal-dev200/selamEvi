@@ -13,7 +13,7 @@ function App() {
   return (
     <div className='bg-white'>
 
-      <Home />
+      < Home />
       <ImpactSection />
       <ServicesGrid />
       <ImpactPage />
