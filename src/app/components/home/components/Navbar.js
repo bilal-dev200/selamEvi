@@ -2,8 +2,8 @@
 "use client";
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import DonationFormModal from "../components/Form"; // ✅ import your form modal component
 import Link from "next/link";
+import DonationFormModal from "./Form";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);

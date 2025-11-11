@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import DonationFormModal from "../components/Form";
 import { useProgramStore } from "../../../store/programStore";
-
+import DonationFormModal from "./Form";
 export default function HumanitarianEfforts({
   initialCount = 8, // 🔹 how many cards to show initially
   showLoadMore = true, // 🔹 whether to show "Load More" button
@@ -104,11 +103,11 @@ export default function HumanitarianEfforts({
       </div>
 
       {/* ✅ Optional Load More */}
-      {showLoadMore && displayedPrograms.length < 40 && (
+      {showLoadMore && displayedPrograms.length < 12 && (
         <div className="flex justify-center mt-10">
           <button
             onClick={() => setVisibleCount((prev) => prev + 8)}
-            className="px-6 py-2 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition"
+            className="px-6 py-2 bg-red-600 text-white font-semibold rounded-full hover:bg-red-600 transition"
           >
             Load More
           </button>

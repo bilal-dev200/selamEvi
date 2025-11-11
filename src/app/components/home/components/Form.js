@@ -10,14 +10,19 @@ export default function DonationFormModal({
   selectedService,
   selectedProgram,
   donationType,
+  donationFrequency,
   amount,
 }) {
-  const [donationFrequency, setDonationFrequency] = useState("One-Time");
-  const [donationTypeState, setDonationTypeState] = useState("Zakat");
+  const [donationFrequencyState, setDonationFrequencyState] = useState(
+    donationFrequency || "One-Time"
+  );
+  const [donationTypeState, setDonationTypeState] = useState(
+    donationType || "Zakat"
+  );
   const [paymentOption, setPaymentOption] = useState("Credit/Debit Card");
   const [selectedServiceOption, setSelectedServiceOption] = useState("");
   const [selectedProgramOption, setSelectedProgramOption] = useState("");
-  const [amountState, setAmountState] = useState("");
+  const [amountState, setAmountState] = useState(amount || "");
   const [loading, setLoading] = useState(false);
 
   const [userDetails, setUserDetails] = useState({
@@ -29,14 +34,12 @@ export default function DonationFormModal({
 
   const modalRef = useRef(null);
 
-  // ✅ Zustand stores
   const services = useServiceStore((state) => state.services);
   const fetchServices = useServiceStore((state) => state.fetchServices);
 
   const programs = useProgramStore((state) => state.programs);
   const fetchPrograms = useProgramStore((state) => state.fetchPrograms);
 
-  // ✅ Fetch when modal opens
   useEffect(() => {
     if (open) {
       fetchServices?.();
@@ -44,6 +47,7 @@ export default function DonationFormModal({
       if (selectedService) setSelectedServiceOption(selectedService);
       if (selectedProgram) setSelectedProgramOption(selectedProgram);
       if (donationType) setDonationTypeState(donationType);
+      if (donationFrequency) setDonationFrequencyState(donationFrequency);
       if (amount) setAmountState(amount);
     }
   }, [
@@ -51,12 +55,12 @@ export default function DonationFormModal({
     selectedService,
     selectedProgram,
     donationType,
+    donationFrequency,
     amount,
     fetchServices,
     fetchPrograms,
   ]);
 
-  // ✅ Close modal on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -67,7 +71,6 @@ export default function DonationFormModal({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open, onCancel]);
 
-  // ✅ Handle change
   const handleServiceChange = (e) => {
     const id = e.target.value;
     setSelectedServiceOption(id);
@@ -80,12 +83,19 @@ export default function DonationFormModal({
     if (id) setSelectedServiceOption("");
   };
 
-  // ✅ Handle Donate
   const handleDonate = async () => {
     if (!amountState || !userDetails.name || !userDetails.email) {
       alert("Please fill all required fields.");
       return;
     }
+const handleModalClose = () => {
+  setIsModalVisible(false);
+  // ✅ Reset after small delay to fix disable state issue
+  setTimeout(() => {
+    setSelectedService("");
+    setSelectedProgram("");
+  }, 300);
+};
 
     const transactionId = `TX${Date.now()}`;
     const payload = {
@@ -125,14 +135,11 @@ export default function DonationFormModal({
 
       const data = await res.json();
 
-      // ✅ Show message from backend (success or error)
       if (res.ok) {
         alert(data.message || "Donation submitted successfully!");
-        console.log("✅ Donation success:", data);
         onCancel();
       } else {
         alert(data.message || "Something went wrong. Please try again.");
-        console.error("❌ Donation failed:", data);
       }
     } catch (error) {
       console.error("❌ Error:", error);
@@ -159,7 +166,6 @@ export default function DonationFormModal({
             transition={{ duration: 0.25 }}
             className="bg-white w-full max-w-3xl rounded-2xl shadow-xl relative overflow-hidden"
           >
-            {/* ❌ Close Button */}
             <button
               onClick={onCancel}
               className="absolute top-2 right-3 text-3xl text-gray-600 hover:text-black transition"
@@ -167,12 +173,10 @@ export default function DonationFormModal({
               &times;
             </button>
 
-            {/* Header */}
             <div className="bg-[#22305B] text-white py-4 px-6 text-xl font-semibold mt-5">
               Quick & Easy Donate
             </div>
 
-            {/* Body */}
             <div className="p-8 space-y-6 overflow-y-auto max-h-[80vh] relative text-black">
               {/* Frequency */}
               <div>
@@ -183,9 +187,9 @@ export default function DonationFormModal({
                   {["One-Time", "Monthly", "Yearly"].map((freq) => (
                     <button
                       key={freq}
-                      onClick={() => setDonationFrequency(freq)}
+                      onClick={() => setDonationFrequencyState(freq)}
                       className={`px-4 py-2 rounded font-medium ${
-                        donationFrequency === freq
+                        donationFrequencyState === freq
                           ? "bg-[#BC153F] text-white"
                           : "border border-gray-300 hover:bg-gray-100"
                       }`}
@@ -209,7 +213,7 @@ export default function DonationFormModal({
                   Donation Type
                 </h3>
                 <div className="flex gap-3 flex-wrap">
-                  {["Zakat", "Sadqah", "General Donation"].map((type) => (
+                  {["Zakat", "Sadqah", "Donation" , "Campaign-specific"].map((type) => (
                     <button
                       key={type}
                       onClick={() => setDonationTypeState(type)}
@@ -270,25 +274,18 @@ export default function DonationFormModal({
                 </div>
               </div>
 
-              {/* User Details */}
+              {/* Personal Info */}
               <div>
-                <h3 className="font-semibold text-gray-800 mb-3">
-                  Your Details
-                </h3>
+                <h3 className="font-semibold text-gray-800 mb-3">Your Details</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {["name", "email", "address"].map((field) => (
                     <input
                       key={field}
                       type={field === "email" ? "email" : "text"}
-                      placeholder={`Your ${
-                        field.charAt(0).toUpperCase() + field.slice(1)
-                      }`}
+                      placeholder={`Your ${field.charAt(0).toUpperCase() + field.slice(1)}`}
                       value={userDetails[field]}
                       onChange={(e) =>
-                        setUserDetails({
-                          ...userDetails,
-                          [field]: e.target.value,
-                        })
+                        setUserDetails({ ...userDetails, [field]: e.target.value })
                       }
                       className="border border-gray-300 rounded px-4 py-2"
                     />
@@ -309,26 +306,19 @@ export default function DonationFormModal({
 
               {/* Payment Options */}
               <div>
-                <h3 className="font-semibold text-gray-800 mb-3">
-                  Payment Options
-                </h3>
+                <h3 className="font-semibold text-gray-800 mb-3">Payment Options</h3>
                 <div className="flex flex-wrap items-center gap-6">
-                  {["Credit/Debit Card", "PayPal", "Bank Transfer"].map(
-                    (option) => (
-                      <label
-                        key={option}
-                        className="flex items-center gap-2 cursor-pointer"
-                      >
-                        <input
-                          type="radio"
-                          name="payment"
-                          checked={paymentOption === option}
-                          onChange={() => setPaymentOption(option)}
-                        />
-                        <span>{option}</span>
-                      </label>
-                    )
-                  )}
+                  {["Credit/Debit Card", "PayPal", "Bank Transfer"].map((option) => (
+                    <label key={option} className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="payment"
+                        checked={paymentOption === option}
+                        onChange={() => setPaymentOption(option)}
+                      />
+                      <span>{option}</span>
+                    </label>
+                  ))}
                 </div>
               </div>
 

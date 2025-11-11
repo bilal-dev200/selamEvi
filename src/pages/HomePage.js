@@ -1,23 +1,20 @@
 "use client";
+import DonationFormModal from "@/app/components/home/components/Form";
 import React, { useState, useEffect } from "react";
-import DonationFormModal from "../app/components/home/components/Form";
 
 export default function HomePage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  // ✅ Selected values
   const [selectedService, setSelectedService] = useState("");
   const [selectedProgram, setSelectedProgram] = useState("");
   const [donationType, setDonationType] = useState("");
-  const [paymentType, setPaymentType] = useState("");
+  const [donationFrequency, setDonationFrequency] = useState("");
   const [amount, setAmount] = useState("");
 
-  // ✅ Data states for API
   const [services, setServices] = useState([]);
   const [programs, setPrograms] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // ✅ Fetch services & programs on mount
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,10 +22,8 @@ export default function HomePage() {
           fetch("http://salam-evi-nestjs.vapedepablo.com/services/list"),
           fetch("http://salam-evi-nestjs.vapedepablo.com/programs/list"),
         ]);
-
         const serviceData = await serviceRes.json();
         const programData = await programRes.json();
-
         setServices(serviceData.data || []);
         setPrograms(programData.data || []);
       } catch (error) {
@@ -37,7 +32,6 @@ export default function HomePage() {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
@@ -49,7 +43,6 @@ export default function HomePage() {
         style={{ backgroundImage: "url('/bg.png')" }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
-
         <div className="relative z-10 max-w-3xl">
           <h1 className="text-4xl md:text-6xl font-bold leading-tight text-red-500 mt-[200px]">
             Empowering <span className="text-white">Lives.</span>
@@ -60,7 +53,6 @@ export default function HomePage() {
             Selam-Evi is dedicated to healthcare, education, women empowerment,
             and relief programs across Syria, Gaza, Turkey and beyond.
           </p>
-
           <button
             onClick={() => setIsModalVisible(true)}
             className="mt-6 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md font-semibold"
@@ -74,53 +66,58 @@ export default function HomePage() {
       <div className="relative -mt-16 md:-mt-15 z-20 flex justify-center px-3 sm:px-6 text-black">
         <div className="w-full sm:w-[90%] md:w-[80%] overflow-hidden rounded-lg border border-red-200 p-3 bg-white">
           <div className="bg-[#f3f6f9] p-3 flex flex-col md:flex-row gap-4 items-center justify-between">
-            {/* ✅ Services Select (API-based) */}
+
+            {/* ✅ Service Dropdown */}
             <select
               value={selectedService}
               onChange={(e) => {
                 setSelectedService(e.target.value);
-                setSelectedProgram(""); // reset program if service selected
+                setSelectedProgram("");
               }}
-              disabled={loading || programs.length === 0}
-              className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+              disabled={!!selectedProgram || loading}
+              className={`bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto ${
+                selectedProgram ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             >
               <option value="">Services</option>
               {services.map((service) => (
-                <option key={service.id} value={service.title}>
+                <option key={service.id} value={service.id}>
                   {service.title}
                 </option>
               ))}
             </select>
 
-            {/* ✅ Programs Select (API-based) */}
+            {/* ✅ Program Dropdown */}
             <select
               value={selectedProgram}
               onChange={(e) => {
                 setSelectedProgram(e.target.value);
-                setSelectedService(""); // reset service if program selected
+                setSelectedService("");
               }}
-              disabled={loading || services.length === 0}
-              className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+              disabled={!!selectedService || loading}
+              className={`bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto ${
+                selectedService ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             >
               <option value="">Program</option>
               {programs.map((program) => (
-                <option key={program.id} value={program.title}>
+                <option key={program.id} value={program.id}>
                   {program.title}
                 </option>
               ))}
             </select>
 
-            {/* Payment Type */}
+            {/* ✅ Donation Frequency */}
             <select
-              value={paymentType}
-              onChange={(e) => setPaymentType(e.target.value)}
+              value={donationFrequency}
+              onChange={(e) => setDonationFrequency(e.target.value)}
               className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
             >
               <option value="">Single Payment</option>
               <option value="Monthly">Monthly</option>
             </select>
 
-            {/* Amount Input */}
+            {/* ✅ Amount */}
             <input
               type="number"
               value={amount}
@@ -129,7 +126,7 @@ export default function HomePage() {
               className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
             />
 
-            {/* Donation Type */}
+            {/* ✅ Donation Type */}
             <select
               value={donationType}
               onChange={(e) => setDonationType(e.target.value)}
@@ -138,7 +135,8 @@ export default function HomePage() {
               <option value="">Sadaqah</option>
               <option value="Zakat">Zakat</option>
               <option value="Donation">Donation</option>
-            </select>
+              <option value="Campaign-specific">Campaign Specific</option>
+          </select>
           </div>
 
           <button
@@ -150,13 +148,13 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Donation Modal */}
       <DonationFormModal
         open={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         selectedService={selectedService}
         selectedProgram={selectedProgram}
         donationType={donationType}
+        donationFrequency={donationFrequency}
         amount={amount}
       />
     </div>
