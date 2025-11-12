@@ -10,7 +10,7 @@ export const useProgramStore = create((set, get) => ({
 
     set({ loading: true });
     try {
-      const res = await fetch("http://salam-evi-nestjs.vapedepablo.com/programs/list");
+      const res = await fetch("https://salam-evi.plantinart.com/programs/list");
       const result = await res.json();
 
       if (result?.status && Array.isArray(result.data)) {

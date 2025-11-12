@@ -59,7 +59,7 @@ export const useServiceStore = create(
       fetchServices: async () => {
         set({ loading: true });
         try {
-          const res = await fetch("http://salam-evi-nestjs.vapedepablo.com/services/list");
+          const res = await fetch("https://salam-evi.plantinart.com/services/list");
           if (!res.ok) throw new Error("Failed to fetch services");
           const data = await res.json();
           const reversed = (data?.data || []).reverse();

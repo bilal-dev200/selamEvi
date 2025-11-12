@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import Hero from "../components/about/hero"
 import Section1 from "../components/about/section1"
 import Section2 from "../components/about/section2"
-
 import Section4 from "../components/about/section4"
 import Section5 from "../components/about/section5"
 import Section6 from "../components/about/section6"

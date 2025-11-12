@@ -20,7 +20,7 @@ export default function ServiceDetailPage() {
       try {
         if (!service?.details) {
           const res = await fetch(
-            `http://salam-evi-nestjs.vapedepablo.com/services/${slug}`
+            `http://salam-evi-nestjs.vapedepablo.com/${slug}`
           );
           const data = await res.json();
           setService(data.data);

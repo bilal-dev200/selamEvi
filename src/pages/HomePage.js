@@ -19,8 +19,8 @@ export default function HomePage() {
     const fetchData = async () => {
       try {
         const [serviceRes, programRes] = await Promise.all([
-          fetch("http://salam-evi-nestjs.vapedepablo.com/services/list"),
-          fetch("http://salam-evi-nestjs.vapedepablo.com/programs/list"),
+          fetch("https://salam-evi.plantinart.com/services/list"),
+          fetch("https://salam-evi.plantinart.com/programs/list"),
         ]);
         const serviceData = await serviceRes.json();
         const programData = await programRes.json();

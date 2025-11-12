@@ -1,67 +1,55 @@
 "use client";
-import React from "react";
-
-const stories = [
-  {
-    id: 1,
-    title: "Bringing Healthcare to Remote Villages",
-    description:
-      "SolarE+ field clinics are reaching more remote hospitals to serve every patient.",
-    imageSrc: "/Ijteema2.png", // Aap apne image path daal sakte hain
-  },
-  {
-    id: 2,
-    title: "Education for Every Child",
-    description:
-      "Through our school support programs, hundreds of children are returning to classrooms.",
-    imageSrc: "/news1.png",
-  },
-  {
-    id: 3,
-    title: "Winter Relief 2025: Warmth for Families",
-    description:
-      "Our volunteers distributed blankets and food to families battling harsh winters.",
-    imageSrc: "/news2.png",
-  },
-];
+import { useEffect } from "react";
+import { useBlogStore } from "../../../store/useBlogStore";
+import { useRouter } from "next/navigation";
 
 export default function LatestStories() {
+  const { blogs, fetchBlogs, loading, error } = useBlogStore();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (blogs.length === 0) fetchBlogs();
+  }, []);
+
+  if (loading) return <p className="text-center mt-10">Loading...</p>;
+  if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="mb-12 ">
-        <h2 className="text-[40px] font-bold text-gray-900 mb-2">
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Heading */}
+      <div className="text-center mb-8">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
           Latest News & Inspiring Stories
         </h2>
-        <p className="text-gray-600 text-[12px] ">
-          Explore Updates, success stories, and the impact your support creates
-          across communities.
+        <p className="mt-2 text-gray-600 text-base sm:text-lg">
+          Discover the latest updates and stories from our platform
         </p>
       </div>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {stories.map((story) => (
-          <div key={story.id} className="flex flex-col">
-            <div className="overflow-hidden rounded-lg shadow-lg">
+      {/* Blog cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {blogs.map((blog) => (
+          <div
+            key={blog.id}
+            onClick={() => router.push(`/blog/${blog.slug}`)}
+            className="cursor-pointer border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-300"
+          >
+            {blog.image && (
               <img
-                src={story.imageSrc}
-                alt={story.title}
-                className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                src={blog.image}
+                alt={blog.title}
+                className="w-full h-48 object-cover"
               />
-            </div>
-
-            <div className="mt-4">
-              <h3 className="font-semibold text-gray-900">{story.title}</h3>
-              <p className="mt-1 text-gray-600 text-sm">{story.description}</p>
-              <a
-                
-                className="mt-2 inline-block text-red-600 font-semibold text-sm hover:underline"
-              >
-                Read More
-              </a>
+            )}
+            <div className="px-4 py-3">
+              <h3 className="text-lg font-bold mb-2 text-black">{blog.title}</h3>
+              <p className="text-black text-sm line-clamp-3">
+                {blog.content.replace(/<[^>]+>/g, "").slice(0, 120)}...
+              </p>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
