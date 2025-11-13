@@ -23,8 +23,8 @@ export const useProgramStore = create((set, get) => ({
               item.description ||
               "This initiative brings hope and change to those in need.",
             img: `http://salam-evi-nestjs.vapedepablo.com/uploads/${item.image}`,
-            raised: 4500,
-            goal: 10000,
+            raised: Number(item.total_transaction_amount),
+            goal: item.required_total_amount,
           }));
 
         set({ programs: formatted, fetched: true });

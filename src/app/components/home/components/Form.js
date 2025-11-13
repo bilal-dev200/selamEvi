@@ -40,15 +40,26 @@ export default function DonationFormModal({
   const programs = useProgramStore((state) => state.programs);
   const fetchPrograms = useProgramStore((state) => state.fetchPrograms);
 
+  // ✅ Optimized pre-fill logic + reset on close
   useEffect(() => {
     if (open) {
       fetchServices?.();
       fetchPrograms?.();
+
       if (selectedService) setSelectedServiceOption(selectedService);
       if (selectedProgram) setSelectedProgramOption(selectedProgram);
       if (donationType) setDonationTypeState(donationType);
       if (donationFrequency) setDonationFrequencyState(donationFrequency);
       if (amount) setAmountState(amount);
+    } else {
+      // Reset modal states
+      setSelectedServiceOption("");
+      setSelectedProgramOption("");
+      setDonationTypeState("Zakat");
+      setDonationFrequencyState("One-Time");
+      setAmountState("");
+      setUserDetails({ name: "", email: "", address: "", phone: "" });
+      setPaymentOption("Credit/Debit Card");
     }
   }, [
     open,
@@ -61,6 +72,7 @@ export default function DonationFormModal({
     fetchPrograms,
   ]);
 
+  // Close modal on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -71,31 +83,24 @@ export default function DonationFormModal({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open, onCancel]);
 
+  // Dropdown logic: mutually exclusive
   const handleServiceChange = (e) => {
     const id = e.target.value;
     setSelectedServiceOption(id);
     if (id) setSelectedProgramOption("");
   };
-
   const handleProgramChange = (e) => {
     const id = e.target.value;
     setSelectedProgramOption(id);
     if (id) setSelectedServiceOption("");
   };
 
+  // Donation submit
   const handleDonate = async () => {
     if (!amountState || !userDetails.name || !userDetails.email) {
       alert("Please fill all required fields.");
       return;
     }
-const handleModalClose = () => {
-  setIsModalVisible(false);
-  // ✅ Reset after small delay to fix disable state issue
-  setTimeout(() => {
-    setSelectedService("");
-    setSelectedProgram("");
-  }, 300);
-};
 
     const transactionId = `TX${Date.now()}`;
     const payload = {
@@ -134,7 +139,6 @@ const handleModalClose = () => {
       );
 
       const data = await res.json();
-
       if (res.ok) {
         alert(data.message || "Donation submitted successfully!");
         onCancel();
@@ -173,7 +177,7 @@ const handleModalClose = () => {
               &times;
             </button>
 
-            <div className="bg-[#22305B] text-white py-4 px-6 text-xl font-semibold mt-5">
+            <div className="bg-[#22305B] text-white py-4 px-6 text-xl font-semibold mt-10nav">
               Quick & Easy Donate
             </div>
 
@@ -213,19 +217,21 @@ const handleModalClose = () => {
                   Donation Type
                 </h3>
                 <div className="flex gap-3 flex-wrap">
-                  {["Zakat", "Sadqah", "Donation" , "Campaign-specific"].map((type) => (
-                    <button
-                      key={type}
-                      onClick={() => setDonationTypeState(type)}
-                      className={`px-4 py-2 rounded font-medium ${
-                        donationTypeState === type
-                          ? "bg-[#BC153F] text-white"
-                          : "border border-gray-300 hover:bg-gray-100"
-                      }`}
-                    >
-                      {type}
-                    </button>
-                  ))}
+                  {["Zakat", "Sadqah", "Donation", "Campaign-specific"].map(
+                    (type) => (
+                      <button
+                        key={type}
+                        onClick={() => setDonationTypeState(type)}
+                        className={`px-4 py-2 rounded font-medium ${
+                          donationTypeState === type
+                            ? "bg-[#BC153F] text-white"
+                            : "border border-gray-300 hover:bg-gray-100"
+                        }`}
+                      >
+                        {type}
+                      </button>
+                    )
+                  )}
                 </div>
               </div>
 
@@ -276,13 +282,17 @@ const handleModalClose = () => {
 
               {/* Personal Info */}
               <div>
-                <h3 className="font-semibold text-gray-800 mb-3">Your Details</h3>
+                <h3 className="font-semibold text-gray-800 mb-3">
+                  Your Details
+                </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {["name", "email", "address"].map((field) => (
                     <input
                       key={field}
                       type={field === "email" ? "email" : "text"}
-                      placeholder={`Your ${field.charAt(0).toUpperCase() + field.slice(1)}`}
+                      placeholder={`Your ${
+                        field.charAt(0).toUpperCase() + field.slice(1)
+                      }`}
                       value={userDetails[field]}
                       onChange={(e) =>
                         setUserDetails({ ...userDetails, [field]: e.target.value })
@@ -306,22 +316,30 @@ const handleModalClose = () => {
 
               {/* Payment Options */}
               <div>
-                <h3 className="font-semibold text-gray-800 mb-3">Payment Options</h3>
+                <h3 className="font-semibold text-gray-800 mb-3">
+                  Payment Options
+                </h3>
                 <div className="flex flex-wrap items-center gap-6">
-                  {["Credit/Debit Card", "PayPal", "Bank Transfer"].map((option) => (
-                    <label key={option} className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="payment"
-                        checked={paymentOption === option}
-                        onChange={() => setPaymentOption(option)}
-                      />
-                      <span>{option}</span>
-                    </label>
-                  ))}
+                  {["Credit/Debit Card", "PayPal", "Bank Transfer"].map(
+                    (option) => (
+                      <label
+                        key={option}
+                        className="flex items-center gap-2 cursor-pointer"
+                      >
+                        <input
+                          type="radio"
+                          name="payment"
+                          checked={paymentOption === option}
+                          onChange={() => setPaymentOption(option)}
+                        />
+                        <span>{option}</span>
+                      </label>
+                    )
+                  )}
                 </div>
               </div>
 
+              {/* Donate Button */}
               <div className="pt-4">
                 <button
                   onClick={handleDonate}

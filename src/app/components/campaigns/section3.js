@@ -8,8 +8,7 @@ export default function Section3() {
       icon: <Building2 className="w-10 h-10 text-[#E7000B] mx-auto" />,
       number: "20+",
       title: "Hospitals Equipped",
-      description:
-        "Providing vital medical equipment and mobile health units.",
+      description: "Providing vital medical equipment and mobile health units.",
     },
     {
       icon: <Heart className="w-10 h-10 text-[#E7000B] mx-auto" />,
@@ -27,26 +26,22 @@ export default function Section3() {
       icon: <Users className="w-10 h-10 text-[#E7000B] mx-auto" />,
       number: "100,000+",
       title: "Beneficiaries Reached",
-      description:
-        "Changing lives through healthcare, education, and relief.",
+      description: "Changing lives through healthcare, education, and relief.",
     },
   ];
 
   return (
-    <section className="bg-white">
-      {/* Background Section (same red overlay as Section4) */}
+    <section>
+      {/* Background Image Section */}
       <div
         className="relative h-[420px] sm:h-[460px] lg:h-[500px] text-white text-center py-16 px-4 overflow-hidden"
         style={{
-          backgroundImage: "url('/together.png'), url('/difference.png')",
-          backgroundSize: "cover, cover",
-          backgroundPosition: "center, center",
-          backgroundBlendMode: "overlay",
-          backgroundColor: "#E7000B",
+          backgroundImage: "url('/slider1.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0"></div>
 
         {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto mt-10 sm:mt-20">
@@ -56,14 +51,6 @@ export default function Section3() {
           <p className="text-sm sm:text-base text-red-100 mb-6">
             Your support brings healthcare, education, and hope to thousands.
           </p>
-
-          <button
-            className="bg-[#E7000B] text-white border border-white/40 
-              px-8 py-3 font-semibold rounded-lg 
-              shadow-md hover:bg-[#b80009] transition"
-          >
-            Join Us
-          </button>
         </div>
       </div>
 

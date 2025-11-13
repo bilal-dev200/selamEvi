@@ -6,8 +6,7 @@ import Section2 from "../components/about/section2"
 import Section4 from "../components/about/section4"
 import Section5 from "../components/about/section5"
 import Section6 from "../components/about/section6"
-import Section7 from "../components/about/section7"
-
+import LatestStories from "../components/home/components/LatestStories"
 import Faq from "../components/about/faq"
 import ServicesGrid from '../components/home/components/ServicesGrid'
 
@@ -29,7 +28,7 @@ const About = () => {
       {/* section6 */}
       <Section6 />
       {/* section7 */}
-      <Section7 />
+      <LatestStories/>
       {/* FAq */}
       <Faq />
 

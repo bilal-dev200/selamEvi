@@ -3,9 +3,10 @@ import React, { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useProgramStore } from "../../../store/programStore";
 import DonationFormModal from "./Form";
+
 export default function HumanitarianEfforts({
-  initialCount = 8, // 🔹 how many cards to show initially
-  showLoadMore = true, // 🔹 whether to show "Load More" button
+  initialCount = 8,
+  showLoadMore = true,
 }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { programs, fetchPrograms, loading } = useProgramStore();
@@ -16,13 +17,15 @@ export default function HumanitarianEfforts({
     fetchPrograms();
   }, [fetchPrograms]);
 
-  // ✅ Automatically fill (repeat) if API has fewer than visibleCount
   const displayedPrograms = useMemo(() => {
     if (programs.length === 0) return [];
     const fullList = [];
     while (fullList.length < visibleCount) {
       fullList.push(
-        ...programs.slice(0, Math.min(programs.length, visibleCount - fullList.length))
+        ...programs.slice(
+          0,
+          Math.min(programs.length, visibleCount - fullList.length)
+        )
       );
     }
     return fullList;
@@ -46,63 +49,81 @@ export default function HumanitarianEfforts({
         {loading ? (
           <p className="text-center text-gray-600">Loading programs...</p>
         ) : (
-          displayedPrograms.map((item, index) => (
-            <div
-              key={`${item.id}-${index}`}
-              className="bg-white rounded-2xl shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300 cursor-pointer"
-              onClick={() => router.push("/campaigns")}
-            >
-              <img
-                src={item.img}
-                alt={item.title}
-                className="h-48 w-full object-cover"
-              />
+          displayedPrograms.map((item, index) => {
+            // ✅ Safe conversion from string to number
+            // const raised = item.total_transaction_amount
+            //   ? Number(String(item.total_transaction_amount).replace(/[^0-9.-]+/g, ""))
+            //   : 0;
+            // const raised = item.total_transaction_amount
+            //   ? item.total_transaction_amount
+            //   : 0;
 
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-[12px] mb-4">
-                  {item.description}
-                </p>
+            // const goal = item.required_total_amount; // avoid divide by zero
+            // console.log(raised, goal);
+            console.log("item", item);
 
-                {/* Progress Info */}
-                <div className="flex justify-between text-sm font-medium text-gray-700 mb-2">
-                  <span>
-                    Raised: <span className="text-gray-900">${item.raised}</span>
-                  </span>
-                  <span>
-                    Goal: <span className="text-gray-900">${item.goal}</span>
-                  </span>
-                </div>
 
-                {/* Progress Bar */}
-                <div className="w-full bg-gray-200 h-2 rounded-full mb-4">
-                  <div
-                    className="bg-red-600 h-2 rounded-full"
-                    style={{
-                      width: `${(item.raised / item.goal) * 100}%`,
+            const progressPercent = Math.min((item.raised / item.goal) * 100, 100);
+
+            return (
+              <div
+                key={`${item.id}-${index}`}
+                className="bg-white rounded-2xl shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+                onClick={() => router.push("/campaigns")}
+              >
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="h-48 w-full object-cover"
+                />
+
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 text-[12px] mb-4">
+                    {item.description}
+                  </p>
+
+                  {/* Progress Info */}
+                  <div className="flex justify-between text-sm font-medium text-gray-700 mb-2">
+                    <span>
+                      Raised: <span className="text-gray-900">${item.raised}</span>
+                    </span>
+                    <span>
+                      Goal: <span className="text-gray-900">${item.goal}</span>
+                    </span>
+                  </div>
+
+                  {/* Progress Bar */}
+                  <div className="relative w-full bg-gray-200 h-4 rounded-full mb-4">
+                    <div
+                      className="bg-red-600 h-4 rounded-full"
+                      style={{ width: `${progressPercent}%` }}
+                    ></div>
+                    <span className="absolute top-0 left-1/2 transform -translate-x-1/2 text-xs text-white font-semibold">
+                      {Math.round(progressPercent)}%
+                    </span>
+                  </div>
+
+                  {/* Donate Button */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsModalVisible(true);
                     }}
-                  ></div>
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-bl-[70px]"
+                  >
+                    Donate Now
+                  </button>
                 </div>
-
-                {/* Donate Button */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsModalVisible(true);
-                  }}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-bl-[70px]"
-                >
-                  Donate Now
-                </button>
               </div>
-            </div>
-          ))
+            );
+          })
         )}
       </div>
 
-      {/* ✅ Optional Load More */}
+      {/* Load More */}
       {showLoadMore && displayedPrograms.length < 12 && (
         <div className="flex justify-center mt-10">
           <button

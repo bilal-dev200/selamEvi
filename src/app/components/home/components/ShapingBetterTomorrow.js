@@ -34,10 +34,6 @@ export default function ShapingBetterTomorrow() {
             equity, and hope—where lives are transformed, not just for today,
             but for tomorrow.
           </p>
-
-          <button className="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition-all duration-300 font-semibold shadow-md hover:shadow-lg transform hover:scale-105">
-            Learn More
-          </button>
         </div>
       </div>
     </div>

@@ -63,90 +63,93 @@ export default function HomePage() {
       </div>
 
       {/* Quick Donate Box */}
-      <div className="relative -mt-16 md:-mt-15 z-20 flex justify-center px-3 sm:px-6 text-black">
-        <div className="w-full sm:w-[90%] md:w-[80%] overflow-hidden rounded-lg border border-red-200 p-3 bg-white">
-          <div className="bg-[#f3f6f9] p-3 flex flex-col md:flex-row gap-4 items-center justify-between">
+<div className="relative -mt-16 md:-mt-15 z-20 flex justify-center px-3 sm:px-6 text-black">
+  <div className="w-full sm:w-[95%] md:w-[90%] lg:w-[85%] overflow-hidden rounded-lg border border-red-200 bg-white">
+    <div className="bg-[#f3f6f9] p-4 flex flex-wrap gap-3 items-center justify-start">
+      {/* Service Dropdown */}
+      <select
+        value={selectedService}
+        onChange={(e) => {
+          setSelectedService(e.target.value);
+          setSelectedProgram("");
+        }}
+        disabled={!!selectedProgram || loading}
+        className={`bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto ${
+          selectedProgram ? "opacity-50 cursor-not-allowed" : ""
+        }`}
+      >
+        <option value="">Services</option>
+        {services.map((service) => (
+          <option key={service.id} value={service.id}>
+            {service.title}
+          </option>
+        ))}
+      </select>
 
-            {/* ✅ Service Dropdown */}
-            <select
-              value={selectedService}
-              onChange={(e) => {
-                setSelectedService(e.target.value);
-                setSelectedProgram("");
-              }}
-              disabled={!!selectedProgram || loading}
-              className={`bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto ${
-                selectedProgram ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            >
-              <option value="">Services</option>
-              {services.map((service) => (
-                <option key={service.id} value={service.id}>
-                  {service.title}
-                </option>
-              ))}
-            </select>
+      {/* Program Dropdown */}
+      <select
+        value={selectedProgram}
+        onChange={(e) => {
+          setSelectedProgram(e.target.value);
+          setSelectedService("");
+        }}
+        disabled={!!selectedService || loading}
+        className={`bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto ${
+          selectedService ? "opacity-50 cursor-not-allowed" : ""
+        }`}
+      >
+        <option value="">Program</option>
+        {programs.map((program) => (
+          <option key={program.id} value={program.id}>
+            {program.title}
+          </option>
+        ))}
+      </select>
 
-            {/* ✅ Program Dropdown */}
-            <select
-              value={selectedProgram}
-              onChange={(e) => {
-                setSelectedProgram(e.target.value);
-                setSelectedService("");
-              }}
-              disabled={!!selectedService || loading}
-              className={`bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto ${
-                selectedService ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            >
-              <option value="">Program</option>
-              {programs.map((program) => (
-                <option key={program.id} value={program.id}>
-                  {program.title}
-                </option>
-              ))}
-            </select>
+      {/* Donation Frequency */}
+      <select
+        value={donationFrequency}
+        onChange={(e) => setDonationFrequency(e.target.value)}
+        className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+      >
+        <option value="">Single Payment</option>
+        <option value="Monthly">Monthly</option>
+        <option value="Yearly">Yearly</option>
+      </select>
 
-            {/* ✅ Donation Frequency */}
-            <select
-              value={donationFrequency}
-              onChange={(e) => setDonationFrequency(e.target.value)}
-              className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
-            >
-              <option value="">Single Payment</option>
-              <option value="Monthly">Monthly</option>
-            </select>
+      {/* Amount */}
+      <input
+        type="number"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+        placeholder="Enter your own amount"
+        className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+      />
 
-            {/* ✅ Amount */}
-            <input
-              type="number"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              placeholder="Enter your own amount"
-              className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
-            />
+      {/* Donation Type */}
+      <select
+        value={donationType}
+        onChange={(e) => setDonationType(e.target.value)}
+        className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+      >
+        <option value="">Sadaqah</option>
+        <option value="Zakat">Zakat</option>
+        <option value="Donation">Donation</option>
+        <option value="Campaign-specific">Campaign Specific</option>
+      </select>
+    </div>
 
-            {/* ✅ Donation Type */}
-            <select
-              value={donationType}
-              onChange={(e) => setDonationType(e.target.value)}
-              className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
-            >
-              <option value="">Sadaqah</option>
-              <option value="Zakat">Zakat</option>
-              <option value="Donation">Donation</option>
-              <option value="Campaign-specific">Campaign Specific</option>
-          </select>
-          </div>
-
-          <button
-            onClick={() => setIsModalVisible(true)}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-5 rounded-bl-[70px]"
-          >
-            Quick Donate
-          </button>
-        </div>
-      </div>
+    {/* Quick Donate Button */}
+    <div className="mt-4">
+      <button
+        onClick={() => setIsModalVisible(true)}
+        className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-5 rounded-bl-[70px]"
+      >
+        Quick Donate
+      </button>
+    </div>
+  </div>
+</div>
 
       <DonationFormModal
         open={isModalVisible}

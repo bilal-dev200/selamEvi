@@ -2,14 +2,14 @@
 import { useParams } from "next/navigation";
 import { useBlogStore } from "../../store/useBlogStore";
 import Banner from "@/app/components/detail/components/Banner";
+import parse from "html-react-parser";
 
 export default function BlogDetails() {
   const { slug } = useParams();
   const { blogs } = useBlogStore();
 
   const blog = blogs.find((b) => b.slug === slug);
-
-//   console.log('first', blog.content)
+  console.log("blog data", blog);
 
   if (!blog) {
     return (
@@ -26,12 +26,25 @@ export default function BlogDetails() {
       {/* Banner */}
       <Banner />
 
+      {/* Blog Content */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Blog content exactly as API provides */}
-        <div
-          className="max-w-none text-gray-800 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: blog.content }}
-        />
+        {/* Title */}
+
+        {/* Render API content with full HTML support */}
+       <div className="max-w-none text-gray-800 leading-relaxed">
+  {parse(blog.content, {
+    replace: (domNode) => {
+      if (domNode.name === "h1") {
+        return (
+          <h1 className="text-4xl font-bold text-black text-left my-6">
+            {domNode.children[0]?.data}
+          </h1>
+        );
+      }
+    },
+  })}
+</div>
+
 
         {/* Optional CTA */}
         <div className="mt-12 text-center">

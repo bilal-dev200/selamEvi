@@ -3,10 +3,10 @@ import Hero from '../components/campaigns/hero'
 import Section1 from '../components/campaigns/section1'
 import Section3 from '../components/campaigns/section3'
 import Section6 from '../components/campaigns/section6'
-import Section7 from '../components/campaigns/section7'
 import Section4 from '../components/campaigns/section4'
 import Faq from '../components/campaigns/faq'
 import HumanitarianEfforts from '../components/home/components/HumanitarianEfforts'
+import LatestStories from '../components/home/components/LatestStories'
 
 
 
@@ -20,7 +20,7 @@ const Campaigns = () => {
       <Section4 />
       <HumanitarianEfforts initialCount={8} showLoadMore={false} />
       <Section6 />
-      <Section7 />
+      <LatestStories/>
       <Faq />
     </div>
   )

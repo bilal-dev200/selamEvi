@@ -9,19 +9,44 @@ export default function Contactform() {
     subject: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
+  // handle input
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  // handle submit with API call
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setLoading(true);
+    setError("");
+    setSubmitted(false);
+
+    try {
+      const res = await fetch("https://salam-evi.plantinart.com/contact-us", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to send message. Please try again.");
+      }
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (err) {
+      setError(err.message || "Something went wrong!");
+    } finally {
+      setLoading(false);
+      setTimeout(() => setSubmitted(false), 4000);
+    }
   };
 
   return (
@@ -41,17 +66,17 @@ export default function Contactform() {
       {/* Foreground content */}
       <div className="relative z-10">
         {/* Heading */}
-       {/* Heading */}
-<div className="text-left pt-16 pb-10 px-6 lg:px-10 max-w-7xl mx-auto">
-  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
-    Get in Touch With Us Today
-  </h2>
-  <p className="text-gray-600 mt-3 text-sm sm:text-base max-w-2xl">
-    We are here to answer your questions and provide the support you
-    need. Reach out to us anytime, and let’s build something great
-    together.
-  </p>
-</div> 
+        <div className="text-left pt-16 pb-10 px-6 lg:px-10 max-w-7xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
+            Get in Touch With Us Today
+          </h2>
+          <p className="text-gray-600 mt-3 text-sm sm:text-base max-w-2xl">
+            We are here to answer your questions and provide the support you
+            need. Reach out to us anytime, and let’s build something great
+            together.
+          </p>
+        </div>
+
         {/* Main Section */}
         <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-10 px-6 lg:px-10 pb-16">
           {/* Red Form */}
@@ -59,6 +84,7 @@ export default function Contactform() {
             <h3 className="text-2xl font-semibold mb-6">
               Connect With Us Today <br /> and Be Part of the Change
             </h3>
+
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col space-y-4">
                 <input
@@ -101,15 +127,26 @@ export default function Contactform() {
 
               <button
                 type="submit"
-                className="mt-6 w-24 bg-white text-[#E7000B] py-2 rounded-sm text-sm font-semibold hover:bg-gray-100 transition"
+                disabled={loading}
+                className={`mt-6 w-24 py-2 rounded-sm text-sm font-semibold transition ${
+                  loading
+                    ? "bg-gray-300 text-gray-600 cursor-not-allowed"
+                    : "bg-white text-[#E7000B] hover:bg-gray-100"
+                }`}
               >
-                Submit
+                {loading ? "Sending..." : "Submit"}
               </button>
             </form>
 
             {submitted && (
-              <p className="mt-4 text-white text-sm">
-                Form submitted successfully!
+              <p className="mt-4 text-green-100 text-sm">
+                ✅ Your message has been sent successfully!
+              </p>
+            )}
+
+            {error && (
+              <p className="mt-4 text-yellow-200 text-sm">
+                ⚠️ {error}
               </p>
             )}
           </div>
@@ -125,17 +162,17 @@ export default function Contactform() {
               {
                 icon: Phone,
                 title: "Phone Number",
-                text: "Selam Evi, [Insert Office Address]",
+                text: "+92 300 1234567",
               },
               {
                 icon: Mail,
                 title: "Email Address",
-                text: "Selam Evi, [Insert Office Address]",
+                text: "info@salam-evi.org",
               },
               {
                 icon: ClipboardCheck,
                 title: "Accountability",
-                text: "Selam Evi, [Insert Office Address]",
+                text: "We ensure transparency in all communications.",
               },
             ].map((item, index) => (
               <div

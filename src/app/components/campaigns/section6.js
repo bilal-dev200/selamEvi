@@ -7,13 +7,11 @@
         {/* Background Section with Layered Backgrounds */}
         <div
           className="relative text-white text-center py-20 px-6 overflow-hidden"
-          style={{
-            backgroundImage: "url('/together.png'), url('/difference.png')",
-            backgroundSize: "cover, cover",
-            backgroundPosition: "center, center",
-            backgroundBlendMode: "overlay",
-            backgroundColor: "#E7000B",
-          }}
+       style={{
+          backgroundImage: "url('/slider1.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
         >
           {/* Optional dark overlay for better readability */}
           <div className="absolute inset-0 bg-black/20"></div>
@@ -27,15 +25,17 @@
             <p className="text-sm sm:text-base md:text-lg text-red-100 mb-6 px-4">
               Join Selam-Evi in bringing hope, care, and change to those who need it most.
             </p>
-
-            <button
-              className="bg-[#E7000B] text-white border border-white/40 
-                px-6 sm:px-8 py-2.5 sm:py-3 font-semibold rounded-lg 
-                shadow-md hover:bg-[#b80009] transition"
-            >
-              Vision
-            </button>
           </div>
+          <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+
+  {/* Centered Donate Button */}
+  <button
+    className="bg-red-700 hover:bg-red-900 text-white font-semibold px-6 py-3 rounded-md transition"
+  >
+    Donate Now
+  </button>
+</div>
+
         </div>
       </div>
     );
