@@ -50,27 +50,13 @@ export default function HumanitarianEfforts({
           <p className="text-center text-gray-600">Loading programs...</p>
         ) : (
           displayedPrograms.map((item, index) => {
-            // ✅ Safe conversion from string to number
-            // const raised = item.total_transaction_amount
-            //   ? Number(String(item.total_transaction_amount).replace(/[^0-9.-]+/g, ""))
-            //   : 0;
-            // const raised = item.total_transaction_amount
-            //   ? item.total_transaction_amount
-            //   : 0;
-
-            // const goal = item.required_total_amount; // avoid divide by zero
-            // console.log(raised, goal);
-            console.log("item", item);
-
-
-            const progressPercent = Math.min((item.raised / item.goal) * 100, 100);
-
             return (
               <div
                 key={`${item.id}-${index}`}
                 className="bg-white rounded-2xl shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300 cursor-pointer"
                 onClick={() => router.push("/campaigns")}
               >
+                {/* Image */}
                 <img
                   src={item.img}
                   alt={item.title}
@@ -85,26 +71,15 @@ export default function HumanitarianEfforts({
                     {item.description}
                   </p>
 
-                  {/* Progress Info */}
-                  <div className="flex justify-between text-sm font-medium text-gray-700 mb-2">
-                    <span>
-                      Raised: <span className="text-gray-900">${item.raised}</span>
-                    </span>
-                    <span>
-                      Goal: <span className="text-gray-900">${item.goal}</span>
-                    </span>
-                  </div>
-
-                  {/* Progress Bar */}
-                  <div className="relative w-full bg-gray-200 h-4 rounded-full mb-4">
-                    <div
-                      className="bg-red-600 h-4 rounded-full"
-                      style={{ width: `${progressPercent}%` }}
-                    ></div>
-                    <span className="absolute top-0 left-1/2 transform -translate-x-1/2 text-xs text-white font-semibold">
-                      {Math.round(progressPercent)}%
-                    </span>
-                  </div>
+                  {/* Mobile-Style Slider */}
+                  <input
+                    type="range"
+                    min={0}
+                    max={ 50}
+                    value={item.raised}
+                    readOnly
+                    className="w-full h-2 bg-gray-200 rounded-full accent-red-600 cursor-pointer mb-4 transition-all duration-700"
+                  />
 
                   {/* Donate Button */}
                   <button
@@ -128,7 +103,7 @@ export default function HumanitarianEfforts({
         <div className="flex justify-center mt-10">
           <button
             onClick={() => setVisibleCount((prev) => prev + 8)}
-            className="px-6 py-2 bg-red-600 text-white font-semibold rounded-full hover:bg-red-600 transition"
+            className="px-6 py-2 bg-red-600 text-white font-semibold  hover:bg-red-700 transition"
           >
             Load More
           </button>

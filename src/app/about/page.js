@@ -7,13 +7,13 @@ import Section4 from "../components/about/section4"
 import Section5 from "../components/about/section5"
 import Section6 from "../components/about/section6"
 import LatestStories from "../components/home/components/LatestStories"
-import Faq from "../components/about/faq"
 import ServicesGrid from '../components/home/components/ServicesGrid'
+import FAQSection from '../components/home/components/FAQSection'
 
 
 const About = () => {
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-white space-y-40">
       <Hero />
       {/* section1 */}
       <Section1 />
@@ -30,7 +30,7 @@ const About = () => {
       {/* section7 */}
       <LatestStories/>
       {/* FAq */}
-      <Faq />
+      <FAQSection />
 
 
 

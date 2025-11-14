@@ -74,7 +74,7 @@ export default function ServiceDetailPage() {
                 <div className="flex flex-col md:flex-row items-center gap-10">
                   <div className="w-full md:w-1/2">
                     <h2 className="text-5xl font-bold mb-6 leading-snug text-black tracking-wide">
-                      Why Our <span className="text-red-600">Events & <br/> Campaigns</span> Matter
+                      {detail.title}
                     </h2>
                     {detail.description && (
                       <div
@@ -114,13 +114,13 @@ export default function ServiceDetailPage() {
           // ===== How We Support Learning Section =====
           if (isSupportSection) {
             return (
-              <section key={detail.id || index} className="flex flex-col md:flex-row items-stretch w-full py-20">
+              <section key={detail.id || index} className="flex flex-col md:flex-row w-full py-20">
                 {imageUrl && (
                   <div className="w-full md:w-1/2">
                     <img
                       src={imageUrl}
                       alt={detail.title}
-                      className="w-full h-full object-cover rounded-l-2xl md:rounded-l-3xl rounded-r-none"
+                      className="w-full h-full object-cover rounded-l-2xl md:rounded-l-3xl rounded-r-none ml-12"
                     />
                   </div>
                 )}
@@ -154,7 +154,11 @@ export default function ServiceDetailPage() {
           // ===== Together We Make a Difference Section =====
           if (isTogetherSection) {
             return (
-              <section key={detail.id || index} className="bg-red-700 text-white py-20 px-6 md:px-16">
+              <section key={detail.id || index} className=" text-white pt-20 px-6 md:px-16" style={{
+                backgroundImage: "url('/slider1.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}>
                 <div className="text-center max-w-3xl mx-auto mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">{detail.title}</h2>
                   {detail.description && (
@@ -165,11 +169,11 @@ export default function ServiceDetailPage() {
                   )}
                 </div>
                 {Array.isArray(detail.bullets) && detail.bullets.length > 0 && (
-                  <div className="flex flex-wrap justify-center gap-8">
+                  <div className="flex flex-wrap justify-center gap-8 ">
                     {detail.bullets.map(b => (
                       <div
                         key={b.id}
-                        className="bg-white text-gray-900 rounded-2xl p-8 shadow-lg flex-1 min-w-[220px] max-w-[250px] text-center hover:scale-105 transition-transform"
+                        className="bg-white text-gray-900 rounded-tr-[60px] p-8 pb-0 shadow-lg flex-1 min-w-[220px] max-w-[250px] text-center hover:scale-105 transition-transform"
                       >
                         {b.icon && (
                           <img
@@ -195,7 +199,7 @@ export default function ServiceDetailPage() {
                 <div className="flex flex-col md:flex-row items-center gap-10">
                   <div className="w-full md:w-1/2">
                     <h2 className="text-5xl font-bold mb-6 leading-snug  text-black tracking-wide mt-5">
-                      A <span className="text-red-600">Child's Journey</span><br/> to Learning
+                      {detail.title}
                     </h2>
                     {detail.description && (
                       <div

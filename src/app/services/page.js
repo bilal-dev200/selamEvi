@@ -10,14 +10,14 @@ import FAQSection from "../components/home/components/FAQSection";
 
 const page = () => {
   return (
-    <div className='bg-white'>
+    <div className='bg-white space-y-40'>
       <Banner />
       <StatsSection />
       <HealthcareCampSection />
       <ServicesGrid />
       <ImpactSection />
       <Together />
-      <LatestStories />
+      <LatestStories showLoadMore={false} />
       <FAQSection />
 
     </div>

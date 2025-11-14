@@ -7,13 +7,13 @@ export default function HealthcareCampSection() {
         <div className="relative text-white p-16 lg:p-10 -ml-12 ">
           {/* Background Image */}
           <img
-            src="/difference.png" 
+            src="/slider1.png" 
             alt=""
             className="absolute inset-0 w-full h-full  object-cover"
           />
 
           {/* Red Overlay */}
-          <div className="absolute inset-0 bg-red-800/80"></div>
+          <div className="absolute inset-0 "></div>
 
           {/* Text Content */}
           <div className="relative z-10">

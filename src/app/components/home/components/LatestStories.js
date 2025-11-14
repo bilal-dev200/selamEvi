@@ -34,7 +34,7 @@ export default function LatestStories({
           <div
             key={blog.id}
             onClick={() => router.push(`/blog/${blog.slug}`)}
-            className="cursor-pointer border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between"
+            className="cursor-pointer  overflow-hidden  hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between"
           >
             {blog.image && (
               <img
@@ -56,9 +56,9 @@ export default function LatestStories({
               <button
                 onClick={(e) => {
                   e.stopPropagation(); // 👈 stop card click
-                  router.push("/blog");
+                 router.push(`/blog/${blog.slug}`);
                 }}
-                className="text-[#E7000B] text-sm font-semibold self-start hover:underline mt-auto"
+                className="text-[#E7000B] text-sm font-semibold self-start hover:text-red-900 mt-auto cursor-pointer "
               >
                 Read More →
               </button>
@@ -72,9 +72,9 @@ export default function LatestStories({
         <div className="text-center mt-10">
           <button
             onClick={() => router.push("/blog")}
-            className="bg-red-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-red-700 transition"
+            className="bg-red-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-red-700 transition cursor-pointer"
           >
-            Load More
+            See All
           </button>
         </div>
       )}

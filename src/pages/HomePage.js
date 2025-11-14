@@ -39,7 +39,7 @@ export default function HomePage() {
     <div className="relative">
       {/* Hero Section */}
       <div
-        className="relative h-[120vh] bg-cover bg-center flex flex-col justify-center text-white px-8 md:px-20"
+        className="relative h-[120vh] bg-cover bg-center flex flex-col justify-center text-white px-8 md:px-20 "
         style={{ backgroundImage: "url('/bg.png')" }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
@@ -64,8 +64,8 @@ export default function HomePage() {
 
       {/* Quick Donate Box */}
 <div className="relative -mt-16 md:-mt-15 z-20 flex justify-center px-3 sm:px-6 text-black">
-  <div className="w-full sm:w-[95%] md:w-[90%] lg:w-[85%] overflow-hidden rounded-lg border border-red-200 bg-white">
-    <div className="bg-[#f3f6f9] p-4 flex flex-wrap gap-3 items-center justify-start">
+  <div className="w-full sm:w-[95%] md:w-[90%] lg:w-[85%] overflow-hidden rounded-lg border border-red-600 bg-white p-6">
+    <div className="bg-[#f3f6f9] p-2 flex flex-wrap gap-2 items-center justify-start w-auto">
       {/* Service Dropdown */}
       <select
         value={selectedService}

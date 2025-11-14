@@ -3,20 +3,20 @@ import React from "react";
 
 const Section5 = () => {
   return (
-    <section className="bg-white py-14 sm:py-16 lg:py-20 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16">
+    <section className="bg-white py-16 sm:py-20 lg:py-24 px-6 sm:px-12 md:px-20 lg:px-32">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20">
         {/* Left: Image */}
         <div className="flex justify-center lg:justify-start">
           <img
             src="/shapping.png"
             alt="Making a Difference"
-            className="w-full max-w-md sm:max-w-lg lg:max-w-xl h-auto object-cover rounded-3xl shadow-md"
+            className="w-full max-w-md sm:max-w-lg lg:max-w-xl h-auto object-cover "
           />
         </div>
 
         {/* Right: Text Content */}
         <div className="text-center lg:text-left">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-5">
+          <h2 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-gray-900 leading-tight mb-6">
             How We Create <span className="text-[#E7000B]">Impact</span>
           </h2>
 
@@ -24,7 +24,7 @@ const Section5 = () => {
             Through a wide range of programs, Selam-Evi is changing lives every day.
           </p>
 
-          <ul className="list-disc list-inside space-y-3 text-gray-900">
+          <ul className="list-disc list-inside space-y-3 text-gray-900 text-sm sm:text-base">
             <li className="[&::marker]:text-[#E7000B]">
               Equipping hospitals and providing medical machinery.
             </li>

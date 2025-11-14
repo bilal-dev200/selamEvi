@@ -16,7 +16,8 @@ export default function Banner() {
           <h1 className="text-3xl  md:text-5xl  leading-tight text-center ">
             Changing Lives
             <br />
-            <span className="text-white">Through Compassionate Action</span>
+            Through
+            <span className="text-red-600"> Compassionate Action</span>
           </h1>
           <p className="mt-4 text-[15px]   font-light text-gray-200 text-center ">
             Selam-Evi is dedicated to healthcare, education, women empowerment, and relief programs across Syria, Gaza, Turkey and beyond. Explore how Selam-Evi is transforming communities with healthcare, education, and humanitarian support.

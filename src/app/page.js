@@ -1,4 +1,3 @@
-
 import React from "react";
 import Home from "../pages/HomePage";
 import ImpactSection from "./components/home/components/ImpactSection";
@@ -9,19 +8,21 @@ import ShapingBetterTomorrow from "./components/home/components/ShapingBetterTom
 import StoriesSlider from "./components/home/components/StoriesSlider";
 import LatestStories from "./components/home/components/LatestStories";
 import FAQSection from "./components/home/components/FAQSection";
+
 function App() {
   return (
-    <div className='bg-white'>
+    <div className="bg-white space-y-40">  {/* 👈 yaha spacing added */}
 
-      < Home />
+      <Home />
       <ImpactSection />
       <ServicesGrid />
       <ImpactPage />
       <HumanitarianEfforts initialCount={4} showLoadMore={false} />
       <ShapingBetterTomorrow />
       <StoriesSlider />
-      <LatestStories />
+      <LatestStories showLoadMore={false} />
       <FAQSection />
+
     </div>
   );
 }

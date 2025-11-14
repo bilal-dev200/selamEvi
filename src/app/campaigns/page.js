@@ -4,15 +4,15 @@ import Section1 from '../components/campaigns/section1'
 import Section3 from '../components/campaigns/section3'
 import Section6 from '../components/campaigns/section6'
 import Section4 from '../components/campaigns/section4'
-import Faq from '../components/campaigns/faq'
 import HumanitarianEfforts from '../components/home/components/HumanitarianEfforts'
 import LatestStories from '../components/home/components/LatestStories'
+import FAQSection from '../components/home/components/FAQSection'
 
 
 
 const Campaigns = () => {
   return (
-    <div className='bg-white mb-4  :px-1.5'>
+    <div className='bg-white space-y-40 mb-4 :px-1.5 '>
       <Hero />
       <Section1 />
       <HumanitarianEfforts initialCount={8} showLoadMore={true} />
@@ -20,8 +20,8 @@ const Campaigns = () => {
       <Section4 />
       <HumanitarianEfforts initialCount={8} showLoadMore={false} />
       <Section6 />
-      <LatestStories/>
-      <Faq />
+      <LatestStories showLoadMore={false}/>
+      <FAQSection />
     </div>
   )
 }

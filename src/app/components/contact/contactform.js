@@ -52,7 +52,7 @@ export default function Contactform() {
   return (
     <section className="relative w-full bg-white overflow-hidden">
       {/* Background Map (only bottom 30%) */}
-      <div className="absolute bottom-0 left-0 w-full h-[30%] z-0">
+      <div className="absolute bottom-0 left-0 w-full h-[50%] z-0 mt-20">
         <img
           src="/map.png"
           alt="map background"

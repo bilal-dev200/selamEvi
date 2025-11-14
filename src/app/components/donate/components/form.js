@@ -90,10 +90,10 @@ export default function ZakatCalculatorSection() {
             {/* Row 1 */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-red-600 text-sm font-semibold block">
+                <label className="text-black text-sm font-semibold block">
                   Gold and Silver
                 </label>
-                <p className="text-gray-500 text-xs mb-1">
+                <p className="text-black text-xs mb-1">
                   Value of Gold & Silver
                 </p>
                 <input
@@ -106,10 +106,10 @@ export default function ZakatCalculatorSection() {
               </div>
 
               <div>
-                <label className="text-red-600 text-sm font-semibold">
+                <label className="text-black text-sm font-semibold">
                   Money
                 </label>
-                <p className="text-gray-500 text-xs mb-1">
+                <p className="text-black text-xs mb-1">
                   Cash at Home & Bank Accounts
                 </p>
                 <input
@@ -125,7 +125,7 @@ export default function ZakatCalculatorSection() {
             {/* Row 2 */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-gray-700 text-sm font-semibold">
+                <label className="text-black text-sm font-semibold">
                   Other Savings
                 </label>
                 <input
@@ -137,7 +137,7 @@ export default function ZakatCalculatorSection() {
                 />
               </div>
               <div>
-                <label className="text-gray-700 text-sm font-semibold">
+                <label className="text-black text-sm font-semibold">
                   Investment & Share Values
                 </label>
                 <input
@@ -153,10 +153,10 @@ export default function ZakatCalculatorSection() {
             {/* Row 3 */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-red-600 text-sm font-semibold">
+                <label className="text-black text-sm font-semibold">
                   Short Term Liabilities
                 </label>
-                <p className="text-gray-500 text-xs mb-1">Money You Owe</p>
+                <p className="text-black text-xs mb-1">Money You Owe</p>
                 <input
                   type="text"
                   name="liabilities"
@@ -166,10 +166,10 @@ export default function ZakatCalculatorSection() {
                 />
               </div>
               <div>
-                <label className="text-red-600 text-sm font-semibold">
+                <label className="text-black text-sm font-semibold">
                   Business Assets
                 </label>
-                <p className="text-gray-500 text-xs mb-1">Stock Value</p>
+                <p className="text-black text-xs mb-1">Stock Value</p>
                 <input
                   type="text"
                   name="businessAssets"
@@ -183,7 +183,7 @@ export default function ZakatCalculatorSection() {
             {/* Row 4 */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-gray-700 text-sm font-semibold">
+                <label className="text-black text-sm font-semibold">
                   Money Owed to You
                 </label>
                 <input
@@ -195,7 +195,7 @@ export default function ZakatCalculatorSection() {
                 />
               </div>
               <div>
-                <label className="text-gray-700 text-sm font-semibold">
+                <label className="text-black text-sm font-semibold">
                   Other Outgoings Due
                 </label>
                 <input
@@ -210,7 +210,7 @@ export default function ZakatCalculatorSection() {
 
             {/* Total */}
             <div className="pt-4">
-              <label className="text-gray-500 font-semibold text-sm mb-1 block">
+              <label className="text-black font-semibold text-sm mb-1 block">
                 Total Zakat
               </label>
               <input

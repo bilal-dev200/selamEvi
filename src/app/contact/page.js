@@ -2,7 +2,7 @@ import React from 'react'
 import Hero from '../components/contact/hero'
 import Contactform from '../components/contact/contactform'
 import Section2 from '../components/contact/section2'
-import Faq from '../components/contact/faq'
+import FAQSection from '../components/home/components/FAQSection'
 
 const Contact = () => {
     return (
@@ -10,7 +10,7 @@ const Contact = () => {
             <Hero />
             <Contactform />
             <Section2 />
-            <Faq/>
+            <FAQSection/>
         </div>
     )
 }

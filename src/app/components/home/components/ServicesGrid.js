@@ -113,15 +113,13 @@ export default function ServicesGrid() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const router = useRouter();
 
-  // ✅ Destructure everything needed from store
+  // Store data
   const { services, loading, fetchServices, setSelectedService } = useServiceStore();
 
-  // ✅ Call API once on mount
+  // Fetch services
   useEffect(() => {
     fetchServices();
   }, [fetchServices]);
-
-  console.log("Store services in component:", services); // ✅ verify
 
   const handleNavigate = (service) => {
     setSelectedService(service);
@@ -138,6 +136,7 @@ export default function ServicesGrid() {
       <h2 className="text-3xl text-black md:text-4xl font-bold mb-3">
         How We Serve <span className="text-red-600">Communities</span> in Need
       </h2>
+
       <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
         Our services span across healthcare, education, empowerment, and emergency relief.
       </p>
@@ -157,16 +156,21 @@ export default function ServicesGrid() {
                 onClick={() => handleNavigate(service)}
                 className="relative h-[490px] rounded-md overflow-hidden group shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
               >
+                {/* 🔥 Image clean — no overlay */}
                 <img
                   src={imageUrl}
                   alt={service.title || "Service image"}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500"
                 />
-                <div className="absolute inset-0 flex flex-col justify-start items-start p-5 z-10 text-left bg-gradient-to-t from-white/90 via-white/60 to-transparent">
+
+                {/* 🔥 No gradient overlay */}
+                <div className="absolute inset-0 flex flex-col justify-start items-start p-5 z-10 text-left">
                   <h3 className="text-xl font-bold mb-2 text-black">{service.title}</h3>
+
                   <p className="text-sm mb-4 max-w-[80%] text-black/80 line-clamp-3">
                     {service.description || "No description available."}
                   </p>
+
                   <button
                     onClick={(e) => {
                       e.stopPropagation();

@@ -1,194 +1,135 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
+import React, { useState } from "react";
+import { Play, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default function StoriesSlider() {
   const [isPlaying, setIsPlaying] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollContainer = useRef(null);
 
   const stories = [
     {
       id: 1,
       title: "Ijtema-e-Qurbani 2025",
-      description:
-        "Qurbani: Witness how unity and love bring hope to thousands of families.",
+      description: "Witness how unity brings hope to thousands of families.",
       video: "/video1.mp4",
-     
+      thumbnail: "/efforts1.png",
     },
     {
       id: 2,
       title: "Education for All",
-      description:
-        "Transforming lives through quality education and resources.",
+      description: "Transforming lives through quality education.",
       video: "/video2.mp4",
+      thumbnail: "/Serve2.png",
     },
     {
       id: 3,
-      title: "Healthcare Reaches Remote Areas",
-      description:
-        "Mobile clinics bringing medical care to underserved communities.",
+      title: "Healthcare Support",
+      description: "Mobile clinics bringing medical care.",
       video: "/video3.mp4",
+      thumbnail: "/Serve1.png",
     },
-   {
-      id: 4,
-      title: "Healthcare Reaches Remote Areas",
-      description:
-        "Mobile clinics bringing medical care to underserved communities.",
-      video: "/video3.mp4",
-    },
-     {
-      id: 5,
-      title: "Education for All",
-      description:
-        "Transforming lives through quality education and resources.",
-      video: "/video2.mp4",
-    },
-    
   ];
 
-  const scrollToIndex = (index) => {
-    if (scrollContainer.current) {
-      const containerWidth = scrollContainer.current.offsetWidth;
-      scrollContainer.current.scrollTo({
-        left: index * (containerWidth * 0.6),
-        behavior: "smooth",
-      });
-      setActiveIndex(index);
-    }
-  };
-
-  const scrollLeft = () => {
-    if (activeIndex > 0) scrollToIndex(activeIndex - 1);
-  };
-
-  const scrollRight = () => {
-    if (activeIndex < stories.length - 1) scrollToIndex(activeIndex + 1);
-  };
-
-  useEffect(() => {
-    const container = scrollContainer.current;
-    if (!container) return;
-    const preventScroll = (e) => e.preventDefault();
-    container.addEventListener("wheel", preventScroll, { passive: false });
-    container.addEventListener("touchmove", preventScroll, { passive: false });
-    return () => {
-      container.removeEventListener("wheel", preventScroll);
-      container.removeEventListener("touchmove", preventScroll);
-    };
-  }, []);
-
   return (
-    <section className="relative py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* ✅ Background Image */}
-      <div className="absolute inset-x-0 w-246 ml-35 mt-80 h-[300px] overflow-hidden rounded-b-3xl -z-10">
-        <img
-          src="/Slider.png"
-          alt=""
-          className="w-full h-full object-cover"
+    <section className="relative py-20">
+      {/* Background Image Behind Slider */}
+      <div className="absolute inset-0 top-24 w-[95%] mx-auto h-[400px] rounded-3xl overflow-hidden mt-12">
+        <img 
+          src="/slider1.png"
+          className="w-full h-full object-fill"
+          alt="bg"
         />
       </div>
 
-      {/* Header */}
-      <div className="text-center mb-12 relative z-30">
-        <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-          Stories of Hope and{" "}
-          <span className="text-red-600">Humanity</span>
-        </h2>
-        <p className="text-gray-700 text-base sm:text-sm max-w-3xl mx-auto">
-          Watch how your support transforms lives — from Qurbani drives to food
-          aid, education, and community programs around the world.
-        </p>
-      </div>
+      {/* Slider Section */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4">
+        
+        {/* Custom Arrows (white bg + red icon) */}
+        <div className="swiper-button-prev custom-arrow-left !left-3">
+          <div className="bg-white p-3 rounded-full shadow-lg">
+            <ChevronLeft className="text-red-600 w-6 h-6" />
+          </div>
+        </div>
 
-      {/* Slider */}
-      <div className="relative z-20 max-w-7xl mx-auto">
-        <div
-          ref={scrollContainer}
-          className="flex overflow-hidden space-x-6 snap-x snap-mandatory px-4 select-none justify-center"
+        <div className="swiper-button-next custom-arrow-right !right-3">
+          <div className="bg-white p-3 rounded-full shadow-lg">
+            <ChevronRight className="text-red-600 w-6 h-6" />
+          </div>
+        </div>
+
+        <Swiper
+          modules={[Navigation, Pagination]}
+          slidesPerView={1.2}
+          centeredSlides
+          loop={true}
+          spaceBetween={20}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          pagination={{ clickable: true }}
+          className="py-12"
         >
           {stories.map((story, index) => (
-            <div
-              key={story.id}
-              className={`relative flex-shrink-0 snap-center rounded-2xl overflow-hidden  bg-black group transition-all duration-500 ${
-                activeIndex === index
-                  ? "w-[70%] sm:w-[50%] md:w-[80%] scale-105 z-20"
-                  : "w-[60%] sm:w-[65%] md:w-[80%] "
-              }`}
-            >
-              {isPlaying === index ? (
-                <>
-                  <video
-                    src={story.video}
-                    controls
-                    autoPlay
-                    className="w-full h-96 object-cover"
-                  />
-                  <button
-                    onClick={() => setIsPlaying(null)}
-                    className="absolute top-4 right-4 bg-black/60 text-white p-2 rounded-full transition-all"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </>
-              ) : (
-                <>
-                  <img
-                    src={story.thumbnail}
-                    className="w-full h-96 object-cover"
-                  />
-                  <div
-                    onClick={() => setIsPlaying(index)}
-                    className="absolute inset-0 flex items-center justify-center bg-black/30 transition-all cursor-pointer"
-                  >
-                    <div className="bg-white rounded-full p-4 sm:p-6 shadow-2xl transform  transition-transform">
-                      <Play className="w-8 h-8 sm:w-10 sm:h-10 text-red-600 fill-red-600" />
+            <SwiperSlide key={story.id}>
+              
+              <div className="relative rounded-3xl overflow-hidden shadow-xl w-full bg-black">
+
+                {isPlaying === index ? (
+                  <>
+                    {/* VIDEO TOP SE START HOGA */}
+                    <video
+                      src={story.video}
+                      autoPlay
+                      controls
+                      className="w-full h-[400px] object-cover object-top"
+                    />
+                    <button
+                      onClick={() => setIsPlaying(null)}
+                      className="absolute top-4 right-4 bg-black/50 p-2 rounded-full"
+                    >
+                      <X className="text-white" />
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {/* Thumbnail */}
+                    <img
+                      src={story.thumbnail}
+                      className="w-full h-[400px] object-contain object-cover"
+                    />
+
+                    {/* Black Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
+                    {/* CENTER Play Button */}
+                    <div
+                      className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                      onClick={() => setIsPlaying(index)}
+                    >
+                      <div className="bg-white p-5 rounded-full shadow-xl">
+                        <Play className="text-red-600 w-10 h-10" />
+                      </div>
                     </div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6 sm:p-8">
-                    <h3 className="text-2xl sm:text-xl text-white mb-2">
-                      {story.title}
-                    </h3>
-                    <p className="text-gray-200 text-xs sm:text-sm">
-                      {story.description}
-                    </p>
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
 
-        {/* Dots */}
-        <div className="flex justify-center mt-8 space-x-3">
-          {stories.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => scrollToIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                activeIndex === index
-                  ? "bg-red-600 scale-125"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-            ></button>
-          ))}
-        </div>
+                    {/* Text bottom */}
+                    <div className="absolute bottom-6 left-6 right-6 text-white">
+                      <h3 className="text-xl font-semibold mb-1">{story.title}</h3>
+                      <p className="text-sm text-gray-300">{story.description}</p>
+                    </div>
+                  </>
+                )}
 
-        {/* Arrows */}
-        <button
-          onClick={scrollLeft}
-          disabled={activeIndex === 0}
-          className="absolute left-27 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-all hidden sm:flex z-30 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <ChevronLeft className="w-6 h-6 text-gray-800" />
-        </button>
-        <button
-          onClick={scrollRight}
-          disabled={activeIndex === stories.length - 1}
-          className="absolute right-27 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-all hidden sm:flex z-30 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <ChevronRight className="w-6 h-6 text-gray-800" />
-        </button>
+              </div>
+
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   );

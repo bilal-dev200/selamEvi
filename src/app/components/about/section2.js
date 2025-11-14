@@ -25,9 +25,8 @@ const Section2 = () => {
                        [@media(min-width:1000px)]:left-[40%] [@media(min-width:1000px)]:transform 
                        [@media(min-width:1000px)]:-translate-y-1/2"
             style={{
-              backgroundColor: "#E7000B",
-              backdropFilter: "blur(1px)",
-            }}
+          backgroundColor:"#D21C17B0"
+        }}
           >
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 leading-snug">
               How Selam-Evi Began and <br className="hidden sm:block" /> Where

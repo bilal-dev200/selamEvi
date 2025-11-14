@@ -72,25 +72,25 @@ const Section4 = () => {
         {/* ✅ Row 2 — Left small, Right big */}
         <div className="flex flex-col sm:flex-row-reverse gap-6">
           {/* Left (small) */}
-          <div className="w-full sm:w-[30%] rounded-xl overflow-hidden bg-white shadow-md flex flex-col">
+          <div className="w-full sm:w-[30%] rounded-xl overflow-hidden bg-transparent  flex flex-col">
             <img
               src={items[2].img}
               alt="Impact 3"
               className="w-full h-[450px] object-cover"
             />
-            <p className="text-black text-sm sm:text-base px-4 py-3 font-bold">
+            <p className="text-white text-sm sm:text-base px-4 py-3 font-bold">
               {items[2].text}
             </p>
           </div>
 
           {/* Right (big) */}
-          <div className="w-full sm:w-[68%] rounded-xl overflow-hidden bg-white shadow-md flex flex-col">
+          <div className="w-full sm:w-[68%] rounded-xl overflow-hidden bg-transparent  flex flex-col text-white">
             <img
               src={items[3].img}
               alt="Impact 4"
               className="w-full h-[450px] object-cover"
             />
-            <p className="text-black text-sm sm:text-base px-4 py-3 font-bold">
+            <p className="text-white text-sm sm:text-base px-4 py-3 font-bold">
               {items[3].text}
             </p>
           </div>
@@ -98,14 +98,20 @@ const Section4 = () => {
       </div>
 
       {/* Red Footer with Arrows */}
-      <div className="absolute bottom-0 left-0 w-full bg-[#E7000B] py-10 flex justify-center items-center space-x-4 rounded-t-[60px] z-0">
-        <button className="bg-white text-[#E7000B] w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold hover:bg-gray-100 transition">
-          ‹
-        </button>
-        <button className="bg-[#E7000B] border-2 border-white text-white w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold hover:bg-white hover:text-[#E7000B] transition">
-          ›
-        </button>
-      </div>
+     <div className="absolute bottom-0 left-0 w-full bg-[#E7000B] py-10 flex justify-center items-center gap-4 rounded-b-[60px] z-0 h-[300px]">
+
+  {/* Left Button - White with Red Arrow */}
+  <button className="bg-white text-[#E7000B] w-12 h-12 rounded-full flex items-center justify-center text-2xl font-black hover:bg-gray-200 transition mt-52">
+    ‹
+  </button>
+
+  {/* Right Button - Red with White Arrow + White Border */}
+  <button className="bg-[#E7000B] border-2 border-white text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl font-black hover:bg-white hover:text-[#E7000B] transition mt-52">
+    ›
+  </button>
+
+</div>
+
     </section>
   );
 };

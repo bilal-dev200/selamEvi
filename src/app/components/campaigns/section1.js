@@ -5,7 +5,6 @@ const Section1 = () => {
     <div className="flex flex-col md:flex-row items-center justify-between px-6 sm:px-10 lg:px-20 py-16 bg-white">
       {/* Left Image Section */}
       <div className="relative w-full md:w-1/2 flex justify-center mb-10 md:mb-0">
-        <div className="absolute -bottom-4 -left-3 w-40 h-36 bg-red-600 rounded-tr-3xl z-0"></div>
         <img
           src="/improving.png"
           alt="Improving Lives"

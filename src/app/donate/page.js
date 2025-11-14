@@ -12,7 +12,7 @@ const page = () => {
     <div className='bg-white'>
       <Banner />
       <From />
-      <HumanitarianEfforts initialCount={8} showLoadMore={false} />
+      <HumanitarianEfforts initialCount={8} showLoadMore={true} />
       <ImpactPage />
       <Trusted />
       <LatestStories showLoadMore={false} />

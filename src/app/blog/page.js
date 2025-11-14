@@ -14,7 +14,7 @@ const page = () => {
       <LatestStories
   title="Education for Every Child"
   subtitle="Explore updates, success , and the impact your support creates across communities."
-    showLoadMore={false}
+    showLoadMore={true}
 
  />
 
