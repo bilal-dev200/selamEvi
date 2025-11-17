@@ -111,10 +111,13 @@ import { useServiceStore } from "@/app/store/Servicestore";
 
 export default function ServicesGrid() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
+
   const router = useRouter();
 
   // Store data
-  const { services, loading, fetchServices, setSelectedService } = useServiceStore();
+  const { services, loading, fetchServices } = useServiceStore();
 
   // Fetch services
   useEffect(() => {
@@ -134,11 +137,12 @@ export default function ServicesGrid() {
   return (
     <section className="py-16 px-6 md:px-20 bg-white text-center">
       <h2 className="text-3xl text-black md:text-4xl font-bold mb-3">
-        How We Serve <span className="text-red-600">Communities</span> in Need
+         <span className="text-red-600">Selam-Evi</span> Programs 
       </h2>
 
       <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
-        Our services span across healthcare, education, empowerment, and emergency relief.
+        Support lives through Zakat, Sadaqah, and welfare programs with Selam Evi.
+
       </p>
 
       {loading ? (
@@ -174,7 +178,7 @@ export default function ServicesGrid() {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleDonateClick(service);
+                      handleDonateClick(service.id);
                     }}
                     className="text-black bg-white px-5 py-2 rounded-[60px] text-sm border border-black hover:bg-gray-100 transition"
                   >
@@ -187,7 +191,10 @@ export default function ServicesGrid() {
         </div>
       )}
 
-      <DonationFormModal open={isModalVisible} onCancel={() => setIsModalVisible(false)} />
+      <DonationFormModal
+       open={isModalVisible}
+       onCancel={() => setIsModalVisible(false)}
+         selectedService={selectedService} />
     </section>
   );
 }

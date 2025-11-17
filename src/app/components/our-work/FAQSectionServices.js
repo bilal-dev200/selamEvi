@@ -4,28 +4,33 @@ import { Plus, X } from "lucide-react";
 
 const faqs = [
   {
-    question: "How are my donations used?",
+    question: "What is Selam-Evi and what does it do?",
     answer:
-    "Your donations fund healthcare, education, food aid, and welfare programs for those in need."
+    "Selam-Evi is a trusted Islamic charity foundation in Türkiye dedicated to providing healthcare, education, women empowerment, and humanitarian relief programs. It supports vulnerable families and communities across Türkiye, Syria, and Gaza through sustainable welfare initiatives."
   },
   {
-    question: "Can I donate to a specific cause?",
+    question: "How can I donate to Selam-Evi programs?",
     answer:
-    "Yes, you can choose to support any program that matters most to you."
+    "You can easily donate online through our secure donation portal. Selam-Evi accepts Zakat, Sadqah, and general charity donations to support healthcare, education, orphan care, and emergency relief projects across regions in need."
   },
   {
-    question: "Do you provide updates on ongoing projects?",
+    question: " Is my donation to Selam-Evi Zakat-eligible?",
     answer:
-    "Yes, we share regular updates and impact reports with our donors."
+    "Yes, Selam-Evi ensures that all Zakat contributions are distributed according to Islamic principles. Your Zakat directly supports eligible beneficiaries, including widows, orphans, and families affected by poverty or crisis."
   },
   {
-    question: "Is my donation tax-deductible?",
+    question: " Which countries does Selam-Evi provide support to?",
     answer:
-    "Yes, all eligible donations are tax-deductible as per local regulations."
+    " Selam-Evi operates from Türkiye and extends its humanitarian programs to Syria, Gaza, and other regions affected by conflict and poverty. Our mission is to bring hope and essential aid wherever it’s needed most."
+  },
+   {
+    question: " How does Selam-Evi ensure transparency and trust in donations?",
+    answer:
+    " Selam-Evi follows strict accountability and transparency measures. Every donation is allocated to its intended cause, and regular updates are shared with donors to show the real impact of their contributions on communities in need."
   },
 ];
 
-export default function FAQSection() {
+export default function FAQSectionService() {
   const [openIndex, setOpenIndex] = useState(0);
 
   const toggle = (index) => {

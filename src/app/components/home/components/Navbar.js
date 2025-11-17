@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 "use client";
 import React, { useState } from "react";
 import { Menu, X, Calculator } from "lucide-react";
@@ -15,7 +14,7 @@ export default function Navbar() {
     <nav className="absolute top-0 w-full text-white z-50">
       
       {/* Main Navbar */}
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-20 py-3">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3 md:px-20">
         
         {/* Left: Logo */}
         <div className="flex items-center gap-3">
@@ -26,8 +25,8 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Center Menu */}
-        <ul className="hidden md:flex items-center gap-8">
+        {/* Center Menu (Desktop: >945px) */}
+        <ul className="hidden [@media(min-width:945px)]:flex items-center gap-8">
           <Link href="/" className="cursor-pointer">Home</Link>
           <Link href="/about" className="cursor-pointer">About</Link>
           <Link href="/services" className="cursor-pointer">Services</Link>
@@ -36,8 +35,8 @@ export default function Navbar() {
           <Link href="/blog" className="cursor-pointer">Blog</Link>
         </ul>
 
-        {/* Right Actions */}
-        <div className="hidden md:flex items-center gap-2">
+        {/* Right Actions (Desktop: >945px) */}
+        <div className="hidden [@media(min-width:945px)]:flex items-center gap-2">
           <Calculator
             className="w-6 h-6 text-white cursor-pointer hover:text-red-500 transition"
             onClick={() => router.push("/donate")}
@@ -50,18 +49,18 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button (<=945px) */}
         <button
-          className="md:hidden p-2 rounded-md hover:bg-white/10"
+          className="[@media(max-width:945px)]:block hidden p-2 rounded-md hover:bg-white/10"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile Dropdown (<=945px) */}
       {menuOpen && (
-        <div className="md:hidden bg-transparent backdrop-blur-md text-white">
+        <div className="[@media(max-width:945px)]:block hidden bg-transparent backdrop-blur-md text-white">
           <ul className="flex flex-col items-center gap-4 py-4">
             <Link href="/" className="cursor-pointer">Home</Link>
             <Link href="/about" className="cursor-pointer">About</Link>

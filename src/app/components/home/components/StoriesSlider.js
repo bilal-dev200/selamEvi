@@ -37,9 +37,16 @@ export default function StoriesSlider() {
 
   return (
     <section className="relative py-20">
+        <h2 className="text-4xl font-bold text-gray-900 text-center">
+          Stories of Hope and<span className="text-red-600"> Humanity</span>    
+        </h2>
+        <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
+          Discover how your generosity creates change through Qurbani efforts, food relief, education, and worldwide community programs.
+        </p>
+    
       {/* Background Image Behind Slider */}
-      <div className="absolute inset-0 top-24 w-[95%] mx-auto h-[400px] rounded-3xl overflow-hidden mt-12">
-        <img 
+      <div className="absolute inset-0 top-40 w-[95%] mx-auto h-[400px] rounded-3xl overflow-hidden mt-12">
+        <img
           src="/slider1.png"
           className="w-full h-full object-fill"
           alt="bg"
@@ -48,7 +55,7 @@ export default function StoriesSlider() {
 
       {/* Slider Section */}
       <div className="relative z-20 max-w-7xl mx-auto px-4">
-        
+
         {/* Custom Arrows (white bg + red icon) */}
         <div className="swiper-button-prev custom-arrow-left !left-3">
           <div className="bg-white p-3 rounded-full shadow-lg">
@@ -77,7 +84,7 @@ export default function StoriesSlider() {
         >
           {stories.map((story, index) => (
             <SwiperSlide key={story.id}>
-              
+
               <div className="relative rounded-3xl overflow-hidden shadow-xl w-full bg-black">
 
                 {isPlaying === index ? (

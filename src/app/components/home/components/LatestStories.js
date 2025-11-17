@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function LatestStories({
   title = "Latest News & Inspiring Stories",
-  subtitle = "Discover the latest updates and stories from our platform",
+  subtitle = "Explore updates, success stories, and the impact your support creates across communities.",
   showLoadMore = true, // optional button visibility
 }) {
   const { blogs, fetchBlogs, loading, error } = useBlogStore();

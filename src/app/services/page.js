@@ -6,7 +6,7 @@ import ServicesGrid from "../components/home/components/ServicesGrid";
 import ImpactSection from "../components/our-work/components/ImpactSection";
 import Together from "../components/our-work/components/Together";
 import LatestStories from "../components/home/components/LatestStories";
-import FAQSection from "../components/home/components/FAQSection";
+import FAQSectionService from "../components/our-work/FAQSectionServices";
 
 const page = () => {
   return (
@@ -18,7 +18,7 @@ const page = () => {
       <ImpactSection />
       <Together />
       <LatestStories showLoadMore={false} />
-      <FAQSection />
+      <FAQSectionService />
 
     </div>
   )

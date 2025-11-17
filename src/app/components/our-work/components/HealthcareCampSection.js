@@ -18,20 +18,18 @@ export default function HealthcareCampSection() {
           {/* Text Content */}
           <div className="relative z-10">
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              Child in a <br/> healthcare camp.
+             Children's Wellness Program
             </h2>
 
             <p className="text-[10px] leading-relaxed mb-6 opacity-90">
-              Eight-year-old Amal’s life changed overnight when a sudden illness left her
-              fighting for survival. Her parents, already struggling to make ends meet, had no
-              resources for hospital treatment or costly medicines. Each passing day
-              weakened her condition, and hope seemed to fade.
+             Selam-Evi’s Children’s Wellness Program is a trusted Islamic charity initiative in Türkiye dedicated to improving children’s health, education, and overall well-being. Through medical care, nutritional aid, and learning support, we empower vulnerable children in Türkiye, Syria, and Gaza to build brighter futures. 
+
+
             </p>
 
             <p className="text-[10px] leading-relaxed mb-8 opacity-90">
-              But when Safan-Evi’s mobile healthcare unit reached her village, everything
-              shifted. Amal received immediate medical attention, vital medicines,
-              and renewed hope.
+            Donate online for Zakat or Sadqah to support child welfare and humanitarian relief programs.
+
             </p>
 
             <button className="border border-white text-white px-6 py-2  hover:bg-white hover:text-red-700 transition  rounded-bl-[15px]">

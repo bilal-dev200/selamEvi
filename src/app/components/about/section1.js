@@ -7,13 +7,11 @@ const Section1 = () => {
         {/* Left Column */}
         <div className="w-full md:w-1/2 text-center md:text-left">
           <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold text-gray-900    mb-6">
-            Our <span className="text-[#E7000B]"> Mission & Vision</span>
+            Mission &<span className="text-[#E7000B]">  Vision</span>
           </h2>
 
           <p className="text-gray-700 mb-6 text-sm sm:text-base leading-relaxed">
-            With the help of dedicated volunteers, partners, and donors,
-            Selam-Evi continues to build sustainable solutions that create
-            lasting impact.
+            To create a compassionate and self-reliant society where every individual has access to healthcare, education, and the opportunity to live with dignity, regardless of circumstance.
           </p>
 
           <div className="flex justify-center md:justify-start space-x-3 sm:space-x-4 mb-6">
@@ -26,12 +24,7 @@ const Section1 = () => {
           </div>
 
           <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
-            Selam-Evi is a humanitarian organization committed to uplifting
-            communities affected by poverty, conflict, and natural disasters. We
-            provide vital healthcare support, educational assistance, women
-            empowerment programs, and relief aid to widows, orphans, and
-            vulnerable families. Our work extends across Syria, Gaza, Turkey,
-            and beyond — bringing hope and dignity where it’s needed most.
+           Selam-Evi strives to serve humanity through impactful initiatives in healthcare, education, and empowerment. By providing hospital equipment, mobile medical care, educational support, women empowerment, widow and orphan assistance, Qurbani programs in Syria and Gaza, and Turkey–Syria earthquake relief efforts, Selam-Evi aims to bring hope, stability, and long-term change to communities in need.
           </p>
 
           <p className="text-gray-700 text-sm sm:text-base leading-relaxed">

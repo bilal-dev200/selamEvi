@@ -40,6 +40,7 @@ export default function ServiceDetailPage() {
         Loading service...
       </div>
     );
+
   if (!service)
     return (
       <div className="h-screen flex justify-center items-center text-xl text-red-600">
@@ -48,7 +49,7 @@ export default function ServiceDetailPage() {
     );
 
   return (
-    <div className="bg-white font-[Rubik,sans-serif]">
+    <div className="bg-white font-[Rubik,sans-serif] space-y-40">
       <Hero />
 
       {/* Dynamic Sections */}
@@ -58,38 +59,48 @@ export default function ServiceDetailPage() {
             detail?.images?.[0]?.image_path &&
             `${baseUrl}${detail.images[0].image_path}`;
 
-          const isEventsSection = detail.title?.toLowerCase().includes("events & campaigns");
-          const isSupportSection = detail.title?.toLowerCase().includes("support learning");
-          const isTogetherSection =
-            detail.title?.toLowerCase().includes("together") ||
-            detail.title?.toLowerCase().includes("difference");
-          const isChildJourneySection =
-            detail.title?.toLowerCase().includes("child’s journey") ||
-            detail.title?.toLowerCase().includes("childs journey");
+          const title = detail.title?.toLowerCase() || "";
 
-          // ===== Events & Campaigns Section =====
+          const isEventsSection = title.includes("events & campaigns");
+          const isSupportSection = title.includes("support learning");
+          const isTogetherSection =
+            title.includes("together") || title.includes("difference");
+          const isChildJourneySection =
+            title.includes("child’s journey") ||
+            title.includes("childs journey");
+
+          // ================================
+          // 1️⃣ Events & Campaigns Section
+          // ================================
           if (isEventsSection) {
             return (
-              <section key={detail.id || index} className="py-20 px-6 md:px-16 bg-white">
+              <section key={index} className="py-20 px-6 md:px-16 bg-white">
                 <div className="flex flex-col md:flex-row items-center gap-10">
                   <div className="w-full md:w-1/2">
-                    <h2 className="text-5xl font-bold mb-6 leading-snug text-black tracking-wide">
+                    <h2 className="text-5xl font-bold mb-6 text-black leading-snug">
                       {detail.title}
                     </h2>
+
                     {detail.description && (
                       <div
-                        className="text-gray-700 text-base leading-relaxed mb-6"
+                        className="text-gray-700 leading-relaxed mb-6"
                         dangerouslySetInnerHTML={{ __html: detail.description }}
                       />
                     )}
-                    {Array.isArray(detail.bullets) && detail.bullets.length > 0 && (
+
+                    {Array.isArray(detail.bullets) && (
                       <ul className="space-y-3">
-                        {detail.bullets.map(b => (
-                          <li key={b.id} className="flex items-start gap-3 text-base">
+                        {detail.bullets.map((b) => (
+                          <li key={b.id} className="flex gap-3 text-base">
                             {b.icon ? (
-                              <img src={`${baseUrl}${b.icon}`} alt="icon" className="w-6 h-6 mt-1" />
+                              <img
+                                src={`${baseUrl}${b.icon}`}
+                                className="w-6 h-6 object-contain mt-1"
+                              />
                             ) : (
-                              <span className="text-red-600 font-bold text-lg mt-1">•</span>
+                              <span className="text-red-600 text-lg font-bold">
+                                •
+                              </span>
                             )}
                             <span>{b.text}</span>
                           </li>
@@ -97,12 +108,12 @@ export default function ServiceDetailPage() {
                       </ul>
                     )}
                   </div>
+
                   {imageUrl && (
-                    <div className="w-full md:w-1/2 flex justify-center border-none">
+                    <div className="w-full md:w-1/2">
                       <img
                         src={imageUrl}
-                        alt={detail.title}
-                        className="w-full h-full object-cover rounded-2xl "
+                        className="w-full h-full object-cover rounded-2xl"
                       />
                     </div>
                   )}
@@ -111,110 +122,169 @@ export default function ServiceDetailPage() {
             );
           }
 
-          // ===== How We Support Learning Section =====
+          // ================================
+          // 2️⃣ Support Learning Section
+          // ================================
           if (isSupportSection) {
-            return (
-              <section key={detail.id || index} className="flex flex-col md:flex-row w-full py-20">
-                {imageUrl && (
-                  <div className="w-full md:w-1/2">
+  return (
+    <section
+      key={index}
+      className="bg-white flex items-center justify-center px-4 lg:px-12 py-20 w-full"
+    >
+      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 items-center relative">
+
+        {/* LEFT IMAGE (BIGGER HEIGHT LIKE YOUR REFERENCE) */}
+        {imageUrl && (
+          <div className="relative w-full h-[480px] lg:h-[600px] rounded-3xl overflow-hidden ml-0">
+            <img
+              src={imageUrl}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover rounded-3xl"
+            />
+
+            {/* DARK OVERLAY SAME LIKE HEALTHCARE CAMP */}
+            <div className="absolute inset-0 bg-black/20"></div>
+          </div>
+        )}
+
+        {/* RIGHT RED CONTENT AREA */}
+        <div className="w-full bg-[#b42e2a] text-white px-10 py-14 rounded-3xl lg:rounded-r-3xl lg:-ml-6 mt-10 lg:mt-0">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+            {detail.title}
+          </h2>
+
+          {detail.description && (
+            <div
+              className="text-white/90 text-sm leading-relaxed mb-6"
+              dangerouslySetInnerHTML={{ __html: detail.description }}
+            />
+          )}
+
+          {/* BULLETS */}
+          {Array.isArray(detail.bullets) && (
+            <ul className="space-y-3 mt-4">
+              {detail.bullets.map((b) => (
+                <li key={b.id} className="flex gap-3">
+                  {b.icon ? (
                     <img
-                      src={imageUrl}
-                      alt={detail.title}
-                      className="w-full h-full object-cover rounded-l-2xl md:rounded-l-3xl rounded-r-none ml-12"
+                      src={`${baseUrl}${b.icon}`}
+                      className="w-6 h-6 mt-1"
                     />
-                  </div>
-                )}
-                <div className="w-full md:w-1/2 bg-red-700 text-white flex flex-col justify-center px-10 py-12 rounded-r-2xl md:rounded-r-3xl">
-                  <h2 className="text-4xl font-bold mb-6 leading-snug">{detail.title}</h2>
-                  {detail.description && (
-                    <div
-                      className="text-white/90 mb-6 text-base leading-relaxed"
-                      dangerouslySetInnerHTML={{ __html: detail.description }}
-                    />
+                  ) : (
+                    <span className="text-white font-bold text-lg">•</span>
                   )}
-                  {Array.isArray(detail.bullets) && detail.bullets.length > 0 && (
-                    <ul className="space-y-3">
-                      {detail.bullets.map(b => (
-                        <li key={b.id} className="flex items-start gap-3 text-base">
-                          {b.icon ? (
-                            <img src={`${baseUrl}${b.icon}`} alt="icon" className="w-6 h-6 object-contain mt-1" />
-                          ) : (
-                            <span className="text-white font-bold text-lg mt-1">•</span>
-                          )}
-                          <span>{b.text}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </section>
-            );
-          }
+                  <span className="text-sm">{b.text}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
 
-          // ===== Together We Make a Difference Section =====
-          if (isTogetherSection) {
-            return (
-              <section key={detail.id || index} className=" text-white pt-20 px-6 md:px-16" style={{
-                backgroundImage: "url('/slider1.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}>
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                  <h2 className="text-4xl md:text-5xl font-bold mb-4">{detail.title}</h2>
-                  {detail.description && (
-                    <div
-                      className="text-white/90 text-base md:text-lg leading-relaxed"
-                      dangerouslySetInnerHTML={{ __html: detail.description }}
-                    />
-                  )}
-                </div>
-                {Array.isArray(detail.bullets) && detail.bullets.length > 0 && (
-                  <div className="flex flex-wrap justify-center gap-8 ">
-                    {detail.bullets.map(b => (
-                      <div
-                        key={b.id}
-                        className="bg-white text-gray-900 rounded-tr-[60px] p-8 pb-0 shadow-lg flex-1 min-w-[220px] max-w-[250px] text-center hover:scale-105 transition-transform"
-                      >
-                        {b.icon && (
-                          <img
-                            src={`${baseUrl}${b.icon}`}
-                            alt="icon"
-                            className="mx-auto mb-4 w-12 h-12 object-contain"
-                          />
-                        )}
-                        <h3 className="text-2xl font-bold text-red-600 mb-2">{b.title || "—"}</h3>
-                        <p className="text-gray-700 font-medium text-base">{b.text}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </section>
-            );
-          }
 
-          // ===== A Child’s Journey to Learning Section =====
+          // ================================
+          // 3️⃣ Together We Make a Difference (FIXED)
+          // ================================
+if (isTogetherSection) {
+  return (
+    <section
+      key={index}
+      className="relative text-white px-4 pt-40 pb-40 bg-cover bg-center rounded-tr-[80px]"
+      style={{
+        backgroundImage: "url('/difference.png')", 
+        height:"550px"// same as ImpactPage
+      }}
+    >
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-black/10 rounded-tr-[80px]"></div>
+
+      {/* TITLE + DESCRIPTION */}
+      <div className="relative z-10 max-w-4xl mx-auto text-center mb-14">
+        <h2 className="text-3xl md:text-4xl font-bold mb-3 tracking-widest">
+          {detail.title}
+        </h2>
+
+        {detail.description && (
+          <div
+            className="text-white/85 text-sm md:text-base max-w-2xl mx-auto leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: detail.description }}
+          />
+        )}
+      </div>
+
+      {/* CARDS — same layout as ImpactPage */}
+      <div
+        className="
+          relative bottom-0 left-1/2 -translate-x-1/2
+          w-full max-w-6xl px-4 pb-10
+          flex flex-wrap justify-center gap-4 z-20 mt-28
+        "
+      >
+        {detail.bullets?.map((b, index) => (
+          <div
+            key={b.id || index}
+            className="
+              bg-white shadow-lg rounded-tr-3xl
+              p-4 text-center
+              min-w-[200px] max-w-[250px]
+              transition-transform duration-300
+              hover:-translate-y-3 hover:shadow-2xl
+            "
+          >
+            {b.icon && (
+              <img
+                src={`${baseUrl}${b.icon}`}
+                className="w-12 h-12 mx-auto mb-2 object-contain"
+                alt=""
+              />
+            )}
+
+            <h3 className="text-lg font-bold text-gray-900">{b.title}</h3>
+
+            <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+              {b.text}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+
+          // ================================
+          // 4️⃣ Child’s Journey Section
+          // ================================
           if (isChildJourneySection) {
             return (
-              <section key={detail.id || index} className="py-20 px-6 md:px-16 bg-white">
-                <div className="flex flex-col md:flex-row items-center gap-10">
+              <section key={index} className="py-20 px-6 md:px-16 bg-white">
+                <div className="flex flex-col md:flex-row items-center gap-12">
                   <div className="w-full md:w-1/2">
-                    <h2 className="text-5xl font-bold mb-6 leading-snug  text-black tracking-wide mt-5">
-                      {detail.title}
-                    </h2>
+                    <h2 className="text-5xl font-bold mb-6">{detail.title}</h2>
+
                     {detail.description && (
                       <div
-                        className="text-gray-700 text-base leading-relaxed mb-6"
+                        className="text-gray-700 mb-6"
                         dangerouslySetInnerHTML={{ __html: detail.description }}
                       />
                     )}
-                    {Array.isArray(detail.bullets) && detail.bullets.length > 0 && (
+
+                    {Array.isArray(detail.bullets) && (
                       <ul className="space-y-3">
-                        {detail.bullets.map(b => (
-                          <li key={b.id} className="flex items-start gap-3 text-base">
+                        {detail.bullets.map((b) => (
+                          <li key={b.id} className="flex gap-3">
                             {b.icon ? (
-                              <img src={`${baseUrl}${b.icon}`} alt="icon" className="w-6 h-6 mt-1" />
+                              <img
+                                src={`${baseUrl}${b.icon}`}
+                                className="w-6 h-6 mt-1"
+                              />
                             ) : (
-                              <span className="text-red-600 font-bold text-lg mt-1">•</span>
+                              <span className="text-red-600 text-lg font-bold">
+                                •
+                              </span>
                             )}
                             <span>{b.text}</span>
                           </li>
@@ -222,11 +292,11 @@ export default function ServiceDetailPage() {
                       </ul>
                     )}
                   </div>
+
                   {imageUrl && (
-                    <div className="w-full md:w-1/2 flex justify-center">
+                    <div className="w-full md:w-1/2">
                       <img
                         src={imageUrl}
-                        alt={detail.title}
                         className="w-full h-full object-cover rounded-2xl shadow-lg"
                       />
                     </div>
@@ -236,13 +306,15 @@ export default function ServiceDetailPage() {
             );
           }
 
-          // ===== Default Normal Section =====
+          // ================================
+          // 5️⃣ Default Section
+          // ================================
           return (
-            <section key={detail.id || index} className="py-20 px-6 md:px-16 bg-white">
+            <section key={index} className="py-20 px-6 md:px-16 bg-white">
               <h2 className="text-3xl font-bold mb-4">{detail.title}</h2>
               {detail.description && (
                 <div
-                  className="text-gray-700 text-base leading-relaxed"
+                  className="text-gray-700"
                   dangerouslySetInnerHTML={{ __html: detail.description }}
                 />
               )}
@@ -250,10 +322,11 @@ export default function ServiceDetailPage() {
           );
         })
       ) : (
-        <div className="text-center text-gray-500 py-20">No service details available</div>
+        <div className="text-center text-gray-500 py-20">
+          No service details available
+        </div>
       )}
 
-      {/* Footer */}
       <Together />
       <LatestStories />
       <FAQSection />

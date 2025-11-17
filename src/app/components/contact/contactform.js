@@ -68,12 +68,10 @@ export default function Contactform() {
         {/* Heading */}
         <div className="text-left pt-16 pb-10 px-6 lg:px-10 max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
-            Get in Touch With Us Today
+           Get in Touch With Us Today
           </h2>
           <p className="text-gray-600 mt-3 text-sm sm:text-base max-w-2xl">
-            We are here to answer your questions and provide the support you
-            need. Reach out to us anytime, and let’s build something great
-            together.
+            We are here to answer your questions and provide the support you need. Reach out to us anytime, and let’s build something great together.
           </p>
         </div>
 

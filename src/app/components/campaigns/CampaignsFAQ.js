@@ -4,28 +4,33 @@ import { Plus, X } from "lucide-react";
 
 const faqs = [
   {
-    question: "How are my donations used?",
+    question: "What types of events and campaigns does Selam Evi organize?",
     answer:
-      "Your donations directly fund our programs such as healthcare support, orphan and widow assistance, education, and emergency relief. We ensure transparency and accountability in every project.",
+      "Selam Evi hosts a variety of initiatives, including healthcare camps, Qurbani drives, food aid distributions, educational support programs, and women empowerment workshops, all designed to uplift vulnerable communities.",
   },
   {
-    question: "Can I donate to a specific cause?",
+    question: "How can I participate in Selam Evi events or campaigns?",
     answer:
-      "Yes! You can choose to donate to specific causes such as education, healthcare, or emergency relief when making your contribution.",
+      " You can get involved by volunteering, donating, or sponsoring a campaign. Visit our official campaign page to register or learn about upcoming events in your region.",
   },
   {
-    question: "Do you provide updates on ongoing projects?",
+    question: "How does Selam Evi ensure that campaign donations reach those in need?",
     answer:
-      "Absolutely! We keep our donors informed with regular updates, reports, and impact stories so you can see the difference your contribution makes.",
+      " Every campaign is monitored, audited, and verified by Selam Evi’s field teams and local partners. We ensure your contributions are used transparently and effectively to serve the intended communities.",
   },
   {
-    question: "Is my donation tax-deductible?",
+    question: "Can I dedicate my donation to a specific campaign or event?",
     answer:
-      "Yes, donations are tax-deductible to the extent allowed by law. You’ll receive a receipt for your records after donating.",
+      " Yes, you can choose to support a specific initiative such as Healthcare Support, Orphan Care, or Disaster Relief when making your donation. Each campaign page provides this option",
+  },
+   {
+    question: "How can I stay updated on Selam Evi’s events and campaign results?",
+    answer:
+      " You can follow Selam Evi on social media, subscribe to our newsletter, or visit our Impact page to view stories, reports, and updates on recent campaigns and their outcomes.",
   },
 ];
 
-export default function Faq() {
+export default function CampaignsFAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   const toggle = (index) => {

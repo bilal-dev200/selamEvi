@@ -6,7 +6,7 @@ import FAQSection from '../components/home/components/FAQSection'
 
 const Contact = () => {
     return (
-        <div className='bg-white text-black'>
+        <div className='bg-white text-black  space-y-40'>
             <Hero />
             <Contactform />
             <Section2 />

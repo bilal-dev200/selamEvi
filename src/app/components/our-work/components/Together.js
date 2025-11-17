@@ -19,14 +19,14 @@ const Together = () => {
       {/* Content */}
       <div className="relative flex flex-col items-center justify-center h-full text-center px-6 md:px-12">
         <h1 className="text-white text-3xl md:text-4xl font-semibold mb-2">
-          Together, We Can Do More
+          Be the Light That Guides Hope
         </h1>
         <p className="text-white text-xs md:text-sm mb-6 max-w-xl">
-          Join Selam-Evi in bringing hope, care, and change to those who need it most.
+          Your support helps deliver healthcare, education, and hope through trusted Islamic charity services in Türkiye.
         </p>
         <button
           onClick={() => setIsModalVisible(true)}
-className="border border-white text-white px-6 py-2 cursor-pointer rounded-bl-[15px]" >
+          className="border border-white text-white px-6 py-2 cursor-pointer rounded-bl-[15px]" >
           Donate Now
         </button>
       </div>

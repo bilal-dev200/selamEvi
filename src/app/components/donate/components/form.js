@@ -56,11 +56,11 @@ export default function ZakatCalculatorSection() {
       {/* Header */}
       <div className="text-center mb-12">
         <h2 className="text-2xl md:text-3xl font-bold text-black">
-          Don’t Guess, Use Our Zakat Calculator for Accurate Giving
+         Online Zakat Calculator
+
         </h2>
         <p className="text-[#000000] mt-2 text-xs ">
-          We’ve answered some of the most common questions to make your
-          experience smooth and stress-free.
+          Easily calculate your Zakat on gold, silver, cash, and savings with our online calculator, designed to follow Islamic Zakat guidelines accurately.
         </p>
       </div>
 
@@ -70,7 +70,13 @@ export default function ZakatCalculatorSection() {
         <div className="bg-[#FFFFFF] rounded-2xl shadow p-6 space-y-4">
           {Array(6)
             .fill(
-              "Zakat is one of the five pillars of Islam and a compulsory act of worship for every eligible Muslim. It is an annual obligation (Farz) to give. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+              "Easily calculate your Zakat on gold, silver, cash, savings, and investments. Our online calculator follows authentic Islamic guidelines to ensure accurate and fair results every time.",
+              "Our Zakat calculator is designed according to Shariah rules, ensuring your calculation meets Islamic obligations for wealth purification and helping you fulfill your duty with confidence.",
+              "From gold and silver to bank balances, business assets, and savings, the calculator covers every eligible category, helping you find your total payable Zakat with ease.",
+              "No complex steps or confusion. Enter your assets, and the calculator instantly determines your due Zakat amount, saving time and ensuring complete accuracy.",
+              "The calculator uses the latest Nisab rates based on gold and silver market values, helping you stay current and calculate your Zakat according to today’s standards.",
+              "Know exactly what you owe before donating. With accurate calculation and transparent results, you can fulfill your Zakat confidently and contribute where it matters most.",
+
             )
             .map((text, idx) => (
               <div key={idx} className="flex items-start gap-3">

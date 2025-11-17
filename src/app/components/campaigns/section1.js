@@ -15,15 +15,17 @@ const Section1 = () => {
       {/* Right Text Section */}
       <div className="w-full md:w-1/2 md:pl-10 text-center md:text-left">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 leading-snug">
-          Why our
+         Why Selam Evi 
           <span className="text-red-600"> Events & <br /> Campaigns </span>
           Matter
         </h2>
         <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4">
-          Our events are more than gatherings — they unite people, raise vital awareness, and inspire generosity for meaningful causes. Each campaign transforms that support into direct impact, providing essential healthcare, quality education, and urgent relief for vulnerable communities. Together, they bridge hope and action, ensuring lasting change where it’s needed most.
+          Selam Evi’s events and campaigns play a vital role in delivering hope and empowerment to vulnerable communities. Through initiatives in healthcare, education, food aid, and women empowerment, we ensure that every contribution directly impacts lives in need across Turkey and beyond.
+
         </p>
         <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-          Our campaigns take that inspiration a step further by delivering direct aid where it matters most. From providing healthcare and education to emergency relief and rebuilding lives, each campaign translates awareness into action. Together, they ensure that every contribution makes a real difference, turning hope into lasting impact.
+          Each campaign reflects our mission of compassion, dignity, and sustainable change. From Qurbani distributions to child healthcare camps and disaster relief efforts, Selam Evi connects generous donors with meaningful causes, creating a lasting ripple of goodness that uplifts families and strengthens communities.
+
         </p>
       </div>
     </div>

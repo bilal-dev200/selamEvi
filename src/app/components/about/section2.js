@@ -25,26 +25,19 @@ const Section2 = () => {
                        [@media(min-width:1000px)]:left-[40%] [@media(min-width:1000px)]:transform 
                        [@media(min-width:1000px)]:-translate-y-1/2"
             style={{
-          backgroundColor:"#D21C17B0"
-        }}
+              backgroundColor: "#D21C17B0"
+            }}
           >
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 leading-snug">
-              How Selam-Evi Began and <br className="hidden sm:block" /> Where
-              We Are Today
+              From a Seed of Compassion <br className="hidden sm:block" /> to a Beacon of Hope
             </h2>
 
             <p className="text-sm lg:text-base mb-3 leading-relaxed opacity-95">
-              Selam-Evi was founded with a simple yet powerful belief: every
-              person deserves access to healthcare, education, and dignity.
+              Selam-Evi began with a simple yet powerful vision, ensuring everyone has access to healthcare, education, and dignity. What started as a small act of compassion has grown into a nationwide movement of hope.
             </p>
 
             <p className="text-sm lg:text-base leading-relaxed opacity-95">
-              With the help of dedicated volunteers, partners, and donors,
-              Selam-Evi continues. At the heart of our work are values that
-              guide every step we take — compassion, dignity, and empowerment.
-              We believe in not only providing immediate relief but also
-              creating opportunities for long-term change, helping families
-              rebuild their lives with strength and hope.
+              With the support of our volunteers, partners, and donors, we create sustainable solutions that uplift lives. Guided by compassion, dignity, and empowerment, Selam-Evi strives to bring lasting change and help families rebuild their futures with strength and hope.
             </p>
           </div>
         </div>

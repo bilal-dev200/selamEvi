@@ -9,7 +9,7 @@ import LatestStories from '../components/home/components/LatestStories';
 
 const page = () => {
   return (
-    <div className='bg-white'>
+    <div className='bg-white  space-y-40'>
       <Banner />
       <From />
       <HumanitarianEfforts initialCount={8} showLoadMore={true} />

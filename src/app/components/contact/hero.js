@@ -14,10 +14,11 @@ const Hero = () => {
       {/* Content */}
       <div className="relative w-full h-screen flex flex-col items-center justify-center px-4 pt-[100px]">
         <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white text-center">
-          Contact
+          Contact Us
         </h1>
         <p className="mt-4 text-lg md:text-xl font-light text-gray-200 tracking-wide text-center max-w-2xl">
-          Selam-Evi is dedicated to healthcare, education, and women empowerment.
+          Selam-Evi is dedicated to healthcare, education, and women's empowerment.
+
         </p>
 
         {/* Red Button */}

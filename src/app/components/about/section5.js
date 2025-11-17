@@ -17,34 +17,39 @@ const Section5 = () => {
         {/* Right: Text Content */}
         <div className="text-center lg:text-left">
           <h2 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-gray-900 leading-tight mb-6">
-            How We Create <span className="text-[#E7000B]">Impact</span>
+            Building a Better <span className="text-[#E7000B]">Tomorrow</span>
           </h2>
 
           <p className="text-gray-700 text-base sm:text-lg mb-6 leading-relaxed">
-            Through a wide range of programs, Selam-Evi is changing lives every day.
+            Selam-Evi brings healing, education, and hope to communities in need every day.
           </p>
 
           <ul className="list-disc list-inside space-y-3 text-gray-900 text-sm sm:text-base">
             <li className="[&::marker]:text-[#E7000B]">
-              Equipping hospitals and providing medical machinery.
+              Equipping hospitals with vital tools and medical aid.
             </li>
             <li className="[&::marker]:text-[#E7000B]">
-              Delivering mobile healthcare services to underserved areas.
+              Delivering mobile care to remote and needy areas.
+
             </li>
             <li className="[&::marker]:text-[#E7000B]">
-              Supporting schools and educational initiatives.
+              Supporting schools to build brighter, educated futures.
             </li>
             <li className="[&::marker]:text-[#E7000B]">
+
               Empowering women through skills and opportunities.
             </li>
             <li className="[&::marker]:text-[#E7000B]">
-              Caring for widows and orphans with dignity.
+
+
+              Caring for widows and orphans with love and dignity.
+
             </li>
             <li className="[&::marker]:text-[#E7000B]">
-              Organizing Qurbani campaigns in Syria & Gaza.
+              Organizing Qurbani drives in Syria, Gaza, and beyond.
             </li>
             <li className="[&::marker]:text-[#E7000B]">
-              Providing emergency relief during disasters such as the Turkey–Syria earthquake.
+              Providing quick relief during quakes and disasters.
             </li>
           </ul>
         </div>
