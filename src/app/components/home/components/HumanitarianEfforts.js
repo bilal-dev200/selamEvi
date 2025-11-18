@@ -8,6 +8,8 @@ export default function HumanitarianEfforts({
   initialCount = 8,
   showLoadMore = true,
   loadMoreStep = 8,
+  showSlider = true,      // new prop
+  showRaisedGoal = true,  // new prop
 }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProgram, setSelectedProgram] = useState(null);
@@ -21,18 +23,17 @@ export default function HumanitarianEfforts({
     fetchPrograms();
   }, [fetchPrograms]);
 
-  // Compute displayed programs with repeat if needed
+  // Compute displayed programs
   const displayedPrograms = useMemo(() => {
     if (programs.length === 0) return [];
     const fullList = [];
-    while (fullList.length < visibleCount && fullList.length < 20) { // max 20
+    while (fullList.length < visibleCount && fullList.length < 20) {
       const sliceEnd = Math.min(programs.length, visibleCount - fullList.length);
       fullList.push(...programs.slice(0, sliceEnd));
     }
     return fullList;
   }, [programs, visibleCount]);
 
-  // Load More button condition
   const canLoadMore = displayedPrograms.length < 20;
 
   return (
@@ -60,32 +61,33 @@ export default function HumanitarianEfforts({
               className="bg-white rounded-2xl shadow-md overflow-hidden transform hover:-translate-y-2 transition-all duration-300 cursor-pointer"
               onClick={() => router.push("/campaigns")}
             >
-              <img
-                src={item.img}
-                alt={item.title}
-                className="h-48 w-full object-cover"
-              />
+              <img src={item.img} alt={item.title} className="h-48 w-full object-cover" />
 
               <div className="p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-
                 <p className="text-gray-600 text-[12px] mb-4">{item.description}</p>
 
-                <div className="flex justify-between text-sm font-semibold text-black mb-2">
-                  <span>Raised: ${item.raised}</span>
-                  <span>Goal: ${item.goal}</span>
-                </div>
+                {/* Raised / Goal */}
+                {showRaisedGoal && (
+                  <div className="flex justify-between text-sm font-semibold text-black mb-2">
+                    <span>Raised: ${item.raised}</span>
+                    <span>Goal: ${item.goal}</span>
+                  </div>
+                )}
 
-                <input
-                  type="range"
-                  min={0}
-                  max={item.goal || 50}
-                  value={item.raised}
-                  readOnly
-                  className="w-full h-2 bg-gray-200 rounded-full accent-red-600 cursor-pointer mb-4 transition-all duration-700"
-                />
+                {/* Slider */}
+                {showSlider && (
+                  <input
+                    type="range"
+                    min={0}
+                    max={item.goal || 50}
+                    value={item.raised}
+                    readOnly
+                    className="w-full h-2 bg-gray-200 rounded-full accent-red-600 cursor-pointer mb-4 transition-all duration-700"
+                  />
+                )}
 
-                {/* Donate Now → prefill modal */}
+                {/* Donate Now */}
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -106,9 +108,7 @@ export default function HumanitarianEfforts({
       {showLoadMore && canLoadMore && (
         <div className="flex justify-center mt-10">
           <button
-            onClick={() =>
-              setVisibleCount((prev) => Math.min(prev + loadMoreStep, 20))
-            }
+            onClick={() => setVisibleCount((prev) => Math.min(prev + loadMoreStep, 20))}
             className="px-6 py-2 bg-red-600 text-white font-semibold hover:bg-red-700 transition"
           >
             Load More

@@ -40,7 +40,7 @@ export default function StoriesSlider() {
         <h2 className="text-4xl font-bold text-gray-900 text-center">
           Stories of Hope and<span className="text-red-600"> Humanity</span>    
         </h2>
-        <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
+        <p className="text-gray-600 mt-3 max-w-2xl mx-auto text-center pb-12">
           Discover how your generosity creates change through Qurbani efforts, food relief, education, and worldwide community programs.
         </p>
     

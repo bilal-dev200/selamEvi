@@ -69,7 +69,7 @@ export const useServiceStore = create(
           console.error("Error fetching services:", error);
         } finally {
           set({ loading: false });
-          console.log("Fetch complete ✅");
+          console.log("Fetch complete ✅" , );
         }
       },
     }),

@@ -285,12 +285,13 @@ export default function DonationFormModal({
 
               {/* Personal Info */}
               <div className="space-y-3">
+                <h3 className="text-gray-800 font-bold text-xl">Your Details</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {["name", "email", "address"].map((field) => (
                     <div key={field} className="flex flex-col">
                       <label
                         htmlFor={field}
-                        className="text-gray-700 font-medium mb-1"
+                        className="text-gray-800 font-bold mb-1"
                       >
                         {field.charAt(0).toUpperCase() + field.slice(1)}
                       </label>
@@ -309,7 +310,7 @@ export default function DonationFormModal({
                 </div>
 
                 <div className="mt-2 flex flex-col sm:w-1/2">
-                  <label htmlFor="phone" className="text-gray-700 font-medium mb-1">
+                  <label htmlFor="phone" className="text-gray-800  font-bold mb-1">
                     Telephone
                   </label>
                   <input

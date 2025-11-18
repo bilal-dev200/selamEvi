@@ -44,7 +44,7 @@ export default function HomePage() {
       >
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight text-red-500 mt-[200px]">
+          <h1 className="text-4xl md:text-6xl  leading-tight text-red-500 mt-[200px]">
             Empowering <span className="text-white">Lives.</span>
             <br />
             <span className="text-white"> Healing Communities.</span>
@@ -55,7 +55,7 @@ export default function HomePage() {
           </p>
           <button
             onClick={() => setIsModalVisible(true)}
-            className="mt-6 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md font-semibold"
+            className="bg-red-500 hover:bg-red-700 text-white px-6 py-3 rounded-bl-2xl font-semibold transition mt-6"
           >
             Donate Now
           </button>
@@ -63,9 +63,9 @@ export default function HomePage() {
       </div>
 
       {/* Quick Donate Box */}
-<div className="relative -mt-16 md:-mt-15 z-20 flex justify-center px-3 sm:px-6 text-black">
-  <div className="w-full sm:w-[95%] md:w-[90%] lg:w-[85%] overflow-hidden rounded-lg border border-red-600 bg-white p-6">
-    <div className="bg-[#f3f6f9] p-2 flex flex-wrap gap-2 items-center justify-start w-auto">
+<div className="relative -mt-16 md:-mt-15 z-20 flex justify-center px-3 sm:px-6 text-black ">
+  <div className="w-full sm:w-[95%] md:w-[90%] lg:w-[85%] overflow-hidden rounded-lg border border-red-600 bg-[#edf3ff] p-6">
+    <div className="bg-[#EDF3FF] p-2 flex flex-wrap gap-2 items-center justify-start w-auto">
       {/* Service Dropdown */}
       <select
         value={selectedService}
@@ -74,7 +74,7 @@ export default function HomePage() {
           setSelectedProgram("");
         }}
         disabled={!!selectedProgram || loading}
-        className={`bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto ${
+        className={`bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full md:w-auto ${
           selectedProgram ? "opacity-50 cursor-not-allowed" : ""
         }`}
       >
@@ -94,7 +94,7 @@ export default function HomePage() {
           setSelectedService("");
         }}
         disabled={!!selectedService || loading}
-        className={`bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto ${
+        className={`bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full md:w-auto ${
           selectedService ? "opacity-50 cursor-not-allowed" : ""
         }`}
       >
@@ -110,7 +110,7 @@ export default function HomePage() {
       <select
         value={donationFrequency}
         onChange={(e) => setDonationFrequency(e.target.value)}
-        className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+        className="bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full md:w-auto"
       >
         <option value="">Single Payment</option>
         <option value="Monthly">Monthly</option>
@@ -123,14 +123,14 @@ export default function HomePage() {
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         placeholder="Enter your own amount"
-        className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+        className="bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full md:w-auto"
       />
 
       {/* Donation Type */}
       <select
         value={donationType}
         onChange={(e) => setDonationType(e.target.value)}
-        className="bg-[#f3f6f9] border border-gray-300 rounded-md p-2 w-full md:w-auto"
+        className="bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full md:w-auto"
       >
         <option value="">Sadaqah</option>
         <option value="Zakat">Zakat</option>

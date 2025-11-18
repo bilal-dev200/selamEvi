@@ -45,7 +45,7 @@ export default function CampaignsFAQ() {
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-snug">
             Got Questions?
             <br />
-            <span className="text-[#E7000B]">We’ve Got Answers!</span>
+          We’ve Got Answers!
           </h2>
           <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-md">
             Find answers to the most common questions about donating, supporting,
@@ -60,7 +60,7 @@ export default function CampaignsFAQ() {
               key={index}
               className={`rounded-lg p-5 transition-all duration-300 border ${
                 openIndex === index
-                  ? "bg-[#E7000B]/10 border-[#E7000B]/40 shadow-sm"
+                  ? " shadow-sm"
                   : "bg-gray-50 hover:bg-gray-100 border-gray-200"
               }`}
             >

@@ -43,7 +43,7 @@ export default function Navbar() {
           />
           <button
             onClick={() => setIsModalVisible(true)}
-            className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md font-semibold cursor-pointer"
+            className="bg-red-500  text-white px-6 py-3 rounded-bl-2xl font-semibold transition"
           >
             Donate Now
           </button>
@@ -82,7 +82,7 @@ export default function Navbar() {
                   setMenuOpen(false);
                   setIsModalVisible(true);
                 }}
-                className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md font-semibold cursor-pointer"
+                className="bg-red-500 hover:bg-red-700 text-white px-6 py-3 rounded-bl-2xl font-semibold transition"
               >
                 Donate Now
               </button>

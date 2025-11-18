@@ -16,9 +16,9 @@ const Campaigns = () => {
       <Hero />
       <Section1 />
       <HumanitarianEfforts initialCount={8} showLoadMore={true} />
-      <ImpactPage/>
-    <Section4 />
-      <HumanitarianEfforts initialCount={8} showLoadMore={false}  />
+      <ImpactPage />
+      <Section4 />
+      <HumanitarianEfforts initialCount={8} showLoadMore={false} showRaisedGoal={false} showSlider={false} />
       <Together />
       <LatestStories showLoadMore={false} />
       <CampaignsFAQ />
