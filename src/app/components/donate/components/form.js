@@ -67,24 +67,24 @@ export default function ZakatCalculatorSection() {
       {/* Content */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 text-black">
         {/* Left Side - Info */}
-        <div className="bg-[#FFFFFF] rounded-2xl shadow p-6 space-y-4">
-          {Array(6)
-            .fill(
-              "Easily calculate your Zakat on gold, silver, cash, savings, and investments. Our online calculator follows authentic Islamic guidelines to ensure accurate and fair results every time.",
-              "Our Zakat calculator is designed according to Shariah rules, ensuring your calculation meets Islamic obligations for wealth purification and helping you fulfill your duty with confidence.",
-              "From gold and silver to bank balances, business assets, and savings, the calculator covers every eligible category, helping you find your total payable Zakat with ease.",
-              "No complex steps or confusion. Enter your assets, and the calculator instantly determines your due Zakat amount, saving time and ensuring complete accuracy.",
-              "The calculator uses the latest Nisab rates based on gold and silver market values, helping you stay current and calculate your Zakat according to today’s standards.",
-              "Know exactly what you owe before donating. With accurate calculation and transparent results, you can fulfill your Zakat confidently and contribute where it matters most.",
+        <div className="bg-[#FFFFFF] rounded-2xl shadow p-6">
+  <ul className="space-y-4 list-none">
+    {[
+      "Easily calculate your Zakat on gold, silver, cash, savings, and investments. Our online calculator follows authentic Islamic guidelines to ensure accurate and fair results every time.",
+      "Our Zakat calculator is designed according to Shariah rules, ensuring your calculation meets Islamic obligations for wealth purification and helping you fulfill your duty with confidence.",
+      "From gold and silver to bank balances, business assets, and savings, the calculator covers every eligible category, helping you find your total payable Zakat with ease.",
+      "No complex steps or confusion. Enter your assets, and the calculator instantly determines your due Zakat amount, saving time and ensuring complete accuracy.",
+      "The calculator uses the latest Nisab rates based on gold and silver market values, helping you stay current and calculate your Zakat according to today’s standards.",
+      "Know exactly what you owe before donating. With accurate calculation and transparent results, you can fulfill your Zakat confidently and contribute where it matters most.",
+    ].map((text, idx) => (
+      <li key={idx} className="flex items-start gap-3">
+        <span className="mt-2 w-3 h-3 bg-red-600 rounded-full"></span>
+        <p className="text-sm text-gray-700 leading-relaxed">{text}</p>
+      </li>
+    ))}
+  </ul>
+</div>
 
-            )
-            .map((text, idx) => (
-              <div key={idx} className="flex items-start gap-3">
-                <span className="w-6 h-2 bg-red-600 rounded-full mt-2"></span>
-                <p className="text-sm text-gray-700 leading-relaxed">{text}</p>
-              </div>
-            ))}
-        </div>
 
         {/* Right Side - Calculator */}
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden ">
@@ -96,7 +96,7 @@ export default function ZakatCalculatorSection() {
             {/* Row 1 */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-black text-sm font-semibold block">
+                <label className="text-red-600 text-sm font-semibold block">
                   Gold and Silver
                 </label>
                 <p className="text-black text-xs mb-1">
@@ -112,7 +112,7 @@ export default function ZakatCalculatorSection() {
               </div>
 
               <div>
-                <label className="text-black text-sm font-semibold">
+                <label className="text-red-600 text-sm font-semibold">
                   Money
                 </label>
                 <p className="text-black text-xs mb-1">
@@ -159,7 +159,7 @@ export default function ZakatCalculatorSection() {
             {/* Row 3 */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-black text-sm font-semibold">
+                <label className="text-red-600 text-sm font-semibold">
                   Short Term Liabilities
                 </label>
                 <p className="text-black text-xs mb-1">Money You Owe</p>
@@ -172,7 +172,7 @@ export default function ZakatCalculatorSection() {
                 />
               </div>
               <div>
-                <label className="text-black text-sm font-semibold">
+                <label className="text-red-600 text-sm font-semibold">
                   Business Assets
                 </label>
                 <p className="text-black text-xs mb-1">Stock Value</p>

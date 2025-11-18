@@ -19,7 +19,7 @@ export default function Banner() {
   </h1>
 
   <p className="mt-3 sm:mt-4 text-[10px] sm:text-[12px] md:text-[12px] font-light text-gray-200 tracking-wide max-w-sm sm:max-w-md md:max-w-lg mx-auto md:mx25">
-  We believe every child deserves access to learning, no matter their circumstances.
+    Read our blog for inspiring stories of hope, education, and change from Selam-Evi.
 </p>
 
 </div>
