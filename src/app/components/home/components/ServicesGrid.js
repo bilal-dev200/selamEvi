@@ -104,6 +104,7 @@
 //   );
 // }
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import DonationFormModal from "../components/Form";
@@ -113,13 +114,13 @@ export default function ServicesGrid() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
 
-
   const router = useRouter();
 
-  // Store data
   const { services, loading, fetchServices } = useServiceStore();
 
-  // Fetch services
+  // 🔥 ENV BASE URL
+  const IMG_BASE = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
+
   useEffect(() => {
     fetchServices();
   }, [fetchServices]);
@@ -137,12 +138,11 @@ export default function ServicesGrid() {
   return (
     <section className="py-16 px-6 md:px-20 bg-white text-center">
       <h2 className="text-3xl text-black md:text-4xl font-bold mb-3">
-         <span className="text-red-600">Selam-Evi</span> Programs 
+        <span className="text-red-600">Selam-Evi</span> Programs
       </h2>
 
       <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
         Support lives through Zakat, Sadaqah, and welfare programs with Selam Evi.
-
       </p>
 
       {loading ? (
@@ -152,7 +152,8 @@ export default function ServicesGrid() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
-            const imageUrl = `http://salam-evi-nestjs.vapedepablo.com/uploads/${service.service_image_link}`;
+            // 🔥 NEW — image from ENV
+            const imageUrl = `${IMG_BASE}/${service.service_image_link}`;
 
             return (
               <div
@@ -160,18 +161,18 @@ export default function ServicesGrid() {
                 onClick={() => handleNavigate(service)}
                 className="relative h-[490px] rounded-md overflow-hidden group shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
               >
-                {/* 🔥 Image clean — no overlay */}
                 <img
                   src={imageUrl}
                   alt={service.title || "Service image"}
                   className="w-full h-full object-cover transition-transform duration-500"
                 />
 
-                {/* 🔥 No gradient overlay */}
                 <div className="absolute inset-0 flex flex-col justify-start items-start p-5 z-10 text-left">
-                  <h3 className="text-xl font-bold mb-2 text-black">{service.title}</h3>
+                  <h3 className="text-xl font-bold mb-2 text-black">
+                    {service.title}
+                  </h3>
 
-                  <p className="text-sm mb-4 max-w-[80%] text-black/80 line-clamp-3">
+                  <p className="text-sm mb-4 max-w-[80%] text-black/80 line-clamp-3 font-light">
                     {service.description || "No description available."}
                   </p>
 
@@ -192,9 +193,10 @@ export default function ServicesGrid() {
       )}
 
       <DonationFormModal
-       open={isModalVisible}
-       onCancel={() => setIsModalVisible(false)}
-         selectedService={selectedService} />
+        open={isModalVisible}
+        onCancel={() => setIsModalVisible(false)}
+        selectedService={selectedService}
+      />
     </section>
   );
 }

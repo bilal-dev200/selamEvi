@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ImpactSection() {
   return (
-    <section className="py-20 px-6 md:px-20 bg-white">
+    <section className="py-20 px-6 md:px-20 bg-white font-light">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
         {/* Left Column */}
         <div className="md:w-1/2">
@@ -19,7 +19,7 @@ export default function ImpactSection() {
             Our charity services in Türkiye extend to Syria, Gaza, and beyond, bringing hope to vulnerable families. Donate now, give your Zakat or Sadqah Donation, and help us create a lasting impact with compassion and care.
 
           </p>
-          <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-bl-2xl font-semibold transition">
+          <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-bl-2xl font-light transition">
             Learn More
           </button>
         </div>

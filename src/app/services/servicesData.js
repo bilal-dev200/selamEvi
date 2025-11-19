@@ -23,13 +23,14 @@ export const servicesData = {
     banner: "/educationbanner.png",
   },
 
-  "orphan-&-child-care": {
+  "orphan-child-care": {
     titleRed: "Widow and Orphan ",
     titleWhite: "Support Program",
     description:
       "Supporting widows and orphans with education, food, and care for a hopeful future",
     banner: "/educationbanner.png",
   },
+  
    "ijtema-e-qurbani": {
     titleRed: "Ijtema-e-Qurbani ",
     titleWhite: "Program",

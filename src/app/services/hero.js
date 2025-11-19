@@ -4,15 +4,16 @@ import { servicesData } from "./servicesData";
 
 export default function Hero({ slug }) {
   const service = servicesData[slug];
+  console.log("slug", slug);
 
   // fallback if slug doesn't exist
-  if (!service) {
-    return (
-      <div className="py-20 text-center text-red-500 font-bold">
-        Invalid service slug
-      </div>
-    );
-  }
+  // if (!service) {
+  //   return (
+  //     <div className="py-20 text-center text-red-500 font-bold">
+  //       Invalid service slug
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="relative">

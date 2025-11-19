@@ -3,14 +3,18 @@ import { create } from "zustand";
 export const useProgramStore = create((set, get) => ({
   programs: [],
   loading: false,
-  fetched: false, // ✅ to prevent re-fetch
+  fetched: false,
 
   fetchPrograms: async () => {
-    if (get().fetched) return; // 👈 prevent multiple API calls
+    if (get().fetched) return;
+
+    const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+    const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
 
     set({ loading: true });
+
     try {
-      const res = await fetch("https://salam-evi.plantinart.com/programs/list");
+      const res = await fetch(`${BASE_URL}/programs/list`);
       const result = await res.json();
 
       if (result?.status && Array.isArray(result.data)) {
@@ -22,7 +26,7 @@ export const useProgramStore = create((set, get) => ({
             description:
               item.description ||
               "This initiative brings hope and change to those in need.",
-            img: `http://salam-evi-nestjs.vapedepablo.com/uploads/${item.image}`,
+            img: `${IMG_URL}/${item.image}`,
             raised: Number(item.total_transaction_amount),
             goal: item.required_total_amount,
           }));

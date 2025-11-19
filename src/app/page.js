@@ -11,7 +11,7 @@ import FAQSection from "./components/home/components/FAQSection";
 
 function App() {
   return (
-    <div className="bg-white space-y-40">  {/* 👈 yaha spacing added */}
+    <div className="bg-white space-y-40 overflow-x-hidden">  {/* 👈 yaha spacing added */}
 
       <Home />
       <ImpactSection />

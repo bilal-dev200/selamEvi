@@ -49,7 +49,7 @@ export const useServiceStore = create(
       services: [],
       loading: false,
       selectedService: null,
-      isHydrated: false, // ✅ new
+      isHydrated: false, // ✅ hydration flag
 
       setSelectedService: (service) => {
         console.log("Selected service:", service);
@@ -57,27 +57,39 @@ export const useServiceStore = create(
       },
 
       fetchServices: async () => {
+        const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;       // API base
+        const IMG_URL = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;  // Image base
+
         set({ loading: true });
+
         try {
-          const res = await fetch("https://salam-evi.plantinart.com/services/list");
+          const res = await fetch(`${BASE_URL}/services/list`);
           if (!res.ok) throw new Error("Failed to fetch services");
+
           const data = await res.json();
-          const reversed = (data?.data || []).reverse();
-          console.log("Fetched services:", reversed);
+          const servicesData = Array.isArray(data?.data) ? data.data : [];
+
+          const reversed = servicesData.reverse().map((item) => ({
+            ...item,
+            image: item.service_image_link ? `${IMG_URL}/${item.service_image_link}` : undefined, // ❌ no fallback
+          }));
+
           set({ services: reversed });
+          console.log("Fetched services:", reversed);
+
         } catch (error) {
           console.error("Error fetching services:", error);
         } finally {
           set({ loading: false });
-          console.log("Fetch complete ✅" , );
+          console.log("Fetch complete ✅");
         }
       },
     }),
     {
       name: "service-store",
       onRehydrateStorage: () => (state) => {
-        // ✅ Called after hydration
         state?.set({ isHydrated: true });
+        console.log("Service store hydrated ✅");
       },
     }
   )

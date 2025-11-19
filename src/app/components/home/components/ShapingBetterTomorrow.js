@@ -17,7 +17,7 @@ export default function ShapingBetterTomorrow() {
 
         {/* Right: Text Content */}
         <div className="text-center lg:text-left">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-gray-900 leading-tight mb-6">
             25,000 Lives Transformed <span className="text-red-600">Through Your </span> Support
           </h2>
           <p className="text-gray-600 text-base sm:text-sm mb-5 leading-relaxed">

@@ -11,7 +11,7 @@ export default function Navbar() {
   const router = useRouter();
 
   return (
-    <nav className="absolute top-0 w-full text-white z-50">
+    <nav className="absolute top-0 w-full text-white z-50 font-light">
       
       {/* Main Navbar */}
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3 md:px-20">
@@ -28,7 +28,7 @@ export default function Navbar() {
         {/* Center Menu (Desktop: >945px) */}
         <ul className="hidden [@media(min-width:945px)]:flex items-center gap-8">
           <Link href="/" className="cursor-pointer">Home</Link>
-          <Link href="/about" className="cursor-pointer">About</Link>
+          <Link href="/about" className="cursor-pointer">About us</Link>
           <Link href="/services" className="cursor-pointer">Services</Link>
           <Link href="/campaigns" className="cursor-pointer">Campaigns</Link>
           <Link href="/contact" className="cursor-pointer">Contact us</Link>
@@ -43,7 +43,7 @@ export default function Navbar() {
           />
           <button
             onClick={() => setIsModalVisible(true)}
-            className="bg-red-500  text-white px-6 py-3 rounded-bl-2xl font-semibold transition"
+            className="bg-red-500  text-white px-6 py-3 rounded-bl-2xl  transition"
           >
             Donate Now
           </button>
@@ -63,7 +63,7 @@ export default function Navbar() {
         <div className="[@media(max-width:945px)]:block hidden bg-transparent backdrop-blur-md text-white">
           <ul className="flex flex-col items-center gap-4 py-4">
             <Link href="/" className="cursor-pointer">Home</Link>
-            <Link href="/about" className="cursor-pointer">About</Link>
+            <Link href="/about" className="cursor-pointer">About us</Link>
             <Link href="/services" className="cursor-pointer">Services</Link>
             <Link href="/campaigns" className="cursor-pointer">Campaigns</Link>
             <Link href="/contact" className="cursor-pointer">Contact us</Link>
@@ -82,7 +82,7 @@ export default function Navbar() {
                   setMenuOpen(false);
                   setIsModalVisible(true);
                 }}
-                className="bg-red-500 hover:bg-red-700 text-white px-6 py-3 rounded-bl-2xl font-semibold transition"
+                className="bg-red-500 hover:bg-red-700 text-white px-6 py-3 rounded-bl-2xl font-light transition"
               >
                 Donate Now
               </button>
