@@ -36,16 +36,16 @@ export default function StoriesSlider() {
   ];
 
   return (
-    <section className="relative py-20">
-        <h2 className="text-4xl font-bold text-gray-900 text-center">
+    <section className="relative py-20 ">
+        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 text-center">
           Stories of Hope and<span className="text-red-600"> Humanity</span>    
         </h2>
-        <p className="text-gray-600 mt-3 max-w-2xl mx-auto text-center pb-12">
+        <p className="text-gray-600 mt-3 font-nunito max-w-2xl mx-auto text-center pb-12">
           Discover how your generosity creates change through Qurbani efforts, food relief, education, and worldwide community programs.
         </p>
     
       {/* Background Image Behind Slider */}
-      <div className="absolute inset-0 top-40 w-[95%] mx-auto h-[400px] rounded-3xl overflow-hidden mt-12">
+      <div className="absolute inset-0 top-40 w-[95%] mx-auto h-[70vh] rounded-3xl overflow-hidden mt-12">
         <img
           src="/slider1.png"
           className="w-full h-full object-fill"
@@ -54,7 +54,7 @@ export default function StoriesSlider() {
       </div>
 
       {/* Slider Section */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 h-[90vh] -mt-20">
 
         {/* Custom Arrows (white bg + red icon) */}
         <div className="swiper-button-prev custom-arrow-left !left-3">

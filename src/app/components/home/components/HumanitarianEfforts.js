@@ -40,10 +40,10 @@ export default function HumanitarianEfforts({
     <div className="bg-white py-20 px-6">
       {/* Heading */}
       <div className="text-center mb-14">
-        <h2 className="text-4xl font-bold text-gray-900">
+        <h2 className="text-3xl md:text-5xl font-semibold text-gray-900">
           Our Ongoing <span className="text-red-600">Humanitarian</span> Efforts
         </h2>
-        <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
+        <p className="text-gray-600 mt-3 max-w-2xl mx-auto w-full">
           These initiatives bring immediate relief and long-term change to those who need it most.
         </p>
       </div>
@@ -53,7 +53,7 @@ export default function HumanitarianEfforts({
         {loading ? (
           <p className="text-center text-gray-600">Loading programs...</p>
         ) : displayedPrograms.length === 0 ? (
-          <p className="text-center text-gray-600">No programs available</p>
+          <p className="text-center text-gray-600 ">No programs available</p>
         ) : (
           displayedPrograms.map((item, idx) => (
             <div

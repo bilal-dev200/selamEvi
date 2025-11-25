@@ -22,8 +22,8 @@ export default function LatestStories({
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Dynamic Heading */}
       <div className="text-left mb-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-          {title}
+        <h2 className="text-3xl sm:text-5xl font-semibold text-gray-900">
+          {title} 
         </h2>
         <p className="mt-2 text-gray-600 text-base sm:text-lg">{subtitle}</p>
       </div>

@@ -19,6 +19,15 @@
   }
 }
 
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/Nunito/static/Nunito-Regular.ttf")
+}
+.font-nunito{
+  font-family: "Nunito";
+}
+
+
 body {
   background: var(--background);
   color: var(--foreground);

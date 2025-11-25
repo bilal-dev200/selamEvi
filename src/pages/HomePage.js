@@ -59,16 +59,16 @@ export default function HomePage() {
       >
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 max-w-3xl">
-          <h1 className="text-4xl md:text-6xl leading-tight text-red-600 mt-[200px]">
-           Donate <span className="text-white"> for Better Lives </span>
+          <h1 className="text-4xl md:text-6xl leading-tight text-red-600">
+            Donate <span className="text-white"> for Better Lives </span>
           </h1>
-          <p className="mt-4 text-[12px] md:text-sm font-light text-gray-200 tracking-wide max-w-[670px]">
+          <p className="mt-4 font-nunito text-[12px] md:text-sm font-light text-gray-200 tracking-wide max-w-[670px]">
             Selam-Evi is dedicated to healthcare, education, women empowerment,
             and relief programs across Syria, Gaza, Turkey and beyond.
           </p>
           <button
             onClick={() => setIsModalVisible(true)}
-            className="bg-red-500 hover:bg-red-700 text-white px-6 py-3 rounded-bl-2xl font-light transition mt-6"
+            className="bg-red-500 hover:bg-red-700 text-white font-nunito px-6 py-3 rounded-bl-2xl font-light transition mt-6"
           >
             Donate Now
           </button>
@@ -78,24 +78,25 @@ export default function HomePage() {
       {/* Quick Donate Box */}
       <div className="relative -mt-16 z-20 flex justify-center px-3 sm:px-6 text-black">
         <div className="w-full sm:w-[95%] md:w-[90%] lg:w-[85%] overflow-hidden rounded-lg border border-red-600 bg-[#edf3ff] p-6">
-          <div className="bg-[#EDF3FF] p-2 flex flex-wrap gap-2 items-center justify-start text-[16px]">
+          <div className="bg-[#EDF3FF] p-2 flex flex-col md:flex-row gap-4 items-stretch text-[16px]">
             {/* Service Dropdown */}
+            
             <select
-              value={selectedService}
-              onChange={(e) => {
-                setSelectedService(e.target.value);
-                setSelectedProgram("");
-              }}
-              disabled={!!selectedProgram || loading}
-              className={`bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full md:w-auto appearance-none pr-2 text-[16px] ${
-                selectedProgram ? "opacity-50 cursor-not-allowed" : ""
-              }`}
+              value={selectedProgram}
+              onChange={(e) => setDonationType(e.target.value)}
+              className="bg-[#E1E1E1] border border-gray-300 rounded-md w-full appearance-none pr-8 text-lg font-nunito tracking-wide outline-[#D21C17] pl-4"
               style={dropdownStyle}
             >
-              <option value="">Services</option>
-              {services.map((service) => (
-                <option key={service.id} value={service.id}>
-                  {service.title}
+              <option value="" className="bg-[#E1E1E1] text-black">
+                Services
+              </option>
+              {["lorem ispum 1 ", "lorem ispum 2"].map((type) => (
+                <option
+                  key={type}
+                  value={type}
+                  className="bg-[#FDEDEE] text-[#D21C17] hover:bg-[#FAD1D1] transition-colors"
+                >
+                  {type}
                 </option>
               ))}
             </select>
@@ -103,20 +104,20 @@ export default function HomePage() {
             {/* Program Dropdown */}
             <select
               value={selectedProgram}
-              onChange={(e) => {
-                setSelectedProgram(e.target.value);
-                setSelectedService("");
-              }}
-              disabled={!!selectedService || loading}
-              className={`bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full md:w-auto appearance-none pr-2 ${
-                selectedService ? "opacity-50 cursor-not-allowed" : ""
-              }`}
+              onChange={(e) => setDonationType(e.target.value)}
+              className="bg-[#E1E1E1] border border-gray-300 rounded-md w-full appearance-none pr-8 text-lg font-nunito tracking-wide outline-[#D21C17] pl-4"
               style={dropdownStyle}
             >
-              <option value="">Program</option>
-              {programs.map((program) => (
-                <option key={program.id} value={program.id}>
-                  {program.title}
+              <option value="" className="bg-[#E1E1E1] text-black">
+                Program
+              </option>
+              {[ "lorem ispum 1 ", "lorem ispum 2"].map((type) => (
+                <option
+                  key={type}
+                  value={type}
+                  className="bg-[#FDEDEE] text-[#D21C17] hover:bg-[#FAD1D1] transition-colors"
+                >
+                  {type}
                 </option>
               ))}
             </select>
@@ -125,34 +126,53 @@ export default function HomePage() {
             <select
               value={donationFrequency}
               onChange={(e) => setDonationFrequency(e.target.value)}
-              className="bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full md:w-auto appearance-none pr-8"
+              className="bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full appearance-none pr-8 text-lg font-nunito tracking-wide outline-[#D21C17] pl-4"
               style={dropdownStyle}
             >
-              <option value="">Single Payment</option>
-              <option value="Monthly">Monthly</option>
-              <option value="Yearly">Yearly</option>
+              <option value="" className="bg-[#E1E1E1] text-black">
+                Single Payment
+              </option>
+              {["Single Payment", "Monthly", "Yearly"].map((freq) => (
+                <option
+                  key={freq}
+                  value={freq}
+                  className="bg-[#FDEDEE] text-[#D21C17] hover:bg-[#FAD1D1] transition-colors"
+                >
+                  {freq}
+                </option>
+              ))}
             </select>
+
+
 
             {/* Amount */}
             <input
-              type="number"
+              type="text"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               placeholder="Enter your amount"
-              className="bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full md:w-auto text-[16px]"
+              className="bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full text-[16px] text-xl font-nunito outline-[#D21C17] pl-4"
             />
 
             {/* Donation Type */}
             <select
               value={donationType}
               onChange={(e) => setDonationType(e.target.value)}
-              className="bg-[#E1E1E1] border border-gray-300 rounded-md p-2 w-full md:w-auto appearance-none pr-8"
+              className="bg-[#E1E1E1] border border-gray-300 rounded-md w-full appearance-none pr-8 text-lg font-nunito tracking-wide outline-[#D21C17] pl-4"
               style={dropdownStyle}
             >
-              <option value="Sadqah">Sadqah</option>
-              <option value="Zakat">Zakat</option>
-              <option value="Donation">Donation</option>
-              <option value="Campaign-specific">Campaign Specific</option>
+              <option value="" className="bg-[#E1E1E1] text-black">
+                Sadqah
+              </option>
+              {["Sadqah", "Zakat", "Donation", "Campaign-specific"].map((type) => (
+                <option
+                  key={type}
+                  value={type}
+                  className="bg-[#FDEDEE] text-[#D21C17] hover:bg-[#FAD1D1] transition-colors"
+                >
+                  {type}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -160,7 +180,7 @@ export default function HomePage() {
           <div className="mt-4">
             <button
               onClick={() => setIsModalVisible(true)}
-              className="w-full bg-red-600 hover:bg-red-700 text-white font-light py-5 rounded-bl-[70px]"
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-bl-[70px]"
             >
               Quick Donate
             </button>
@@ -176,7 +196,7 @@ export default function HomePage() {
         donationType={donationType}
         donationFrequency={donationFrequency}
         amount={amount}
-        IMG_BASE={IMG_BASE} 
+        IMG_BASE={IMG_BASE}
       />
     </div>
   );

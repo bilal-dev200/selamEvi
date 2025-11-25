@@ -11,39 +11,39 @@ export default function Navbar() {
   const router = useRouter();
 
   return (
-    <nav className="absolute top-0 w-full text-white z-50 font-light">
+    <nav className="absolute top-0 w-full text-white z-50 font-light h-40 font-nunito">
       
       {/* Main Navbar */}
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3 md:px-20">
+      <div className="mx-auto flex items-center h-full justify-between px-6 md:px-20">
         
         {/* Left: Logo */}
         <div className="flex items-center gap-3">
           <img
             src="/projectlogo.png"
             alt="Sefa Evi Logo"
-            className="w-[120px] h-[120px] object-contain rounded-md"
+            className="size-[110px] object-contain rounded-md"
           />
         </div>
 
         {/* Center Menu (Desktop: >945px) */}
-        <ul className="hidden [@media(min-width:945px)]:flex items-center gap-8">
-          <Link href="/" className="cursor-pointer">Home</Link>
-          <Link href="/about" className="cursor-pointer">About us</Link>
-          <Link href="/services" className="cursor-pointer">Services</Link>
-          <Link href="/campaigns" className="cursor-pointer">Campaigns</Link>
-          <Link href="/contact" className="cursor-pointer">Contact us</Link>
-          <Link href="/blog" className="cursor-pointer">Blog</Link>
+        <ul className="hidden [@media(min-width:945px)]:flex items-center gap-8 py-10 h-full">
+          <Link href="/" className=" hover:text-[#D21C17] transition ">Home</Link>
+          <Link href="/about" className=" hover:text-[#D21C17] transition">About us</Link>
+          <Link href="/services" className=" hover:text-[#D21C17] transition">Services</Link>
+          <Link href="/campaigns" className=" hover:text-[#D21C17] transition">Campaigns</Link>
+          <Link href="/contact" className=" hover:text-[#D21C17] transition">Contact us</Link>
+          <Link href="/blog" className=" hover:text-[#D21C17] transition">Blog</Link>
         </ul>
 
         {/* Right Actions (Desktop: >945px) */}
-        <div className="hidden [@media(min-width:945px)]:flex items-center gap-2">
+        <div className="hidden [@media(min-width:945px)]:flex items-center gap-4">
           <Calculator
-            className="w-6 h-6 text-white cursor-pointer hover:text-red-500 transition"
+            className="w-6 h-6 text-white hover:text-[#D21C17] transition"
             onClick={() => router.push("/donate")}
           />
           <button
             onClick={() => setIsModalVisible(true)}
-            className="bg-red-500  text-white px-6 py-3 rounded-bl-2xl  transition"
+            className="bg-[#D21C17]  text-white px-9 py-3 rounded-bl-2xl  transition"
           >
             Donate Now
           </button>
@@ -62,16 +62,16 @@ export default function Navbar() {
       {menuOpen && (
         <div className="[@media(max-width:945px)]:block hidden bg-transparent backdrop-blur-md text-white">
           <ul className="flex flex-col items-center gap-4 py-4">
-            <Link href="/" className="cursor-pointer">Home</Link>
-            <Link href="/about" className="cursor-pointer">About us</Link>
-            <Link href="/services" className="cursor-pointer">Services</Link>
-            <Link href="/campaigns" className="cursor-pointer">Campaigns</Link>
-            <Link href="/contact" className="cursor-pointer">Contact us</Link>
-            <Link href="/blog" className="cursor-pointer">Blog</Link>
+            <Link href="/" className=" hover:text-[#D21C17] transition">Home</Link>
+            <Link href="/about" className=" hover:text-[#D21C17] transition">About us</Link>
+            <Link href="/services" className=" hover:text-[#D21C17] transition">Services</Link>
+            <Link href="/campaigns" className=" hover:text-[#D21C17] transition">Campaigns</Link>
+            <Link href="/contact" className=" hover:text-[#D21C17] transition">Contact us</Link>
+            <Link href="/blog" className=" hover:text-[#D21C17] transition">Blog</Link>
 
             <div className="flex items-center gap-2">
               <Calculator
-                className="w-6 h-6 text-white cursor-pointer hover:text-red-500 transition"
+                className="w-6 h-6 text-white cursor-pointer hover:text-[#D21C17] transition"
                 onClick={() => {
                   setMenuOpen(false);
                   router.push("/donate");
@@ -82,7 +82,7 @@ export default function Navbar() {
                   setMenuOpen(false);
                   setIsModalVisible(true);
                 }}
-                className="bg-red-500 hover:bg-red-700 text-white px-6 py-3 rounded-bl-2xl font-light transition"
+                className="bg-[#D21C17] hover:bg-red-700 text-white px-6 py-3 rounded-bl-2xl font-light transition"
               >
                 Donate Now
               </button>
