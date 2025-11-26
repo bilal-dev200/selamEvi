@@ -14,8 +14,8 @@ const Section1 = () => {
 
       {/* Right Text Section */}
       <div className="w-full md:w-1/2 md:pl-10 text-center md:text-left">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 leading-snug">
-         Why Selam Evi 
+        <h2 className="text-3xl sm:text-5xl font-semibold text-gray-800 mb-6 leading-snug">
+         Why Our 
           <span className="text-red-600"> Events & <br /> Campaigns </span>
           Matter
         </h2>

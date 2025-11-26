@@ -18,21 +18,21 @@ export default function ImpactPage({ showHeader = true, titleText, descriptionTe
   return (
     <div className="bg-gray-50 relative">
       <div
-        className="relative text-white px-4 pt-24 pb-36 rounded-tr-[80px] rounded-tl-[80px] bg-cover bg-center sm:pb-40 sm:min-h-[600px] md:min-h-[500px]"
+        className="relative text-white px-4 pt-24 pb-36 rounded-tr-[40px] rounded-tl-[40px] md:rounded-tr-[80px] md:rounded-tl-[80px] bg-cover bg-center sm:pb-40 sm:min-h-[600px] md:min-h-[500px]"
         style={{ backgroundImage: "url('/difference.png')" }}
       >
         {/* Title & Description */}
         {showHeader && (
           <div className="relative z-10 max-w-4xl mx-auto text-center mb-12">
-            <h1 className="text-3xl md:text-5xl mb-3 tracking-widest">{titleText || "Together, We Make a Difference"}</h1>
+            <h1 className="text-2xl md:text-5xl mb-3 tracking-widest">{titleText || "Together, We Make a Difference"}</h1>
             <p className="text-sm md:text-base text-red-100 max-w-2xl mx-auto">
               {descriptionText || "Your support helps deliver healthcare, education, and hope through trusted Islamic charity services in Türkiye."}
             </p>
           </div>
         )}
 
-        {/* Cards Section — bottom aligned for all screens */}
-        <div className="relative lg:absolute bottom-0 transform translate w-full  px-4 flex flex-wrap justify-around gap-2 ">
+        {/* Cards Section */}
+        <div className="relative lg:absolute bottom-0 transform translate  px-4 flex flex-wrap justify-around gap-2 ">
           {stats.map((stat, index) => (
             <motion.div
               key={index}

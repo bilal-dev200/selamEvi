@@ -53,7 +53,7 @@ export default function HumanitarianEfforts({
         {loading ? (
           <p className="text-center text-gray-600">Loading programs...</p>
         ) : displayedPrograms.length === 0 ? (
-          <p className="text-center text-gray-600 ">No programs available</p>
+          <p className="text-center text-gray-600 ">No campaigns available</p>
         ) : (
           displayedPrograms.map((item, idx) => (
             <div
@@ -94,7 +94,7 @@ export default function HumanitarianEfforts({
                     setSelectedProgram(item.id);
                     setIsModalVisible(true);
                   }}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-bl-[70px]"
+                  className="w-full bg-[#D21C17] hover:bg-red-700 text-white font-semibold py-2 rounded-bl-[70px]"
                 >
                   Donate Now
                 </button>

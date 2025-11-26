@@ -63,7 +63,7 @@ export const useServiceStore = create(
         set({ loading: true });
 
         try {
-          const res = await fetch(`${BASE_URL}/services/list`);
+          const res = await fetch(`${BASE_URL}services/list`);
           if (!res.ok) throw new Error("Failed to fetch services");
 
           const data = await res.json();

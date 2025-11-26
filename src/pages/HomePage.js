@@ -58,7 +58,7 @@ export default function HomePage() {
         style={{ backgroundImage: "url('/bg.png')" }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
-        <div className="relative z-10 max-w-3xl">
+        <div className="relative z-10 max-w-3xl text-center sm:text-left">
           <h1 className="text-4xl md:text-6xl leading-tight text-red-600">
             Donate <span className="text-white"> for Better Lives </span>
           </h1>

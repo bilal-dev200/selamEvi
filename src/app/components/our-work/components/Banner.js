@@ -13,10 +13,10 @@ export default function Banner() {
         <div className="absolute inset-0 bg-black/10"></div>
 
         <div>
-          <h1 className="text-4xl  md:text-5xl  leading-tight text-center font-bold ">
-            <span className="text-red-600">Selam Evi </span>Programs
+          <h1 className="text-4xl  md:text-5xl  leading-tight text-center font-semibold ">
+            Changing Lives <br /> Through <span className="text-red-600">Compassionate Action</span>
           </h1>
-          <p className="mt-4 text-[15px]   font-light text-gray-200 text-center ">
+          <p className="mt-4 text-[15px] font-nunito font-light text-gray-200 text-center ">
             Selam-Evi empowers communities through healthcare, education, women empowerment, and humanitarian relief across Syria, Gaza, and Türkiye. Join us in creating lasting change through trusted Islamic charity services.
           </p>
         </div>

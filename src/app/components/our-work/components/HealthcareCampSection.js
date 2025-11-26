@@ -1,6 +1,6 @@
 export default function HealthcareCampSection() {
   return (
-    <section className="bg-white flex items-center justify-center px-4 lg:px-12 py-16">
+    <section className="bg-white flex items-center justify-center  lg:px-12 py-16">
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 items-center relative">
         
         {/* Left Background Image Section */}
@@ -43,7 +43,7 @@ export default function HealthcareCampSection() {
           <img
             src="/o-w1.png"
             alt="Healthcare Camp"
-            className="rounded-3xl shadow-lg w-full  object-cover h-[500px] 
+            className="rounded-none sm:rounded-2xl shadow-lg w-full  object-cover h-[500px] 
 "
           />
         </div>

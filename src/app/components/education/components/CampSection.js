@@ -4,11 +4,11 @@ export default function HealthcareCampSection({
   imagePrimary = "/e-1.png",
 }) {
   return (
-    <section className="w-full py-16 sm:py-24 md:py-32 px-4 sm:px-6">
+    <section className="w-full py-16 sm:py-24 md:py-32 px-4 sm:px-6 " >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* LEFT: Text Section */}
         <div className="text-center md:text-left">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-gray-900 leading-tight">
+          <h2 className="text-3xl md:text-5xl lg:text-[42px] font-semibold text-gray-900 leading-tight">
             Why Our {" "}
             <span className="text-red-600">Events &amp; Campaigns</span> Matter
           </h2>

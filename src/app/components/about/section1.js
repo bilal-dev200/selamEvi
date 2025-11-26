@@ -2,55 +2,56 @@ import React from "react";
 
 const Section1 = () => {
   return (
-    <section className="py-20 px-6 sm:px-12 md:px-20 lg:px-32 bg-white">
-      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
-        {/* Left Column */}
-        <div className="w-full md:w-1/2 text-center md:text-left">
-          <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold text-gray-900    mb-6">
-            Mission &<span className="text-[#E7000B]">  Vision</span>
-          </h2>
+    <section className="py-6 md:py-24 lg:py-32 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
-          <p className="text-gray-700 mb-6 text-sm sm:text-base leading-relaxed">
-            To create a compassionate and self-reliant society where every individual has access to healthcare, education, and the opportunity to live with dignity, regardless of circumstance.
-          </p>
+        {/* Flex container: stacks on mobile, side-by-side on large screens */}
+        <div className="flex flex-col flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
 
-          <div className="flex justify-center md:justify-start space-x-3 sm:space-x-4 mb-6">
-            <button className="bg-[#E7000B] hover:bg-[#b80009] text-white px-5 sm:px-6 py-3 sm:py-3.5 font-semibold rounded-md transition">
-              Mission
-            </button>
-            <button className="bg-gray-200 hover:bg-gray-300 text-gray-900 px-5 sm:px-6 py-3 sm:py-3.5 font-semibold rounded-md transition">
-              Vision
-            </button>
+          {/* Left Column - Text Content */}
+          <div className="text-center lg:text-left order-2 lg:order-1 w-full lg:w-[70%]">
+            <h2 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-semibold text-gray-900 leading-tight">
+              Our<span className="text-[#E7000B]"> Mission & Vision</span>
+            </h2>
+
+            <p className="mt-6 text-gray-700 text-base leading-relaxed w-full ">
+              To create a compassionate and self-reliant society where every individual has access to healthcare, education, and the opportunity to live with dignity, regardless of circumstance.
+            </p>
+
+            {/* Mission & Vision Buttons */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-8">
+              <button className="bg-[#D21C17] hover:bg-[#c7000a] text-white px-6 py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl">
+                Our Mission
+              </button>
+              <button className="bg-gray-100 hover:bg-gray-200 text-gray-900 px-6 py-3 rounded-md transition-all duration-300">
+                Our Vision
+              </button>
+            </div>
+
+            {/* Detailed Mission & Vision Text */}
+            <div className="mt-10 space-y-5 text-gray-700 text-base leading-relaxed w-full lg:w-full">
+              <p>
+                Selam-Evi strives to serve humanity through impactful initiatives in healthcare, education, and empowerment. By providing hospital equipment, mobile medical care, educational support, women empowerment, widow and orphan assistance, Qurbani programs in Syria and Gaza, and Turkey–Syria earthquake relief efforts, Selam-Evi aims to bring hope, stability, and long-term change to communities in need.
+              </p>
+              <p>
+                With the help of dedicated volunteers, partners, and donors, Selam-Evi continues to build sustainable solutions that create lasting impact.
+              </p>
+            </div>
           </div>
 
-          <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
-           Selam-Evi strives to serve humanity through impactful initiatives in healthcare, education, and empowerment. By providing hospital equipment, mobile medical care, educational support, women empowerment, widow and orphan assistance, Qurbani programs in Syria and Gaza, and Turkey–Syria earthquake relief efforts, Selam-Evi aims to bring hope, stability, and long-term change to communities in need.
-          </p>
-
-          <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-            With the help of dedicated volunteers, partners, and donors, Selam-Evi continues to build sustainable solutions that create lasting impact.
-          </p>
-        </div>
-
-        {/* Right Column (Images) */}
-        <div className="w-full md:w-1/2 relative flex justify-center md:justify-end">
-          <div className="relative w-[80%] sm:w-[70%] md:w-[90%] lg:w-[75%]">
-            {/* Back Image */}
-            <img
-              src="/camp.png"
-              alt="Camp"
-              className="absolute top-0 left-1/2 transform -translate-x-1/2 md:translate-x-0 md:left-[80px] w-[70%] sm:w-[60%] md:w-[320px] h-[300px] sm:h-[350px] md:h-[420px] object-cover shadow-lg z-10"
-              style={{ borderTopRightRadius: "30%" }}
-            />
-
-            {/* Front Image */}
-            <img
-              src="/ceremony.png"
-              alt="Ceremony"
-              className="relative z-20 mt-[180px] sm:mt-[150px] mx-auto md:ml-[40px] w-[70%] sm:w-[60%] md:w-[320px] h-[220px] sm:h-[240px] md:h-[260px] object-cover shadow-lg border-[6px] border-white"
-              style={{ borderTopLeftRadius: "30%" }}
-            />
+          {/* Right Column - Image */}
+          <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end w-full lg:w-1/2">
+            <div className="relative w-full flex justify-center">
+              <img
+                src="/camp.png"
+                alt="Selam-Evi Humanitarian Work"
+                className="w-full max-w-sm sm:max-w-md lg:max-w-lg object-fit
+                           h-80 sm:h-130 
+                           object-cover"
+              />
+            </div>
           </div>
+
         </div>
       </div>
     </section>

@@ -6,13 +6,13 @@ const CompassionSection = () => {
       {/* Left Image Section */}
       <div className="relative w-full md:w-1/2 max-w-lg">
         {/* Red Rounded Corner Shape (behind image) */}
-        <div className="absolute -bottom-4 -left-4 w-45 h-45 bg-red-600  z-0"></div>
+        <div className="absolute -bottom-4 -left-4 w-45 h-75 bg-red-600 z-0"></div>
 
         {/* Image */}
         <img
           src="/Ijteema2.png"
           alt="Improving Lives"
-          className="relative z-10 w-full h-auto object-cover"
+          className="relative z-10 w-full h-[70vh]"
         />
       </div>
 

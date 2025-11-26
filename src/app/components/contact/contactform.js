@@ -67,7 +67,7 @@ export default function Contactform() {
       <div className="relative z-10">
         {/* Heading */}
         <div className="text-left pt-16 pb-10 px-6 lg:px-10 max-w-7xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-semibold text-gray-900">
            Get in Touch With Us Today
           </h2>
           <p className="text-gray-600 mt-3 text-sm sm:text-base max-w-2xl">
@@ -78,7 +78,7 @@ export default function Contactform() {
         {/* Main Section */}
         <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-10 px-6 lg:px-10 pb-16">
           {/* Red Form */}
-          <div className="bg-[#E7000B] text-white rounded-2xl p-8 shadow-lg w-full lg:w-[55%]">
+          <div className="bg-[#D21C17] text-white rounded-2xl p-8 shadow-lg w-full lg:w-[55%]">
             <h3 className="text-2xl font-semibold mb-6">
               Connect With Us Today <br /> and Be Part of the Change
             </h3>
@@ -129,7 +129,7 @@ export default function Contactform() {
                 className={`mt-6 w-24 py-2 rounded-sm text-sm font-semibold transition ${
                   loading
                     ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                    : "bg-white text-[#E7000B] hover:bg-gray-100"
+                    : "bg-white text-black tracking-wide font-nunito text-sm  hover:bg-gray-100"
                 }`}
               >
                 {loading ? "Sending..." : "Submit"}

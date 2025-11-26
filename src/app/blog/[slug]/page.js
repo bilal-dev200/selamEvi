@@ -36,7 +36,7 @@ export default function BlogDetails() {
     replace: (domNode) => {
       if (domNode.name === "h1") {
         return (
-          <h1 className="text-4xl font-bold text-black text-left my-6">
+          <h1 className="text-4xl font-bold font-kalnia text-black text-left my-6">
             {domNode.children[0]?.data}
           </h1>
         );

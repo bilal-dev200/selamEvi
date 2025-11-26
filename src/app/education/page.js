@@ -16,7 +16,7 @@ import FAQSection from '../components/home/components/FAQSection';
 
 const page = () => {
   return (
-    <div>
+    <div className='bg-white'>
       <Banner />
       <CampSection />
       <SupportSection />

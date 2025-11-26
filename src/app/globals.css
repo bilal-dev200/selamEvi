@@ -23,8 +23,15 @@
   font-family: "Nunito";
   src: url("/fonts/Nunito/static/Nunito-Regular.ttf")
 }
+@font-face {
+  font-family: "Kalnia";
+  src: url("/fonts/Kalnia/static/Kalnia-Regular.ttf");
+}
 .font-nunito{
   font-family: "Nunito";
+}
+.font-kalnia{
+  font-family: "Kalnia";
 }
 
 

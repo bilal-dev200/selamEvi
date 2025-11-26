@@ -14,7 +14,7 @@ export const useProgramStore = create((set, get) => ({
     set({ loading: true });
 
     try {
-      const res = await fetch(`${BASE_URL}/programs/list`);
+      const res = await fetch(`${BASE_URL}programs/list`);
       const result = await res.json();
 
       if (result?.status && Array.isArray(result.data)) {

@@ -137,7 +137,7 @@ export default function ServicesGrid() {
 
   return (
     <section className="py-16 px-6 md:px-20 bg-white text-center">
-      <h2 className="text-3xl text-black md:text-5xl font-bold mb-3">
+      <h2 className="text-3xl text-black md:text-5xl font-semibold mb-3">
         <span className="text-red-600">Selam-Evi</span> Programs
       </h2>
 

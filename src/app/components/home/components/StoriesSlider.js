@@ -36,16 +36,18 @@ export default function StoriesSlider() {
   ];
 
   return (
-    <section className="relative py-20 ">
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 text-center">
-          Stories of Hope and<span className="text-red-600"> Humanity</span>    
-        </h2>
-        <p className="text-gray-600 mt-3 font-nunito max-w-2xl mx-auto text-center pb-12">
-          Discover how your generosity creates change through Qurbani efforts, food relief, education, and worldwide community programs.
-        </p>
-    
-      {/* Background Image Behind Slider */}
-      <div className="absolute inset-0 top-40 w-[95%] mx-auto h-[70vh] rounded-3xl overflow-hidden mt-12">
+    <section className="relative py-20">
+      <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 text-center">
+        Stories of Hope and<span className="text-red-600"> Humanity</span>
+      </h2>
+
+      {/* 🔥 Added More Gap Below the Subheading (your request #2) */}
+      <p className="text-gray-600 mt-3 font-nunito max-w-2xl mx-auto text-center mb-20">
+        Discover how your generosity creates change through Qurbani efforts, food relief, education, and worldwide community programs.
+      </p>
+
+      {/* Background Image */}
+      <div className="absolute inset-0 top-40 w-[95%] mx-auto h-[95vh] rounded-3xl overflow-hidden pt-22">
         <img
           src="/slider1.png"
           className="w-full h-full object-fill"
@@ -54,9 +56,9 @@ export default function StoriesSlider() {
       </div>
 
       {/* Slider Section */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 h-[90vh] -mt-20">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 h-[80vh] -mt-16">
 
-        {/* Custom Arrows (white bg + red icon) */}
+        {/* Arrows */}
         <div className="swiper-button-prev custom-arrow-left !left-3">
           <div className="bg-white p-3 rounded-full shadow-lg">
             <ChevronLeft className="text-red-600 w-6 h-6" />
@@ -71,67 +73,61 @@ export default function StoriesSlider() {
 
         <Swiper
           modules={[Navigation, Pagination]}
-          slidesPerView={1.2}
-          centeredSlides
-          loop={true}
-          spaceBetween={20}
-          navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          }}
+          navigation={{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }}
           pagination={{ clickable: true }}
-          className="py-12"
+          slidesPerView={1}
+          className="rounded-3xl"
         >
-          {stories.map((story, index) => (
+          {stories.map((story) => (
             <SwiperSlide key={story.id}>
+              
+              {/* 🔥 Increased the height of each video (your request #1) */}
+              <div className="w-full h-[420px] md:h-[500px] relative rounded-3xl overflow-hidden">
 
-              <div className="relative rounded-3xl overflow-hidden shadow-xl w-full bg-black">
-
-                {isPlaying === index ? (
-                  <>
-                    {/* VIDEO TOP SE START HOGA */}
-                    <video
-                      src={story.video}
-                      autoPlay
-                      controls
-                      className="w-full h-[400px] object-cover object-top"
-                    />
-                    <button
-                      onClick={() => setIsPlaying(null)}
-                      className="absolute top-4 right-4 bg-black/50 p-2 rounded-full"
-                    >
-                      <X className="text-white" />
-                    </button>
-                  </>
+                {isPlaying === story.id ? (
+                  <video
+                    src={story.video}
+                    autoPlay
+                    controls
+                    className="w-full h-full object-cover"
+                  />
                 ) : (
-                  <>
-                    {/* Thumbnail */}
-                    <img
-                      src={story.thumbnail}
-                      className="w-full h-[400px] object-contain object-cover"
-                    />
-
-                    {/* Black Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-
-                    {/* CENTER Play Button */}
-                    <div
-                      className="absolute inset-0 flex items-center justify-center cursor-pointer"
-                      onClick={() => setIsPlaying(index)}
-                    >
-                      <div className="bg-white p-5 rounded-full shadow-xl">
-                        <Play className="text-red-600 w-10 h-10" />
-                      </div>
-                    </div>
-
-                    {/* Text bottom */}
-                    <div className="absolute bottom-6 left-6 right-6 text-white">
-                      <h3 className="text-xl font-semibold mb-1">{story.title}</h3>
-                      <p className="text-sm text-gray-300">{story.description}</p>
-                    </div>
-                  </>
+                  <img
+                    src={story.thumbnail}
+                    className="w-full h-full object-cover object-center"
+                    alt={story.title}
+                  />
                 )}
 
+                {/* Play Button */}
+                {isPlaying !== story.id && (
+                  <button
+                    onClick={() => setIsPlaying(story.id)}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <div className="bg-white p-4 rounded-full shadow-2xl">
+                      <Play className="text-red-600 w-10 h-10" />
+                    </div>
+                  </button>
+                )}
+
+                {/* Close Button */}
+                {isPlaying === story.id && (
+                  <button
+                    onClick={() => setIsPlaying(null)}
+                    className="absolute top-3 right-3 bg-white p-2 rounded-full shadow"
+                  >
+                    <X className="w-6 h-6 text-red-600" />
+                  </button>
+                )}
+              </div>
+
+              {/* Text Content */}
+              <div className="mt-6 px-2 ">
+                <h3 className="text-2xl font-semibold">{story.title}</h3>
+                <p className="text-gray-600 max-w-xl  mt-2">
+                  {story.description}
+                </p>
               </div>
 
             </SwiperSlide>
