@@ -21,6 +21,7 @@ const Campaigns = () => {
       <HumanitarianEfforts initialCount={8} showLoadMore={false} showRaisedGoal={false} showSlider={false} />
       <Together />
       <LatestStories showLoadMore={false} />
+
       <CampaignsFAQ />
     </div>
   )
