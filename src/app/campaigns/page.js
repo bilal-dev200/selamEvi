@@ -7,7 +7,7 @@ import LatestStories from '../components/home/components/LatestStories'
 // import CampaignsFAQ from '../components/campaigns/CampaignsFaQ'
 import ImpactPage from '../components/home/components/ImpactPage'
 import Together from '../components/our-work/components/Together'
-import CampaignsFAQ from '../components/campaigns/CampaignsFaQ'
+import CampaignsFAQ from '../components/campaigns/CampaignsFAQ'
 
 
 
