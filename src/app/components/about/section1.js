@@ -19,14 +19,14 @@ const Section1 = () => {
             </p>
 
             {/* Mission & Vision Buttons */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-8">
+            {/* <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-8">
               <button className="bg-[#D21C17] hover:bg-[#c7000a] text-white px-6 py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl">
                 Our Mission
               </button>
               <button className="bg-gray-100 hover:bg-gray-200 text-gray-900 px-6 py-3 rounded-md transition-all duration-300">
                 Our Vision
               </button>
-            </div>
+            </div> */}
 
             {/* Detailed Mission & Vision Text */}
             <div className="mt-10 space-y-5 text-gray-700 text-base leading-relaxed w-full lg:w-full">

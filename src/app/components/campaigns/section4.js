@@ -118,12 +118,12 @@ const Section4 = () => {
 
       {/* Red Footer (optional for desktop and mobile) */}
       <div className="absolute bottom-0 left-0 w-full bg-[#D21C17] py-10 flex justify-center items-center gap-4 rounded-b-[60px] z-0 h-[300px] flex ">
-        <button className="hidden lg:flex bg-white text-[#D21C17] w-12 h-12 rounded-full flex items-center justify-center text-2xl font-black hover:bg-gray-200 transition mt-15">
+        {/* <button className="hidden lg:flex bg-white text-[#D21C17] w-12 h-12 rounded-full flex items-center justify-center text-2xl font-black hover:bg-gray-200 transition mt-15">
           <MdKeyboardArrowLeft />
         </button>
         <button className="hidden lg:flex bg-[#D21C17] border-2 border-white text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl font-black hover:bg-white hover:text-[#E7000B] transition mt-15">
           <MdKeyboardArrowRight />
-        </button>
+        </button> */}
       </div>
     </section>
   );
