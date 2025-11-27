@@ -4,9 +4,10 @@ import Section1 from '../components/campaigns/section1'
 import Section4 from '../components/campaigns/section4'
 import HumanitarianEfforts from '../components/home/components/HumanitarianEfforts'
 import LatestStories from '../components/home/components/LatestStories'
-import CampaignsFAQ from '../components/campaigns/CampaignsFaQ'
+// import CampaignsFAQ from '../components/campaigns/CampaignsFaQ'
 import ImpactPage from '../components/home/components/ImpactPage'
 import Together from '../components/our-work/components/Together'
+import CampaignsFAQ from '../components/campaigns/CampaignsFaQ'
 
 
 
@@ -21,8 +22,8 @@ const Campaigns = () => {
       <HumanitarianEfforts initialCount={8} showLoadMore={false} showRaisedGoal={false} showSlider={false} />
       <Together />
       <LatestStories showLoadMore={false} />
-
-      <CampaignsFAQ />
+<CampaignsFAQ/>
+      {/* <CampaignsFAQ /> */}
     </div>
   )
 }
